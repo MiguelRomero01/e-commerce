@@ -1,46 +1,108 @@
-# Getting Started with Create React App
+Nota: el readme se inicia con ctrl + shift + v
+# E-commerce App 🚀
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## **Base de Datos**
+Se implementa **Supabase** como motor de base de datos, aprovechando su integración con **PostgreSQL** y la facilidad de modificación directa.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## **Organización y Estructura del Proyecto 📂**
 
-### `yarn start`
+### 1. **common**
+- **Función**: Contiene elementos **reutilizables globalmente** en toda la aplicación, como componentes compartidos, estilos o layouts.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+| Archivo           | Descripción                                               |
+|-------------------|-----------------------------------------------------------|
+| `Button.tsx`      | Componente reutilizable para botones (estilos y props).   |
+| `Header.tsx`      | Encabezado común que se usa en varias pantallas.          |
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `yarn test`
+### 2. **layouts** _(dentro de `common`)_
+- **Función**: Define las **estructuras generales de página**, como distribuciones de contenido.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Archivo            | Descripción                                                      |
+|--------------------|------------------------------------------------------------------|
+| `MainLayout.tsx`   | Layout principal con header, footer y sección de contenido.      |
+| `AuthLayout.tsx`   | Layout específico para páginas de autenticación.                 |
 
-### `yarn build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 4. **database** _(dentro de `features/auth`)_
+- **Función**: Archivos relacionados con **consultas y conexión a la base de datos**.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Archivo             | Descripción                                                   |
+|----------------------|-------------------------------------------------------------|
+| `dbConnection.ts`    | Configuración principal de conexión a Supabase.             |
+| `userQueries.ts`     | Funciones para consultar o actualizar usuarios en la base.  |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `yarn eject`
+### 5. **queries** _(dentro de `database`)_
+- **Función**: Define **consultas específicas** a la base de datos o API.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+| Archivo               | Descripción                                                     |
+|------------------------|---------------------------------------------------------------|
+| `fetchUserData.ts`     | Consulta los datos del usuario autenticado.                   |
+| `updateUserProfile.ts` | Actualiza la información del perfil del usuario.              |
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 6. **hooks** _(dentro de `features/auth`)_
+- **Función**: Contiene **custom hooks reutilizables** relacionados con la autenticación.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+| Archivo             | Descripción                                                   |
+|----------------------|-------------------------------------------------------------|
+| `useLogin.ts`        | Maneja la lógica del proceso de inicio de sesión.           |
+| `useAuthStatus.ts`   | Verifica y devuelve el estado de autenticación del usuario. |
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 7. **services**
+- **Función**: Contiene la **lógica de negocio** o servicios generales como llamadas a APIs.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Archivo                 | Descripción                                                       |
+|--------------------------|-----------------------------------------------------------------|
+| `apiService.ts`          | Configuración de llamadas genéricas a una API (GET, POST, etc). |
+| `notificationService.ts` | Servicio para mostrar notificaciones (errores, éxitos).         |
+
+---
+
+### 8. **screens**
+- **Función**: Contiene las **pantallas principales** de la aplicación, organizadas por módulos.
+
+**Ejemplo (módulo `auth`):**
+
+| Archivo               | Descripción                                                   |
+|------------------------|-------------------------------------------------------------|
+| `LoginScreen.tsx`      | Pantalla principal de inicio de sesión con hooks y componentes. |
+| `RegisterScreen.tsx`   | Pantalla para registro de nuevos usuarios.                  |
+
+---
+
+### 9. **components** _(dentro de `screens/auth`)_
+- **Función**: Contiene **componentes específicos** de la pantalla de autenticación.
+
+| Archivo                | Descripción                                                   |
+|-------------------------|-------------------------------------------------------------|
+| `LoginForm.tsx`         | Componente del formulario de login (inputs y botones).      |
+| `PasswordInput.tsx`     | Input reutilizable con funcionalidad de mostrar/ocultar contraseña. |
+
+---
+
+## 📚 **10. Librerías**
+
+| **Librería**          | **Función**                                               | **Instalación**                                    |
+|------------------------|----------------------------------------------------------|---------------------------------------------------|
+| `Material UI`         | Utilización de componentes e iconos, además de una mejora visual. |  yarn add @mui/material @emotion/react @emotion/styled                                        |
+|                        |                                                          | yarn add @mui/icons-material                      |
+
+## **Resumen Final 📝**
+- 📁 `common` → Elementos globales reutilizables.  
+- 📁 `features` → Funcionalidades agrupadas (auth, cart, etc.).  
+- 📁 `database` y `queries` → Conexión y consultas a la base de datos.  
+- 📁 `hooks` → Lógica encapsulada y reutilizable.  
+- 📁 `services` → Lógica de negocio y comunicación con APIs.  
+- 📁 `screens` → Pantallas organizadas con componentes específicos.  
+
+---
