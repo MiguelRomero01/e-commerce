@@ -1,5 +1,26 @@
-Nota: el readme se inicia con ctrl + shift + v
-# E-commerce App 🚀
+## Instalación de las extensiones necesarias en VS Code para visualizar mejor el Readme
+
+1. **Markdown Preview Enhanced**:
+   - Instala esta extensión desde el Marketplace de Visual Studio Code para una vista previa mejorada de archivos Markdown.
+   - [Markdown Preview Enhanced](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced)
+
+## Resolves utilizados
+
+- **crypto**:  
+  `require.resolve("crypto-browserify")`  
+  - Resolución para el módulo `crypto` en entornos de navegador.
+
+- **buffer**:  
+  `require.resolve("buffer/")`  
+  - Resolución para el módulo `buffer` en entornos de navegador.
+
+- **stream**:  
+  `require.resolve("stream-browserify")`  
+  - Resolución para el módulo `stream` en entornos de navegador.
+
+- **vm**:  
+  `require.resolve("vm-browserify")`  
+  - Resolución para el módulo `vm` en entornos de navegador.
 
 ## **Base de Datos**
 Se implementa **Supabase** como motor de base de datos, aprovechando su integración con **PostgreSQL** y la facilidad de modificación directa.
@@ -13,8 +34,8 @@ Se implementa **Supabase** como motor de base de datos, aprovechando su integrac
 
 | Archivo           | Descripción                                               |
 |-------------------|-----------------------------------------------------------|
-| `Button.tsx`      | Componente reutilizable para botones (estilos y props).   |
-| `Header.tsx`      | Encabezado común que se usa en varias pantallas.          |
+| `Button.tsx`      | _Componente reutilizable para botones (estilos y props)._   |
+| `Header.tsx`      | _Encabezado común que se usa en varias pantallas._          |
 
 ---
 
@@ -23,8 +44,8 @@ Se implementa **Supabase** como motor de base de datos, aprovechando su integrac
 
 | Archivo            | Descripción                                                      |
 |--------------------|------------------------------------------------------------------|
-| `MainLayout.tsx`   | Layout principal con header, footer y sección de contenido.      |
-| `AuthLayout.tsx`   | Layout específico para páginas de autenticación.                 |
+| `MainLayout.tsx`   | _Layout principal con header, footer y sección de contenido._      |
+| `AuthLayout.tsx`   | _Layout específico para páginas de autenticación._                 |
 
 ---
 
@@ -33,8 +54,8 @@ Se implementa **Supabase** como motor de base de datos, aprovechando su integrac
 
 | Archivo             | Descripción                                                   |
 |----------------------|-------------------------------------------------------------|
-| `dbConnection.ts`    | Configuración principal de conexión a Supabase.             |
-| `userQueries.ts`     | Funciones para consultar o actualizar usuarios en la base.  |
+| `dbConnection.ts`    | _Configuración principal de conexión a Supabase._             |
+| `userQueries.ts`     | _Funciones para consultar o actualizar usuarios en la base._  |
 
 ---
 
@@ -43,8 +64,8 @@ Se implementa **Supabase** como motor de base de datos, aprovechando su integrac
 
 | Archivo               | Descripción                                                     |
 |------------------------|---------------------------------------------------------------|
-| `fetchUserData.ts`     | Consulta los datos del usuario autenticado.                   |
-| `updateUserProfile.ts` | Actualiza la información del perfil del usuario.              |
+| `fetchUserData.ts`     | _Consulta los datos del usuario autenticado._                   |
+| `updateUserProfile.ts` | _Actualiza la información del perfil del usuario._              |
 
 ---
 
@@ -53,8 +74,8 @@ Se implementa **Supabase** como motor de base de datos, aprovechando su integrac
 
 | Archivo             | Descripción                                                   |
 |----------------------|-------------------------------------------------------------|
-| `useLogin.ts`        | Maneja la lógica del proceso de inicio de sesión.           |
-| `useAuthStatus.ts`   | Verifica y devuelve el estado de autenticación del usuario. |
+| `useLogin.ts`        | _Maneja la lógica del proceso de inicio de sesión._           |
+| `useAuthStatus.ts`   | _Verifica y devuelve el estado de autenticación del usuario._ |
 
 ---
 
@@ -63,8 +84,8 @@ Se implementa **Supabase** como motor de base de datos, aprovechando su integrac
 
 | Archivo                 | Descripción                                                       |
 |--------------------------|-----------------------------------------------------------------|
-| `apiService.ts`          | Configuración de llamadas genéricas a una API (GET, POST, etc). |
-| `notificationService.ts` | Servicio para mostrar notificaciones (errores, éxitos).         |
+| `apiService.ts`          | _Configuración de llamadas genéricas a una API (GET, POST, etc)._ |
+| `notificationService.ts` | _Servicio para mostrar notificaciones (errores, éxitos)._         |
 
 ---
 
@@ -75,8 +96,8 @@ Se implementa **Supabase** como motor de base de datos, aprovechando su integrac
 
 | Archivo               | Descripción                                                   |
 |------------------------|-------------------------------------------------------------|
-| `LoginScreen.tsx`      | Pantalla principal de inicio de sesión con hooks y componentes. |
-| `RegisterScreen.tsx`   | Pantalla para registro de nuevos usuarios.                  |
+| `LoginScreen.tsx`      | _Pantalla principal de inicio de sesión con hooks y componentes._ |
+| `RegisterScreen.tsx`   | _Pantalla para registro de nuevos usuarios._               |
 
 ---
 
@@ -85,17 +106,18 @@ Se implementa **Supabase** como motor de base de datos, aprovechando su integrac
 
 | Archivo                | Descripción                                                   |
 |-------------------------|-------------------------------------------------------------|
-| `LoginForm.tsx`         | Componente del formulario de login (inputs y botones).      |
-| `PasswordInput.tsx`     | Input reutilizable con funcionalidad de mostrar/ocultar contraseña. |
+| `LoginForm.tsx`         | _Componente del formulario de login (inputs y botones)._      |
+| `PasswordInput.tsx`     | _Input reutilizable con funcionalidad de mostrar/ocultar contraseña._ |
 
 ---
 
 ## 📚 **10. Librerías**
 
-| **Librería**          | **Función**                                               | **Instalación**                                    |
-|------------------------|----------------------------------------------------------|---------------------------------------------------|
-| `Material UI`         | Utilización de componentes e iconos, además de una mejora visual. |  yarn add @mui/material @emotion/react @emotion/styled                                        |
-|                        |                                                          | yarn add @mui/icons-material                      |
+| **Librería**          | **Función**                                                       | **Instalación**                                        |
+|-----------------------|-------------------------------------------------------------------|--------------------------------------------------------|
+| `Material UI`         | Utilización de componentes e iconos, además de una mejora visual. |  _yarn add @mui/material @emotion/react @emotion/styled_|                                       |
+|                       | Iconos utilizados                                                 | _yarn add @mui/icons-material_                           |
+|`bcryptjs`             | Encriptacion de datos para ser mandados a la DB                   | _yarn add bcryptjs_                                      |
 
 ## **Resumen Final 📝**
 - 📁 `common` → Elementos globales reutilizables.  
