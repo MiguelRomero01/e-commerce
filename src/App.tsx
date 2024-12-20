@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginScreen from './screens/auth/login/Login';
 import RegisterScreen from './screens/auth/register/Register';
