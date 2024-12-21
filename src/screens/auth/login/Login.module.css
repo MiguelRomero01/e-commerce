@@ -1,9 +1,11 @@
+
 .login-container {
     display: flex;
     height: 100vh;
     overflow-y: hidden;
 }
 
+/*Image*/
 .image-container {
     flex: 1;
 }
@@ -14,12 +16,29 @@
     object-fit: cover;
 }
 
+/*Forms*/
+.form-header{
+    font-family: sans-serif;
+    padding-left: 10px;
+}
+
+.form-header h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 1;
+}
+
+.form-header p {
+    font-weight: 200;
+    font-size: 1rem;
+    margin-bottom: 1;
+}
+
 .form-container {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     padding: 20px;
 }
 
@@ -29,14 +48,8 @@ form {
     width: 80%;
 }
 
-label {
-    margin-bottom: 5px;
-}
-
 .inputs {
-    margin-bottom: 15px;
-    padding: 10px;
-    font-size: 16px;
+    font-size: 1.5rem;
 }
 
 button {
@@ -45,10 +58,27 @@ button {
     cursor: pointer;
 }
 
-.message {
-    color: green;
-}
-
 .error {
     color: red;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .image-container {
+        height: 50vh;
+    }
+
+    .form-container {
+        height: 50vh;
+        text-align: center;
+    }
+
+    form{
+        align-items: center;
+        margin-left: 10vw;
+    }
 }

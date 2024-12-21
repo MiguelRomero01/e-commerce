@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { authenticateUser } from '../../../features/Auth/authenticateUser';
 
+//styles
 import loginStyles from './Login.module.css';
+import Box from '@mui/material/Box';
+import AuthInput from '../components/authInput';
 
 const Login = () => {
     const [user, setUser] = useState<string>('');
@@ -28,35 +31,42 @@ const Login = () => {
             <div className={loginStyles['image-container']}>
                 <img src='/Images/register/image.png' alt='Login' />
             </div>
+
             <div className={loginStyles['form-container']}>
-                <form onSubmit={handleLogin}>
+                <header className={loginStyles['form-header']}>
+                    <h1>Welcome 👋</h1>
+                    <p>Enter your username and password to access your account</p>
+                </header>
 
-                    <label htmlFor="username"> Username </label>
-                    <input
-                        type="text"
-                        id="username"
+                {/* Formulario de inicio de sesión */}
+                    <Box 
+                        component="form"
+                        sx={{'& > :not(style)': { m: 1, width: '25ch' }}}
+                        autoComplete='off'
+                        onSubmit={handleLogin}
+                    >
+                    
+                    {/*Username*/}
+                    <AuthInput
+                        type='text'
+                        label='Username'
                         value={user}
-                        className="inputs"
-                        placeholder="Enter your username"
                         onChange={(e) => setUser(e.target.value)}
-                        required
                     />
 
-                    <label htmlFor="password"> Password </label>
-                    <input
-                        type="password"
-                        id="password"
+                    {/*Password*/}
+                    <AuthInput
+                        type='password'
+                        label='Password'
                         value={password}
-                        className="inputs"
-                        placeholder="Enter your password"
                         onChange={(e) => setPassword(e.target.value)}
-                        required
                     />
-                    <button type="submit">Login</button>
-                    {message && <p className="message">{message}</p>}
-                    {error && <p className="error">{error}</p>}
 
-                </form>
+                    <button type="submit">Login</button>
+
+                    {message && <p className="message">{message}</p>}
+                    {error && <p className={loginStyles.error}>{error}</p>}
+                </Box>
             </div>
         </div>
     );
