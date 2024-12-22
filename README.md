@@ -115,9 +115,10 @@ Se implementa **Supabase** como motor de base de datos, aprovechando su integrac
 
 | **Librería**          | **Función**                                                       | **Instalación**                                        |
 |-----------------------|-------------------------------------------------------------------|--------------------------------------------------------|
-| `Material UI`         | Utilización de componentes e iconos, además de una mejora visual. |  _yarn add @mui/material @emotion/react @emotion/styled_|                                       |
-|                       | Iconos utilizados                                                 | _yarn add @mui/icons-material_                           |
+| `Material UI`         | Utilización de componentes e iconos, además de una mejora visual. |  _yarn add @mui/material @emotion/react @emotion/styled_|   
+|                       | Uso de Iconos                                                     | _yarn add @mui/icons-material_                           |
 |`bcryptjs`             | Encriptacion de datos para ser mandados a la DB                   | _yarn add bcryptjs_                                      |
+|`lottie-react`         | Uso de animaciones                                                | _yarn add lottie-react_                                  |
 
 ## **Resumen Final 📝**
 - 📁 `common` → Elementos globales reutilizables.  

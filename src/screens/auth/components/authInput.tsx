@@ -23,19 +23,17 @@ const AuthInput: React.FC<input> = ({ type, label, value, onChange }) => {
                     '& fieldset': {
                         borderColor: 'black',
                         borderRadius: '12px',
-                        width: '18vw', // Ajusta el ancho del input
-                    },
-                    '& input': {
-                        fontSize: '1rem', // Aumenta la fuente
                     },
                 },
                 '& .MuiInputLabel-root': {
-                    color: 'black',
-                    fontSize: '1rem', // Aumenta la fuente de la etiqueta
-               },
+                    color: 'gray',
+                },
                 '& .MuiInputLabel-root.Mui-focused': {
                     color: 'black',
                 },
+            }}
+            style={{
+                fontSize: '2rem',
             }}
         />
     );

@@ -42,30 +42,52 @@
     padding: 20px;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-}
-
-.inputs {
-    font-size: 1.5rem;
-}
-
-button {
+.form-container button {
+    font-family: sans-serif;
     padding: 10px;
-    font-size: 16px;
+    font-size: 1.2rem;
     cursor: pointer;
+    color: white;
+    background-color: black;
+    border-color: transparent;
+    border-radius: 10px;
+    width: 51.5vmin !important;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background-color: #2e2e2e;
+    color: white;
 }
 
 .error {
     color: red;
+    font-size: 1rem;
+    width: 80% !important;
+}
+
+.account-question{
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    width: 80% !important;
+}
+
+.link-signUp {
+    font-weight: 600;
+    color: rgb(71, 125, 225);
+    text-decoration: none;
+}
+
+.link-signUp:hover {
+    text-decoration: underline;
+    color: rgb(33, 101, 227);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .login-container {
         flex-direction: column;
+        overflow-y: auto;
     }
 
     .image-container {
@@ -77,8 +99,7 @@ button {
         text-align: center;
     }
 
-    form{
-        align-items: center;
-        margin-left: 10vw;
+    .account-question{
+        margin-left: -10vw !important;
     }
 }
