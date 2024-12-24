@@ -1,4 +1,4 @@
-import { supabase } from "../../services/supaBase";
+import { supabase } from "../../../../services/supaBase";
 
 export const getUserCredentials = async(username: string) => {
      try{

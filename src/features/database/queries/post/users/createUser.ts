@@ -1,5 +1,5 @@
-import { supabase } from "../services/supaBase";
-import { CryptPassword } from "../services/HashPassword";
+import { supabase } from "../../../../services/supaBase";
+import { CryptPassword } from "../../../../services/HashPassword";
 
 export const addUser = async (username: string, password: string) => {
      try{

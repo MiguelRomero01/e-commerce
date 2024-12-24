@@ -1,11 +1,12 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import registerStyles from './Register.module.css';
 
-import { addUser } from "../../../features/Auth/addUser";
+import { addUser } from "../../../features/database/queries/post/users/createUser";
 import { Box } from "@mui/material";
 import AuthInput from "../components/authInput";
 import { Link } from "react-router-dom";
-import { SuccessRegister } from "./components/successRegister";
+import SuccessRegister from "./components/successRegister";
+import errorRegister from "./components/errorRegister";
 
 
 type State = {
@@ -13,7 +14,7 @@ type State = {
      password: string;
      repeat_password: string;
      message: string;
-     error: string | null;
+     error: string ;
 }
 
 type action = 
@@ -21,14 +22,14 @@ type action =
      | { type: 'SET_PASSWORD'; payload: string }
      | { type: 'SET_REPEAT_PASSWORD'; payload: string }
      | { type: 'SET_MESSAGE'; payload: string }
-     | { type: 'SET_ERROR'; payload: string | null }
+     | { type: 'SET_ERROR'; payload: string}
 
 const initialState: State = {
      username: '',
      password: '',
      repeat_password: '',
      message: '',
-     error: null
+     error: ''
 }
 
 const reducer = (state: State, action: action): State => {
@@ -47,23 +48,35 @@ const RegisterScreen: React.FC = () => {
 
      const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
+
+          if (state.password !== state.repeat_password){
+               dispatch({ type: 'SET_MESSAGE', payload: '' })
+               dispatch({ type: 'SET_ERROR', payload: "The password doesn't match" })
+               return errorRegister({ text: state.error, icon: "error" });
+          }
+
           const isRegistered = await addUser(state.username, state.password)
 
           if(isRegistered){
-               dispatch({ type: 'SET_ERROR', payload: null })
-               dispatch({ type: 'SET_MESSAGE', payload: 'Registro exitoso' })
+               dispatch({ type: 'SET_ERROR', payload: '' })
+               dispatch({ type: 'SET_MESSAGE', payload: 'User was added successfully' })
+               return <SuccessRegister />;
           } 
-          else if (state.password !== state.repeat_password){
-               dispatch({ type: 'SET_MESSAGE', payload: '' })
-               dispatch({ type: 'SET_ERROR', payload: "The password doesn't match" })
-          }
           else{
                dispatch({ type: 'SET_MESSAGE', payload: '' })
-               dispatch({ type: 'SET_ERROR', payload: 'No se puede registrar tu usuario' })
+               dispatch({ type: 'SET_ERROR', payload: 'Your user already exists' })
+               return errorRegister({ text: state.error, icon: "error" });
           }
      }
 
+     useEffect(() => {
+          if(state.error !== ''){
+               errorRegister({ text: state.error, icon: "error" });
+          }
+     }, [state.error])
+
      return(
+          
           <div className={registerStyles['register-container']}>
                <div className={registerStyles['image-container']}>
                     <img src='/Images/register/registerImage.jpg' alt='Register' />
@@ -101,17 +114,13 @@ const RegisterScreen: React.FC = () => {
                               value={state.repeat_password}
                               onChange={(e) => dispatch({ type: 'SET_REPEAT_PASSWORD', payload: e.target.value })}
                          />
-                         {state.error && <p className={registerStyles.error}>{state.error}</p>} 
-
+                         
+                         {state.message  && <SuccessRegister/>}
                          <button type="submit" className={registerStyles['register-button']}>Sign up</button>
                          <p className={registerStyles['account-question']}>have an account? <Link  to="/login" className={registerStyles['link-signUp']}>Sign In</Link></p>
                     </Box>
-               <SuccessRegister/>
+               
                </div>
-
-               {/* Mensajes */}
-               {/* {state.message && <p style={{ color: "green" }}>{state.message}</p>}
-               {state.error && <p style={{ color: "red" }}>{state.error}</p>} */}
           </div>
      )
 }

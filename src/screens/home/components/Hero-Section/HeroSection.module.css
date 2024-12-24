@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;900&display=swap');
+
+.heroSection {
+  background-image: url('../../../../../public/Images/Home/HeroSection/HeroImage.jpg');
+  background-size: cover;
+  background-position: center; /* Centra la imagen horizontal y verticalmente */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: row; /* Asegura la alineación horizontal de los elementos */
+  justify-content: space-between;
+  align-items: center; /* Centra verticalmente */
+  padding: 2rem 4rem; /* Uso de medidas relativas para escalabilidad */
+  height: 75vh;
+  margin: 1vh 0;
+  font-family: "Poppins", sans-serif;
+  gap: 1rem; /* Espaciado más ajustado */
+}
+
+   
+.heroSectionContent-left {
+  flex: 0.6; /* Ajusta la proporción del texto */
+  margin-left: 5vmin;
+}
+   
+.main-title {
+  color: white;
+  font-size: 5rem; /* Reduce el tamaño del texto */
+  font-weight: 900;
+  margin: 0;
+  line-height: 1.2;
+}
+   
+.text {
+  font-size: 1rem;
+  margin: 10px 0;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #F2F2F2;
+  margin-bottom: 6vmin;
+  font-weight: 400;
+}
+   
+   .main-button {
+     background-color:  #FF6347;
+     color: #fff;
+     border: none;
+     width: 30%;
+     padding: 10px 20px;
+     border-radius: 35px;
+     cursor: pointer;
+     font-size: 1.3rem;
+     font-weight: 400;
+   }
+   
+   .main-button:hover {
+     background-color: #0c5794;
+   }
+
+@media (max-width: 768px) {
+  .heroSection {
+      flex-direction: column; /* Cambia la disposición a vertical */
+      height: auto; /* Permite que el contenido se ajuste dinámicamente */
+      padding: 1.5rem 2rem;
+  }
+  .heroSection > * {
+      margin: 0.5rem 0; /* Espaciado entre hijos */
+  }
+}

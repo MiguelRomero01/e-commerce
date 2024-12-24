@@ -119,6 +119,7 @@ Se implementa **Supabase** como motor de base de datos, aprovechando su integrac
 |                       | Uso de Iconos                                                     | _yarn add @mui/icons-material_                           |
 |`bcryptjs`             | Encriptacion de datos para ser mandados a la DB                   | _yarn add bcryptjs_                                      |
 |`lottie-react`         | Uso de animaciones                                                | _yarn add lottie-react_                                  |
+|`sweetalert2`          | uso de alertas mejoradas                                          | _yarn add sweetalert2 react-sweetalert2_
 
 ## **Resumen Final 📝**
 - 📁 `common` → Elementos globales reutilizables.  

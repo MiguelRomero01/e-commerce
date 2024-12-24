@@ -1,4 +1,4 @@
-import { getUserCredentials } from "../database/queries/getUserCredentials";
+import { getUserCredentials } from '../database/queries/get/users/getUserCredentials';
 import bcrypt from 'bcryptjs';
 
 export const authenticateUser = async (username: string, password: string) => {
