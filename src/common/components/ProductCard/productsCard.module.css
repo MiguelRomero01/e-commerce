@@ -1,0 +1,31 @@
+.cardContainer {
+     display: flex;
+     flex-wrap: wrap;
+     margin: 0 2vw;
+     gap: 1vw;
+     justify-content: center;
+   }
+   
+   .card {
+     width: 35vmin;
+     height: 100%;
+     position: relative;
+     overflow: hidden;
+   }
+   
+   .product-image {
+     height: 33vmin;
+     width: 100%;
+   }
+   
+   .add-to-cart-button {
+     opacity: 0;
+     visibility: hidden;
+     transition: opacity 0.2s ease, visibility 0.2s ease;
+   }
+   
+   .card:hover .add-to-cart-button {
+     opacity: 1;
+     visibility: visible;
+   }
+   

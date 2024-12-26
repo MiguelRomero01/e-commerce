@@ -1,7 +1,6 @@
-import { Title } from "@mui/icons-material";
-import { supabase } from "../../../../services/supaBase";
+import { supabase } from "../../../services/supaBase";
 
-export const saveURL_Image = async (path: string) => {
+export const saveURL_Image = async (path: string, title:string, description:string, price:number) => {
     try {
         const { data: url } = supabase.storage
             .from('Images')
@@ -13,7 +12,9 @@ export const saveURL_Image = async (path: string) => {
             .from('ImagesUploaded')
             .insert({ 
                 ImageURL: url.publicUrl,
-                
+                Title: title,
+                Description: description,
+                Price: price
             });
 
         if (error) {
