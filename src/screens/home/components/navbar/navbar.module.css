@@ -1,20 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-
 .navbar {
-    margin-top: 1vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 5vmin;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000; /* Asegúrate de que la navbar esté por encima de otros elementos */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
 
-.navbar *
-{ font-family: 'Poppins', sans-serif; }
+.navbar * {
+    padding: 0.5vh 0;
+    font-family: 'Poppins', sans-serif;
+}
 
-.logo-container 
-{ flex: 1; }
+.logo-container {
+    flex: 1;
+}
 
-.logo-container img{
+.logo-container img {
     width: 20vmin;
     height: auto;
 }
@@ -22,6 +30,7 @@
 .links-container {
     display: flex;
     align-items: center;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten dentro del contenedor */
 }
 
 .links-container ul {
@@ -37,9 +46,9 @@
     transition: all 0.3s linear;
 }
 
-.links-container li:hover
-{ scale: 1.1; }
-
+.links-container li:hover {
+    scale: 1.1;
+}
 .links-container li .navbar-links{
     color: black;
     text-decoration: none;

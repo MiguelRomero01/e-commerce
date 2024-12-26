@@ -14,10 +14,13 @@ const handleFileChange = async (file:File, title:string, description:string, pri
 
    
 const HomeScreen:React.FC = () => {
-     const [file, setFile] = React.useState<File | null>(null);
-     const [title, setTitle] = React.useState<string>('');
-     const [description, setDescription] = React.useState<string>('');
-     const [price, setPrice] = React.useState<number>(0);
+     {/*La seccion de añadir archivos para ser mandados a la db y demas se cambiará de aca a una cuenta de admin*/}
+     const [file, setFile] = useState<File | null>(null);
+     const [title, setTitle] = useState<string>('');
+     const [description, setDescription] = useState<string>('');
+     const [price, setPrice] = useState<number>(0);
+
+     const [isLogged, setIsLogged] = useState<boolean>(false);
 
      return(
           <div>

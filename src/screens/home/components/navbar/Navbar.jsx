@@ -8,6 +8,7 @@ export default function Navbar () {
             <div className={navbar_styles['logo-container']}>
                 <Link to={'/'}><img src='/Images/Home/Navbar/logo.png' alt='logo' /></Link>
             </div>
+            
             <div className={navbar_styles['links-container']}>
                 <ul>
                     <li><Link to={''} className={navbar_styles['navbar-links']}>Our Story</Link></li>
