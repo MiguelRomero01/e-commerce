@@ -1,7 +1,6 @@
 .cardContainer {
      display: flex;
      flex-wrap: wrap;
-     margin: 0 2vw;
      gap: 1vw;
      justify-content: center;
    }

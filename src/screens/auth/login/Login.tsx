@@ -3,7 +3,12 @@ import { authenticateUser } from '../../../features/Auth/authenticateUser';
 import loginStyles from './Login.module.css';
 import Box from '@mui/material/Box';
 import AuthInput from '../components/authInput';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
+interface LoginProps {
+    onAuthSuccess: () => void;
+}
 
 type State = {
     user: string;
@@ -29,20 +34,23 @@ const reducer = (state: State, action: Action): State => {
         case 'SET_PASSWORD':
             return { ...state, password: action.payload };
         case 'SET_ERROR':
-            return { ...state, error: action.payload};
+            return { ...state, error: action.payload };
         default:
             return state;
     }
 };
 
-const Login = () => {
+const Login: React.FC<LoginProps> = ({ onAuthSuccess }) => {
+    const navigate = useNavigate();
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
         const isAuthenticated = await authenticateUser(state.user, state.password);
         if (isAuthenticated) {
-            console.log('User authenticated');
+            onAuthSuccess(); // Actualiza el estado global en App
+            navigate('/');
         } else {
             dispatch({ type: 'SET_ERROR', payload: 'Nombre de usuario o contraseña incorrectos.' });
         }
@@ -51,7 +59,7 @@ const Login = () => {
     return (
         <div className={loginStyles['login-container']}>
             <div className={loginStyles['image-container']}>
-                <img src='/Images/login/image.png' alt='Login' />
+                <img src="/Images/login/image.png" alt="Login" />
             </div>
             <div className={loginStyles['form-container']}>
                 <header className={loginStyles['form-header']}>
@@ -60,8 +68,6 @@ const Login = () => {
                 </header>
                 <Box
                     component="form"
-                    sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
-                    autoComplete="off"
                     onSubmit={handleLogin}
                 >
                     <AuthInput
@@ -70,17 +76,15 @@ const Login = () => {
                         value={state.user}
                         onChange={(e) => dispatch({ type: 'SET_USER', payload: e.target.value })}
                     />
-                    
                     <AuthInput
                         type="password"
                         label="Password"
                         value={state.password}
                         onChange={(e) => dispatch({ type: 'SET_PASSWORD', payload: e.target.value })}
                     />
-
                     {state.error && <p className={loginStyles.error}>{state.error}</p>}
-                    <button type="submit">sign in</button>
-                    <p className={loginStyles['account-question']}>Don't have an account? <Link to="/register" className={loginStyles['link-signUp']}>Sign up</Link></p>
+                    <button type="submit">Sign In</button>
+                    <p className={loginStyles['account-question']}>Don't have an account? <Link to={'/register'} className={loginStyles['link-signUp']}>Sign In</Link></p>
                 </Box>  
             </div>
         </div>

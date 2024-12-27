@@ -1,8 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
+import HomeStyles from './Home.module.css'
+
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/Hero-Section";
 import { handleFileUpload } from "../../features/services/fileUpload";
 import ProductCard from "../../common/components/ProductCard";
+
+interface HomeProps {
+     isLogged: boolean;
+     onLogout: () => void;
+ }
 
 const handleFileChange = async (file:File, title:string, description:string, price:number) => {
      if (file && title && description && price) {
@@ -13,25 +20,27 @@ const handleFileChange = async (file:File, title:string, description:string, pri
    };
 
    
-const HomeScreen:React.FC = () => {
+const HomeScreen: React.FC<HomeProps> = ({ isLogged, onLogout }) => {
      {/*La seccion de añadir archivos para ser mandados a la db y demas se cambiará de aca a una cuenta de admin*/}
      const [file, setFile] = useState<File | null>(null);
      const [title, setTitle] = useState<string>('');
      const [description, setDescription] = useState<string>('');
      const [price, setPrice] = useState<number>(0);
 
-     const [isLogged, setIsLogged] = useState<boolean>(false);
 
      return(
           <div>
                <header>
-                    <Navbar/>
+                    <Navbar isLogged={isLogged} onLogout={onLogout} />
                </header>
 
                <main>
                     <HeroSection/>
-                    <ProductCard/>
 
+               <section className={HomeStyles['top-sellers-container']}>
+                    <h2>Top Sellers</h2>
+                    <ProductCard/>
+               </section>
                     <div>
                          <input type="file" onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)} />
                          <input type="text" placeholder="Title" onChange={(e) => setTitle(e.target.value)}/>

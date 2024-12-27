@@ -42,6 +42,12 @@
     padding: 20px;
 }
 
+.form-container form {
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+    gap: 20px; /* Espacio entre los inputs */
+}
+
 .form-container button {
     font-family: sans-serif;
     padding: 10px;
@@ -51,8 +57,12 @@
     background-color: black;
     border-color: transparent;
     border-radius: 10px;
-    width: 51.5vmin !important;
     transition: background-color 0.3s ease;
+    margin-top: 10px; /* Añade espacio adicional entre el último input y el botón */
+}
+
+.form-container form, .form-container button {
+    width: 51.5vmin;
 }
 
 .form-container button:hover {
@@ -97,9 +107,10 @@
     .form-container {
         height: 50vh;
         text-align: center;
+        align-items: center; /* Centra los inputs horizontalmente */
     }
 
     .account-question{
-        margin-left: -10vw !important;
+        margin-left: -10vw ;
     }
 }
