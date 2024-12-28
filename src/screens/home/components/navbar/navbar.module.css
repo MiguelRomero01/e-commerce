@@ -61,7 +61,7 @@
     color: white;
     background-color: black;
     border-color: transparent;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: all 0.3s linear;
     cursor: pointer;
 }

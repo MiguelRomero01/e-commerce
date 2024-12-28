@@ -1,0 +1,55 @@
+
+.categorie-container {
+  position: relative; /* Necesario para que el contenido `absolute` funcione */
+  width: 40vw; /* Ocupa todo el ancho disponible */
+  height: 40vw; /* Ajusta según el tamaño deseado */
+  overflow: hidden; /* Previene desbordamientos internos */
+  box-sizing: border-box;
+}
+
+.categorie-image {
+  display: block; /* Elimina espacios adicionales alrededor */
+  width: 100%; /* Se ajusta al ancho del contenedor */
+  height: 100%; /* Ajusta la altura al contenedor */
+  object-fit: cover; /* Recorta y ajusta la imagen al contenedor */
+}
+
+.categorie-container article {
+  position: absolute; /* Superpone el contenido sobre la imagen */
+  top: 0;
+  left: 0;
+  width: 100%; /* Asegura que ocupe el ancho completo del contenedor */
+  height: 100%; /* Ocupa toda la altura */
+  background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+  color: white; /* Color del texto */
+  opacity: 0; /* Esconde inicialmente */
+  display: flex; /* Flexbox para el contenido */
+  flex-direction: column;
+  justify-content: flex-end; /* Alinea el texto en la parte inferior */
+  align-items: center; /* Centra horizontalmente */
+  padding: 16px; /* Espaciado interno para el texto */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.categorie-container:hover article {
+  opacity: 1; /* Muestra el contenido al pasar el mouse */
+}
+
+.x {
+  display: block; /* Permite que el enlace ocupe todo el contenedor */
+  width: 100%;
+  height: 100%;
+  text-decoration: none; /* Elimina subrayados */
+}
+
+.categorie-title, .categorie-info {
+  margin: 0; /* Elimina márgenes adicionales */
+  text-align: center; /* Centra el texto */
+}
+
+@media (max-width: 768px) {
+  .categories-container {
+    grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+    gap: 12px; /* Espacio reducido entre elementos */
+  }
+}

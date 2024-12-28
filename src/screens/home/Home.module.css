@@ -8,5 +8,28 @@ body {
 }
 
 .top-sellers-container{
-  margin: 0 23vmin;
+  margin: 0 8vw;
 }
+
+.top-sellers-container h2{
+  position: relative;
+  left: 50%; /* Mueve el elemento al 50% del ancho del contenedor */
+  transform: translateX(-50%); /* Ajusta su posición al centro */
+}
+
+section:hover h2::after{
+  width: 100%;
+  transition: all 0.2s linear;
+}
+
+.categories-container {
+  margin: 5vh auto; /* Espaciado vertical y centrado horizontal */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas por fila */
+  gap: 16px; /* Espacio entre las tarjetas */
+  align-items: start; /* Alinea las tarjetas en la parte superior */
+  width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
+  max-width: 80vw; /* Limita el ancho máximo para evitar expandir demasiado */
+  padding: 0 16px; /* Agrega un poco de espacio lateral */
+}
+

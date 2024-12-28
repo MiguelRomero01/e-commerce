@@ -1,0 +1,19 @@
+
+.title-underlined{
+     position: relative;
+     font-size: clamp(1.5rem, 3vw, 2rem);
+     display: inline-block; 
+     
+}
+
+.title-underlined::after{
+     content: "";
+     display: block;
+     position: absolute;
+     bottom: 10;
+     left: 0;
+     width: 30%;
+     height: 0.4rem;
+     background-color: #FF6347;
+     transition: all 0.2s linear;
+}

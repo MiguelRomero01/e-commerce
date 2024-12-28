@@ -8,6 +8,7 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { decimalSplit } from "../../../features/services/decimalSplit";
 
 export default function ProductCard() {
   const [imagenes, setImagenes] = React.useState([]);
@@ -50,6 +51,8 @@ export default function ProductCard() {
               sx={{ backgroundColor: "#f8f7f7" }}
             />
             <CardContent sx={{ padding: "5px 20px", position: "relative" }}>
+
+              {/*title*/}
               <Typography
                 gutterBottom
                 variant="h5"
@@ -66,6 +69,8 @@ export default function ProductCard() {
               >
                 {imagen.Title}
               </Typography>
+
+              {/*Description*/}
               <Typography
                 variant="body2"
                 className={productStyles["product-description"]}
@@ -77,6 +82,8 @@ export default function ProductCard() {
               >
                 {imagen.Description}
               </Typography>
+
+              {/*Price*/}
               <Typography
                 variant="body2"
                 className={productStyles["product-price"]}
@@ -87,7 +94,7 @@ export default function ProductCard() {
                   marginTop: "2rem",
                 }}
               >
-                ${imagen.Price}
+                ${decimalSplit(imagen.Price)}
               </Typography>
             </CardContent>
           </CardActionArea>

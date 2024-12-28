@@ -5,6 +5,9 @@ import Navbar from "./components/Navbar";
 import HeroSection from "./components/Hero-Section";
 import { handleFileUpload } from "../../features/services/fileUpload";
 import ProductCard from "../../common/components/ProductCard";
+import TitleWithUnderline from "../../common/components/Titles/TitleUnderline";
+import { decimalSplit } from "../../features/services/decimalSplit";
+import CategorieCard from "./components/Categories";
 
 interface HomeProps {
      isLogged: boolean;
@@ -27,7 +30,6 @@ const HomeScreen: React.FC<HomeProps> = ({ isLogged, onLogout }) => {
      const [description, setDescription] = useState<string>('');
      const [price, setPrice] = useState<number>(0);
 
-
      return(
           <div>
                <header>
@@ -38,14 +40,21 @@ const HomeScreen: React.FC<HomeProps> = ({ isLogged, onLogout }) => {
                     <HeroSection/>
 
                <section className={HomeStyles['top-sellers-container']}>
-                    <h2>Top Sellers</h2>
+                    <TitleWithUnderline title={"Top Sellers"} level={2} />
                     <ProductCard/>
+               </section>
+
+               <section className={HomeStyles['categories-container']}>
+                    <CategorieCard image={'/Images/Home/categories/persona1.jpeg'} information="nada" navigation="https://www.youtube.com/watch?v=nZ6hJmxAbOQ&list=RDSnROamdnYS4&index=28" title="sd"/>
+                    <CategorieCard image={'/Images/Home/categories/persona2.jpeg'} information="nada" navigation="https://www.youtube.com/watch?v=nZ6hJmxAbOQ&list=RDSnROamdnYS4&index=28" title="sd"/>
+                    <CategorieCard image={'/Images/Home/categories/persona3.jpg'} information="nada" navigation="https://www.youtube.com/watch?v=nZ6hJmxAbOQ&list=RDSnROamdnYS4&index=28" title="sd"/>
+                    <CategorieCard image={'/Images/Home/categories/persona4.webp'} information="nada" navigation="https://www.youtube.com/watch?v=nZ6hJmxAbOQ&list=RDSnROamdnYS4&index=28" title="sd"/>
                </section>
                     <div>
                          <input type="file" onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)} />
                          <input type="text" placeholder="Title" onChange={(e) => setTitle(e.target.value)}/>
                          <input type="text" placeholder="Description" onChange={(e) => setDescription(e.target.value)}/>
-                         <input type="number" placeholder="Price" onChange={(e) => setPrice(parseFloat(e.target.value))} />
+                         <input type="number" placeholder="Price" onChange={(e) => setPrice(parseInt(e.target.value))} />
                          <button onClick={() => file && handleFileChange(file, title, description, price)}>Upload</button>
                     </div>
                </main>
