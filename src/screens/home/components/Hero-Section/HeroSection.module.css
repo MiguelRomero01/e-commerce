@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;900&display=swap');
 
 .heroSection {
-  background-image: url('../../../../../public/Images/Home/HeroSection/HeroImage.jpg');
+  background-image: url('../../../../../public/Images/Home/categories/prueba.jpg');
   background-size: cover;
   background-position: center; /* Centra la imagen horizontal y verticalmente */
   background-repeat: no-repeat;
@@ -11,7 +11,11 @@
   justify-content: space-between;
   align-items: center; /* Centra verticalmente */
   padding: 2rem 4rem; /* Uso de medidas relativas para escalabilidad */
+<<<<<<< Updated upstream
   height: 75vh;
+=======
+  height: 100vh;
+>>>>>>> Stashed changes
   margin: 1vh 0;
   font-family: "Poppins", sans-serif;
   gap: 1rem; /* Espaciado más ajustado */
@@ -34,7 +38,6 @@
 .text {
   font-size: 1rem;
   margin: 10px 0;
-  font-weight: 300;
   line-height: 1.5;
   color: #F2F2F2;
   margin-bottom: 6vmin;
