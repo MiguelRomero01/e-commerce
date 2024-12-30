@@ -1,94 +1,91 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import { authenticateUser } from '../../../features/Auth/authenticateUser';
 import loginStyles from './Login.module.css';
 import Box from '@mui/material/Box';
 import AuthInput from '../components/authInput';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface LoginProps {
     onAuthSuccess: () => void;
 }
 
+type State = {
+    user: string;
+    password: string;
+    error: string | null;
+};
+
+type Action =
+    | { type: 'SET_USER'; payload: string }
+    | { type: 'SET_PASSWORD'; payload: string }
+    | { type: 'SET_ERROR'; payload: string | null };
+
+const initialState: State = {
+    user: '',
+    password: '',
+    error: null,
+};
+
+const reducer = (state: State, action: Action): State => {
+    switch (action.type) {
+        case 'SET_USER':
+            return { ...state, user: action.payload };
+        case 'SET_PASSWORD':
+            return { ...state, password: action.payload };
+        case 'SET_ERROR':
+            return { ...state, error: action.payload };
+        default:
+            return state;
+    }
+};
+
 const Login: React.FC<LoginProps> = ({ onAuthSuccess }) => {
     const navigate = useNavigate();
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState<string | null>(null);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        
-        try {
-            const isAuthenticated = await authenticateUser(username, password);
-            
-            if (isAuthenticated) {
-                onAuthSuccess();
-                navigate('/');
-            } else {
-                setError('Invalid username or password. Please try again.');
-            }
-        } catch (err) {
-            setError('An error occurred during login. Please try again later.');
+
+        const isAuthenticated = await authenticateUser(state.user, state.password);
+        if (isAuthenticated) {
+            onAuthSuccess(); // Actualiza el estado global en App
+            navigate('/');
+        } else {
+            dispatch({ type: 'SET_ERROR', payload: 'Nombre de usuario o contraseña incorrectos.' });
         }
     };
 
     return (
         <div className={loginStyles['login-container']}>
             <div className={loginStyles['image-container']}>
-                <img 
-                    src="/Images/login/image.png" 
-                    alt="Login illustration" 
-                />
+                <img src="/Images/login/image.png" alt="Login" />
             </div>
-
             <div className={loginStyles['form-container']}>
                 <header className={loginStyles['form-header']}>
                     <h1>Welcome 👋</h1>
                     <p>Enter your username and password to access your account</p>
                 </header>
-
                 <Box
                     component="form"
                     onSubmit={handleLogin}
-                    className={loginStyles['login-form']}
                 >
                     <AuthInput
                         type="text"
                         label="Username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={state.user}
+                        onChange={(e) => dispatch({ type: 'SET_USER', payload: e.target.value })}
                     />
-
                     <AuthInput
                         type="password"
                         label="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={state.password}
+                        onChange={(e) => dispatch({ type: 'SET_PASSWORD', payload: e.target.value })}
                     />
-
-                    {error && (
-                        <p className={loginStyles.error}>
-                            {error}
-                        </p>
-                    )}
-
-                    <button 
-                        type="submit"
-                        className={loginStyles['submit-button']}
-                    >
-                        Sign In
-                    </button>
-
-                    <p className={loginStyles['account-question']}>
-                        Don't have an account?{' '}
-                        <Link 
-                            to="/register" 
-                            className={loginStyles['link-signUp']}
-                        >
-                            Sign Up
-                        </Link>
-                    </p>
-                </Box>
+                    {state.error && <p className={loginStyles.error}>{state.error}</p>}
+                    <button type="submit">Sign In</button>
+                    <p className={loginStyles['account-question']}>Don't have an account? <Link to={'/register'} className={loginStyles['link-signUp']}>Sign In</Link></p>
+                </Box>  
             </div>
         </div>
     );

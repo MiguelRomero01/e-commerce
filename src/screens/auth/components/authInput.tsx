@@ -1,15 +1,14 @@
 import React from "react";
 import TextField from '@mui/material/TextField';
 
-interface InputProps {
+interface input {
     type: string;
     label: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    required?: boolean;
 }
 
-const AuthInput: React.FC<InputProps> = ({ type, label, value, onChange }) => {
+const AuthInput: React.FC<input> = ({ type, label, value, onChange }) => {
     return (
         <TextField 
             type={type}

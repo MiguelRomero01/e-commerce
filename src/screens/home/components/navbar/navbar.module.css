@@ -8,9 +8,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    backdrop-filter: blur(30px);
-    box-shadow: 0px 0px 30px rgba(89, 89, 89, 0.37);
-    border: 2px solid rgba(114, 114, 114, 0.18);
+    background-color: white;
     z-index: 1000; /* Asegúrate de que la navbar esté por encima de otros elementos */
     box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
@@ -44,7 +42,7 @@
 
 .links-container li {
     margin: 0 1.8vw;
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: all 0.3s linear;
 }
 
@@ -54,7 +52,6 @@
 .links-container li .navbar-links{
     color: black;
     text-decoration: none;
-    font-weight: 600;
 }
 
 .sign-in-button {
