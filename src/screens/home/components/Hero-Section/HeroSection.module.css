@@ -11,11 +11,7 @@
   justify-content: space-between;
   align-items: center; /* Centra verticalmente */
   padding: 2rem 4rem; /* Uso de medidas relativas para escalabilidad */
-<<<<<<< Updated upstream
-  height: 75vh;
-=======
   height: 100vh;
->>>>>>> Stashed changes
   margin: 1vh 0;
   font-family: "Poppins", sans-serif;
   gap: 1rem; /* Espaciado más ajustado */

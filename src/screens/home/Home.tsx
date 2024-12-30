@@ -5,11 +5,8 @@ import Navbar from "./components/Navbar";
 import HeroSection from "./components/Hero-Section";
 import { handleFileUpload } from "../../features/services/fileUpload";
 import ProductCard from "../../common/components/ProductCard";
-<<<<<<< Updated upstream
-=======
 import TitleWithUnderline from "../../common/components/Titles/TitleUnderline";
-import CategorieCard from "./components/Categories";
->>>>>>> Stashed changes
+import CategorieCard from "./components/Categories/categorie";
 
 interface HomeProps {
      isLogged: boolean;
@@ -42,12 +39,6 @@ const HomeScreen: React.FC<HomeProps> = ({ isLogged, onLogout }) => {
                <main>
                     <HeroSection/>
 
-<<<<<<< Updated upstream
-               <section className={HomeStyles['top-sellers-container']}>
-                    <h2>Top Sellers</h2>
-                    <ProductCard/>
-               </section>
-=======
                <section className={HomeStyles['top-sellers-section']}>
                     <TitleWithUnderline title={"Top Sellers"} level={2} />
                     <div className={HomeStyles['top-sellers-container']}>
@@ -87,7 +78,6 @@ const HomeScreen: React.FC<HomeProps> = ({ isLogged, onLogout }) => {
                          />
                     </div>
                </section>
->>>>>>> Stashed changes
                     <div>
                          <input type="file" onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)} />
                          <input type="text" placeholder="Title" onChange={(e) => setTitle(e.target.value)}/>

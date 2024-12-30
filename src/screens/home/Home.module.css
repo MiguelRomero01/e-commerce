@@ -8,11 +8,6 @@ body {
   background-color: rgb(244, 244, 244);
 }
 
-<<<<<<< Updated upstream
-.top-sellers-container{
-  margin: 0 23vmin;
-}
-=======
 .top-sellers-section{
   margin: 0 8vw;
 }
@@ -39,4 +34,3 @@ section:hover h2::after{
   padding: 0 16px; /* Agrega un poco de espacio lateral */
 }
 
->>>>>>> Stashed changes
