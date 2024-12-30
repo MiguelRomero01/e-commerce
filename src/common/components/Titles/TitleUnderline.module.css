@@ -1,0 +1,26 @@
+.title-underlined {
+     position: relative;
+     font-size: clamp(1.5rem, 3vw, 2rem);
+     display: inline-block;
+     text-align: center;
+ }
+ 
+ .title-underlined::after {
+     content: "";
+     display: block;
+     position: absolute;
+     bottom: -0.5rem; /* Ajusta la distancia entre el texto y la línea */
+     left: 50%; /* Inicia en el centro del contenedor */
+     transform: translateX(-50%); /* Centra la línea */
+     width: 30%; /* Ancho inicial de la línea */
+     height: 0.4rem;
+     background-color: #FF6347;
+     border-radius: 10px;
+     transition: width 0.6s ease, transform 0.6s ease;
+ }
+ 
+ .title-underlined:hover::after {
+     width: 100%; /* Expande la línea a todo el ancho del contenedor */
+     transform: translateX(-50%); /* Mantiene la línea centrada */
+ }
+ 
