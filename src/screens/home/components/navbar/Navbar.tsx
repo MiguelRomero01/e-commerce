@@ -2,6 +2,10 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import navbar_styles from './navbar.module.css';
 
+import { useState } from 'react';
+import UserDropdown from './dropDown/user/userDropdown';
+import CartDropdown from './dropDown/cart/cartDropdown';
+
 interface NavbarProps {
     isLogged: boolean;
     onLogout: () => void;
@@ -47,12 +51,10 @@ const Navbar: React.FC<NavbarProps> = ({ isLogged, onLogout }) => {
                         SIGN IN
                     </button>
                 ) : (
-                    <button 
-                        className={navbar_styles['sign-out-button']} 
-                        onClick={onLogout}
-                    >
-                        LOG OUT
-                    </button>
+                    <div style={{ position: 'relative', display: 'flex' }}>
+                        <UserDropdown onLogout={onLogout}/> {/* user dropdown */}
+                        <CartDropdown/> {/* cart dropdown */}
+                    </div>
                 )}
             </div>
         </nav>
