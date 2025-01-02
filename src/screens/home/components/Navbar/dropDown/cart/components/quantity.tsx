@@ -9,9 +9,9 @@ type quantityProps = {
 const Quantity:React.FC<quantityProps> = ({quantity, setQuantity}) => {
      return(
           <div>
-               <button onClick={() => quantity > 1? setQuantity(quantity-1): setQuantity(1)}>-</button>
-               <span>{quantity}</span>
-               <button onClick={() => setQuantity(quantity+1)}>+</button>
+               <button className={quantityStyles['quantity-button-add']} onClick={() => quantity > 1? setQuantity(quantity-1): setQuantity(1)}>-</button>
+               <span className={quantityStyles['quantity-number']}>{quantity}</span>
+               <button className={quantityStyles['quantity-button-substract']} onClick={() => setQuantity(quantity+1)}>+</button>
           </div>
      )
 }

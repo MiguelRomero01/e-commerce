@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import cartDropdown_styles from './cartDropdown.module.css';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Quantity from "./components/quantity";
+import { Delete } from "@mui/icons-material";
 
 export type CartDropdownProducts = {
      id: number;
@@ -57,6 +58,19 @@ const CartDropdown: React.FC<userProducts> = ({Products}) => {
                                                        <p className={cartDropdown_styles.price}>${productCart.Price * quantity}</p>
                                                        <Quantity quantity={quantity} setQuantity={setQuantity}/>
                                                   </div>
+
+                                                  <button className={cartDropdown_styles['remove-product']}>
+                                                       <Delete 
+                                                            sx={{ 
+                                                                 fontSize: '1.1rem', 
+                                                                 verticalAlign: 'middle',
+                                                                 color: 'white',
+                                                                 "&:hover":{
+                                                                      color: 'black',
+                                                                 }
+                                                                 }}
+                                                            />
+                                                  </button>
                                              </li>
                                              
                                         ))
