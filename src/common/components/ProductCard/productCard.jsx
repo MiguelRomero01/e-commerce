@@ -9,7 +9,8 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
-export default function ProductCard() {
+
+export default function ProductCard({setCart, cart}) {
   const [imagenes, setImagenes] = React.useState([]);
 
   React.useEffect(() => {
@@ -21,15 +22,24 @@ export default function ProductCard() {
     fetchImages();
   }, []);
 
-  const handleAddToCart = (imagen) => {
-    console.log("Añadido al carrito:", imagen);
+  // Función para verificar si un producto está en el carrito
+  const isInCart = (productId) => {
+    return cart.some(item => item.id === productId);
+  };
+
+  const handleAddToCart = (product) => {
+    if (!isInCart(product.id)) {
+      setCart(prevCart => [...prevCart, product]);
+    }
   };
 
   return (
     <div className={productStyles.cardContainer}>
-      {imagenes.map((imagen) => (
+
+      {/*Card*/}
+      {imagenes.map((product) => (
         <Card
-          key={imagen.ImageURL}
+          key={product.ImageURL}
           className={productStyles.card}
           sx={{
             backgroundColor: "#ffffff",
@@ -41,15 +51,18 @@ export default function ProductCard() {
           }}
         >
           <CardActionArea>
+            {/*Card Image*/}
             <CardMedia
               component="img"
-              image={imagen.ImageURL}
+              image={product.ImageURL}
               loading="lazy"
-              alt={imagen.Title}
+              alt={product.Title}
               className={productStyles["product-image"]}
               sx={{ backgroundColor: "#f8f7f7" }}
             />
+
             <CardContent sx={{ padding: "5px 20px", position: "relative" }}>
+              {/*Card Title*/}
               <Typography
                 gutterBottom
                 variant="h5"
@@ -64,19 +77,23 @@ export default function ProductCard() {
                   marginBottom: "0.5rem",
                 }}
               >
-                {imagen.Title}
+                {product.Title}
               </Typography>
+
+              {/*Card Description*/}
               <Typography
                 variant="body2"
                 className={productStyles["product-description"]}
                 sx={{
                   color: "rgb(70, 70, 70)",
-                  fontWeight: "200",
+                  fontWeight: "400",
                   fontSize: "clamp(0.5rem, 2vw, 0.8rem)",
                 }}
               >
-                {imagen.Description}
+                {product.Description}
               </Typography>
+
+              {/*Card Price*/}
               <Typography
                 variant="body2"
                 className={productStyles["product-price"]}
@@ -87,13 +104,18 @@ export default function ProductCard() {
                   marginTop: "2rem",
                 }}
               >
-                ${imagen.Price}
+                ${product.Price}
               </Typography>
             </CardContent>
           </CardActionArea>
+
+          {/*Button to add to cart*/}
           <button
-            className={`${productStyles["add-to-cart-button"]}`}
-            onClick={() => handleAddToCart(imagen)}
+            className={`${productStyles["add-to-cart-button"]} ${
+              isInCart(product.id) ? productStyles["in-cart"] : ""
+            }`}
+            onClick={() => handleAddToCart(product)}
+            disabled={isInCart(product.id)}
             style={{
               position: "absolute",
               bottom: "10px",
@@ -106,7 +128,7 @@ export default function ProductCard() {
               cursor: "pointer",
             }}
           >
-            Añadir al carrito
+            {isInCart(product.id) ? "In Cart" : "Add to Cart"}
           </button>
         </Card>
       ))}

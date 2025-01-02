@@ -7,11 +7,14 @@ import { handleFileUpload } from "../../features/services/fileUpload";
 import ProductCard from "../../common/components/ProductCard";
 import TitleWithUnderline from "../../common/components/Titles/TitleUnderline";
 import CategorieCard from "./components/Categories/categorie";
+import { CartDropdownProducts } from './components/Navbar/dropDown/cart/cartDropdown';
 
 interface HomeProps {
      isLogged: boolean;
      onLogout: () => void;
- }
+     cart: CartDropdownProducts[];
+     setCart: React.Dispatch<React.SetStateAction<CartDropdownProducts[]>>;
+}
 
 const handleFileChange = async (file:File, title:string, description:string, price:number) => {
      if (file && title && description && price) {
@@ -22,7 +25,7 @@ const handleFileChange = async (file:File, title:string, description:string, pri
    };
 
    
-const HomeScreen: React.FC<HomeProps> = ({ isLogged, onLogout }) => {
+const HomeScreen: React.FC<HomeProps> = ({ isLogged, onLogout, setCart, cart}) => {
      {/*La seccion de añadir archivos para ser mandados a la db y demas se cambiará de aca a una cuenta de admin*/}
      const [file, setFile] = useState<File | null>(null);
      const [title, setTitle] = useState<string>('');
@@ -33,7 +36,7 @@ const HomeScreen: React.FC<HomeProps> = ({ isLogged, onLogout }) => {
      return(
           <div>
                <header>
-                    <Navbar isLogged={isLogged} onLogout={onLogout} />
+                    <Navbar isLogged={isLogged} onLogout={onLogout} cart={cart}/>
                </header>
 
                <main>
@@ -42,7 +45,7 @@ const HomeScreen: React.FC<HomeProps> = ({ isLogged, onLogout }) => {
                <section className={HomeStyles['top-sellers-section']}>
                     <TitleWithUnderline title={"Top Sellers"} level={2} />
                     <div className={HomeStyles['top-sellers-container']}>
-                         <ProductCard/>
+                         <ProductCard setCart={setCart} cart={cart}/>
                     </div>
                </section>
 

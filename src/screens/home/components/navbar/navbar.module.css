@@ -4,15 +4,14 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 5vmin;
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: absolute;
     width: 100%;
+    background-color: transparent !important;
     backdrop-filter: blur(30px);
     box-shadow: 0px 0px 30px rgba(89, 89, 89, 0.37);
     border: 2px solid rgba(114, 114, 114, 0.18);
-    z-index: 1000; /* Asegúrate de que la navbar esté por encima de otros elementos */
-    box-sizing: border-box; /* Incluye el padding en el ancho total */
+    z-index: 1000;
+    box-sizing: border-box;
 }
 
 .navbar * {
@@ -32,7 +31,8 @@
 .links-container {
     display: flex;
     align-items: center;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten dentro del contenedor */
+    justify-content: center;
+    flex: 2;
 }
 
 .links-container ul {
@@ -40,6 +40,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    justify-content: center;
 }
 
 .links-container li {
@@ -52,25 +53,34 @@
     scale: 1.1;
 }
 .links-container li .navbar-links{
-    color: black;
+    color: white;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 300;
+    transition: all 0.3s linear;
+}
+
+.links-container li .navbar-links:hover {
+    color: rgb(219, 217, 217);
 }
 
 .sign-in-button {
     margin-left: 20px;
-    padding: 0.5rem 1.4rem;
+    padding: 0.5rem 1.2rem;
     font-size: 1rem;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
     border-color: transparent;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: all 0.3s linear;
     cursor: pointer;
+    font-weight: 500;
+    margin: 0.5vh 0;
 }
 
-.sign-in-button:hover 
-{ scale: 1.04; }
+.sign-in-button:hover { 
+    scale: 1.04; 
+    background-color: rgb(219, 217, 217);
+}
 
 /*movile devices*/
 @media (max-width: 768px) {
@@ -83,4 +93,11 @@
         padding: 0.3rem 1rem;
         font-size: 0.6rem;
     }
+}
+
+.auth-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }

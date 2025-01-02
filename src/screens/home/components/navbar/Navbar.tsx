@@ -2,12 +2,18 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import navbar_styles from './navbar.module.css';
 
+import { useState } from 'react';
+import UserDropdown from './dropDown/user/userDropdown';
+import CartDropdown from './dropDown/cart/cartDropdown';
+import { CartDropdownProducts } from './dropDown/cart/cartDropdown';
+
 interface NavbarProps {
     isLogged: boolean;
     onLogout: () => void;
+    cart: CartDropdownProducts[];
 }
 
-const Navbar: React.FC<NavbarProps> = ({ isLogged, onLogout }) => {
+const Navbar: React.FC<NavbarProps> = ({ isLogged, onLogout, cart }) => {
     const navigate = useNavigate();
 
     const handleSignIn = () => {
@@ -17,15 +23,18 @@ const Navbar: React.FC<NavbarProps> = ({ isLogged, onLogout }) => {
     return (
         <nav className={navbar_styles['navbar']}>
             <div className={navbar_styles['logo-container']}>
-                <Link to="/">
-                    <img src="/Images/Home/Navbar/logo.png" alt="logo" />
-                </Link>
+                <img src="/Images/Home/Navbar/logo.png" alt="logo" />
             </div>
             <div className={navbar_styles['links-container']}>
                 <ul>
                     <li>
+                        <Link to="/" className={navbar_styles['navbar-links']}>
+                            Home
+                        </Link>
+                    </li>
+                    <li>
                         <Link to="" className={navbar_styles['navbar-links']}>
-                            Our Story
+                            About
                         </Link>
                     </li>
                     <li>
@@ -39,6 +48,8 @@ const Navbar: React.FC<NavbarProps> = ({ isLogged, onLogout }) => {
                         </Link>
                     </li>
                 </ul>
+            </div>
+            <div className={navbar_styles['auth-container']}>
                 {!isLogged ? (
                     <button 
                         className={navbar_styles['sign-in-button']} 
@@ -47,12 +58,10 @@ const Navbar: React.FC<NavbarProps> = ({ isLogged, onLogout }) => {
                         SIGN IN
                     </button>
                 ) : (
-                    <button 
-                        className={navbar_styles['sign-out-button']} 
-                        onClick={onLogout}
-                    >
-                        LOG OUT
-                    </button>
+                    <div style={{ position: 'relative', display: 'flex', marginBottom: '-1vh'}}>
+                        <UserDropdown onLogout={onLogout}/>
+                        <CartDropdown Products={cart || []}/>
+                    </div>
                 )}
             </div>
         </nav>

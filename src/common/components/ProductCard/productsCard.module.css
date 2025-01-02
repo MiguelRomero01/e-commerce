@@ -28,3 +28,13 @@
      visibility: visible;
    }
    
+   .add-to-cart-button.in-cart {
+     background-color: #4CAF50 !important;
+     cursor: not-allowed !important;
+     opacity: 0.8 !important;
+   }
+   
+   .add-to-cart-button:disabled {
+     cursor: not-allowed !important;
+   }
+   
