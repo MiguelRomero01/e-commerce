@@ -1,6 +1,6 @@
 import { supabase } from "../../../../services/supaBase";
 
-export const getImages = async () => {
+export const getProducts = async () => {
      const { data, error } = await supabase
           .from('ImagesUploaded')
           .select('id, ImageURL, Title, Description, Price');

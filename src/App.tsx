@@ -4,7 +4,7 @@ import Login from './screens/auth/login/Login';
 import Home from './screens/home/Home';
 import RegisterScreen from './screens/auth/register/Register';
 import { CartDropdownProducts } from './screens/home/components/Navbar/dropDown/cart/cartDropdown';
-
+import { ProductDetail } from './screens/productDetail';
 const App: React.FC = () => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const [cart, setCart] = useState<CartDropdownProducts[]>([]);
@@ -32,6 +32,11 @@ const App: React.FC = () => {
                 <Route
                     path='/register'
                     element={<RegisterScreen/>}
+                />
+
+                <Route
+                    path='/product/:id'
+                    element={<ProductDetail/>}
                 />
             </Routes>
         </Router>

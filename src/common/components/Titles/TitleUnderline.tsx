@@ -5,7 +5,7 @@ interface PropsTitle {
     level: number;
 }
 
-const TitleWithUnderline: React.FC<PropsTitle> = ({ title, level }) => {
+const TitleWithUnderline: React.FC<PropsTitle> = ({ title, level}) => {
     if (level < 1 || level > 6) {
         console.error("Invalid level for heading, must be between 1 and 6.");
         return null; 

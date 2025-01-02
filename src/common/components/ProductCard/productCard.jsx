@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import productStyles from "./productsCard.module.css";
-import { getImages } from "../../../features/database/queries/get/images/getImages";
+import { getProducts } from "../../../features/database/queries/get/product/getAllProducts";
+import { formatNumber } from "../../../features/services/formatNumber";
 
 //card from Material UI
 import Card from "@mui/material/Card";
@@ -11,15 +13,15 @@ import Typography from "@mui/material/Typography";
 
 
 export default function ProductCard({setCart, cart}) {
-  const [imagenes, setImagenes] = React.useState([]);
+  const [product, setProduct] = React.useState([]);
 
   React.useEffect(() => {
-    const fetchImages = async () => {
-      const data = await getImages();
-      setImagenes(data);
+    const fetchProduct = async () => {
+      const data = await getProducts();
+      setProduct(data);
     };
 
-    fetchImages();
+    fetchProduct();
   }, []);
 
   // Función para verificar si un producto está en el carrito
@@ -36,11 +38,11 @@ export default function ProductCard({setCart, cart}) {
   return (
     <div className={productStyles.cardContainer}>
 
-      {/*Card*/}
-      {imagenes.map((product) => (
-        <Card
-          key={product.ImageURL}
+      {/*Product Card*/}
+      {product.map((product) => (
+          <Card
           className={productStyles.card}
+          key={product.id}
           sx={{
             backgroundColor: "#ffffff",
             "&:hover": {
@@ -50,6 +52,10 @@ export default function ProductCard({setCart, cart}) {
             },
           }}
         >
+          <Link 
+            to={`/product/${product.id}`} 
+            style={{textDecoration: "none"}}
+          >
           <CardActionArea>
             {/*Card Image*/}
             <CardMedia
@@ -104,10 +110,11 @@ export default function ProductCard({setCart, cart}) {
                   marginTop: "2rem",
                 }}
               >
-                ${product.Price}
+                ${formatNumber(product.Price)}
               </Typography>
             </CardContent>
           </CardActionArea>
+          </Link>
 
           {/*Button to add to cart*/}
           <button
@@ -126,11 +133,13 @@ export default function ProductCard({setCart, cart}) {
               borderRadius: "5px",
               padding: "10px 20px",
               cursor: "pointer",
+              zIndex: "100",
             }}
           >
             {isInCart(product.id) ? "In Cart" : "Add to Cart"}
           </button>
         </Card>
+        
       ))}
     </div>
   );

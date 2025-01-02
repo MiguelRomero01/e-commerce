@@ -9,6 +9,7 @@ import TitleWithUnderline from "../../common/components/Titles/TitleUnderline";
 import CategorieCard from "./components/Categories/categorie";
 import { CartDropdownProducts } from './components/Navbar/dropDown/cart/cartDropdown';
 
+
 interface HomeProps {
      isLogged: boolean;
      onLogout: () => void;
@@ -43,7 +44,7 @@ const HomeScreen: React.FC<HomeProps> = ({ isLogged, onLogout, setCart, cart}) =
                     <HeroSection/>
 
                <section className={HomeStyles['top-sellers-section']}>
-                    <TitleWithUnderline title={"Top Sellers"} level={2} />
+                    <TitleWithUnderline title={"Best Sellers"} level={2} />
                     <div className={HomeStyles['top-sellers-container']}>
                          <ProductCard setCart={setCart} cart={cart}/>
                     </div>
