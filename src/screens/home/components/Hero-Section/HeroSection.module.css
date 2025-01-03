@@ -36,25 +36,44 @@
   margin: 10px 0;
   line-height: 1.5;
   color: #F2F2F2;
-  margin-bottom: 6vmin;
+  margin-bottom: 4vmin;
   font-weight: 400;
 }
-   
-   .main-button {
-     background-color:  #FF6347;
-     color: #fff;
-     border: none;
-     width: 30%;
-     padding: 10px 20px;
-     border-radius: 35px;
-     cursor: pointer;
-     font-size: 1.3rem;
-     font-weight: 400;
-   }
-   
-   .main-button:hover {
-     background-color: #0c5794;
-   }
+
+.unique-word {
+  background: linear-gradient(90deg, #6796d0, #628ac7, #76a9dc, #258de2, #5F9EA0, #87CEEB, #6dc4d0);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-color-shift 3s ease-in-out infinite alternate;
+}
+
+@keyframes text-color-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+
+.main-button {
+  background-color: #4A90E7;
+  color: #fff;
+  border: none;
+  width: 30%;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: 400;
+  transition: background-color 0.3s;
+}
+
+.main-button:hover {
+  background-color: #0c5794;
+}
 
 @media (max-width: 768px) {
   .heroSection {

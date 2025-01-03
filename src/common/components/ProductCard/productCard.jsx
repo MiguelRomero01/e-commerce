@@ -56,7 +56,7 @@ export default function ProductCard({setCart, cart}) {
             to={`/product/${product.id}`} 
             style={{textDecoration: "none"}}
           >
-          <CardActionArea>
+          <CardActionArea disableRipple>
             {/*Card Image*/}
             <CardMedia
               component="img"
@@ -67,7 +67,7 @@ export default function ProductCard({setCart, cart}) {
               sx={{ backgroundColor: "#f8f7f7" }}
             />
 
-            <CardContent sx={{ padding: "5px 20px", position: "relative" }}>
+            <CardContent sx={{ padding: "5px 20px", position: "relative" }} >
               {/*Card Title*/}
               <Typography
                 gutterBottom

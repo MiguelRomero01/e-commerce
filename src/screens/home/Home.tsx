@@ -8,6 +8,7 @@ import ProductCard from "../../common/components/ProductCard";
 import TitleWithUnderline from "../../common/components/Titles/TitleUnderline";
 import CategorieCard from "./components/Categories/categorie";
 import { CartDropdownProducts } from './components/Navbar/dropDown/cart/cartDropdown';
+import UserReview from "./components/Reviews/userReview";
 
 
 interface HomeProps {
@@ -82,6 +83,15 @@ const handleFileChange = async (file:File, title:string, description:string, pri
                          />
                     </div>
                </section>
+
+
+               <section className={HomeStyles['reviews-section']}>
+                    <TitleWithUnderline title={"Reviews"} level={2} />
+                    <div className={HomeStyles['reviews-container']}>
+                         <UserReview/>
+                    </div>
+               </section>
+
                     <div>
                          <input type="file" onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)} />
                          <input type="text" placeholder="Title" onChange={(e) => setTitle(e.target.value)}/>

@@ -4,6 +4,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Quantity from "./components/quantity";
 import { Delete } from "@mui/icons-material";
 import { RemoveProduct } from "../../../../../../features/services/RemoveProduct";
+import { formatNumber } from "../../../../../../features/services/formatNumber";
 
 export type CartDropdownProducts = {
      id: number;
@@ -58,7 +59,7 @@ const CartDropdown: React.FC<CartDropdownProps> = ({Products, setCart}) => {
                                                   </div>
                                                   <div className={cartDropdown_styles.productInfo}>
                                                        <h3>{productCart.Title}</h3>
-                                                       <p className={cartDropdown_styles.price}>${productCart.Price * quantity}</p>
+                                                       <p className={cartDropdown_styles.price}>${formatNumber(productCart.Price)}</p>
                                                        <Quantity quantity={quantity} setQuantity={setQuantity}/>
                                                   </div>
 
