@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import navbar_styles from './navbar.module.css';
 
-import { useState } from 'react';
 import UserDropdown from './dropDown/user/userDropdown';
 import CartDropdown from './dropDown/cart/cartDropdown';
 import { CartDropdownProducts } from './dropDown/cart/cartDropdown';
@@ -11,9 +10,10 @@ interface NavbarProps {
     isLogged: boolean;
     onLogout: () => void;
     cart: CartDropdownProducts[];
+    setCart: React.Dispatch<React.SetStateAction<CartDropdownProducts[]>>;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ isLogged, onLogout, cart }) => {
+const Navbar: React.FC<NavbarProps> = ({ isLogged, onLogout, cart, setCart }) => {
     const navigate = useNavigate();
 
     const handleSignIn = () => {
@@ -60,7 +60,7 @@ const Navbar: React.FC<NavbarProps> = ({ isLogged, onLogout, cart }) => {
                 ) : (
                     <div style={{ position: 'relative', display: 'flex', marginBottom: '-1vh'}}>
                         <UserDropdown onLogout={onLogout}/>
-                        <CartDropdown Products={cart || []}/>
+                        <CartDropdown Products={cart || []} setCart={setCart}/>
                     </div>
                 )}
             </div>

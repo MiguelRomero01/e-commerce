@@ -26,8 +26,8 @@ const handleFileChange = async (file:File, title:string, description:string, pri
    };
 
    
-const HomeScreen: React.FC<HomeProps> = ({ isLogged, onLogout, setCart, cart}) => {
-     {/*La seccion de añadir archivos para ser mandados a la db y demas se cambiará de aca a una cuenta de admin*/}
+   const HomeScreen: React.FC<HomeProps> = ({ isLogged, onLogout, setCart, cart}) => {
+     // La seccion de añadir archivos para ser mandados a la db y demas se cambiará de aca a una cuenta de admin
      const [file, setFile] = useState<File | null>(null);
      const [title, setTitle] = useState<string>('');
      const [description, setDescription] = useState<string>('');
@@ -37,7 +37,7 @@ const HomeScreen: React.FC<HomeProps> = ({ isLogged, onLogout, setCart, cart}) =
      return(
           <div>
                <header>
-                    <Navbar isLogged={isLogged} onLogout={onLogout} cart={cart}/>
+                    <Navbar isLogged={isLogged} onLogout={onLogout} cart={cart} setCart={setCart} />
                </header>
 
                <main>

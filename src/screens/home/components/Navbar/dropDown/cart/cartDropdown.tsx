@@ -3,6 +3,7 @@ import cartDropdown_styles from './cartDropdown.module.css';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Quantity from "./components/quantity";
 import { Delete } from "@mui/icons-material";
+import { RemoveProduct } from "../../../../../../features/services/RemoveProduct";
 
 export type CartDropdownProducts = {
      id: number;
@@ -15,7 +16,9 @@ type userProducts = {
      Products: CartDropdownProducts[];
 }
 
-const CartDropdown: React.FC<userProducts> = ({Products}) => {
+type CartDropdownProps = userProducts & { setCart: React.Dispatch<React.SetStateAction<CartDropdownProducts[]>> }
+
+const CartDropdown: React.FC<CartDropdownProps> = ({Products, setCart}) => {
      const [showDropdownCart, setShowDropdownCart] = useState(false);
      const [quantity, setQuantity] = useState(1);
      
@@ -59,7 +62,9 @@ const CartDropdown: React.FC<userProducts> = ({Products}) => {
                                                        <Quantity quantity={quantity} setQuantity={setQuantity}/>
                                                   </div>
 
-                                                  <button className={cartDropdown_styles['remove-product']}>
+                                                  <button 
+                                                       onClick={() => RemoveProduct(productCart.id, setCart)}
+                                                       className={cartDropdown_styles['remove-product']}>
                                                        <Delete 
                                                             sx={{ 
                                                                  fontSize: '1.1rem', 
