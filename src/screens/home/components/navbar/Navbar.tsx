@@ -11,9 +11,10 @@ interface NavbarProps {
     onLogout: () => void;
     cart: CartDropdownProducts[];
     setCart: React.Dispatch<React.SetStateAction<CartDropdownProducts[]>>;
+    theme: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ isLogged, onLogout, cart, setCart }) => {
+const Navbar: React.FC<NavbarProps> = ({ isLogged, onLogout, cart, setCart, theme }) => {
     const navigate = useNavigate();
 
     const handleSignIn = () => {
@@ -21,29 +22,29 @@ const Navbar: React.FC<NavbarProps> = ({ isLogged, onLogout, cart, setCart }) =>
     };
 
     return (
-        <nav className={navbar_styles['navbar']}>
+        <nav className={navbar_styles['navbar']} >
             <div className={navbar_styles['logo-container']}>
-                <img src="/Images/Home/Navbar/logo.png" alt="logo" />
+                {theme === 'light' ? <img src="/Images/Navbar/logo.png" alt="logo" /> : <img src="/Images/Navbar/logoDark.png" alt="logo" />}
             </div>
             <div className={navbar_styles['links-container']}>
                 <ul>
                     <li>
-                        <Link to="/" className={navbar_styles['navbar-links']}>
+                        <Link to="/" className={navbar_styles['navbar-links']} style={{color: theme === 'light' ? 'white' : 'black'}}>
                             Home
                         </Link>
                     </li>
                     <li>
-                        <Link to="" className={navbar_styles['navbar-links']}>
+                        <Link to="" className={navbar_styles['navbar-links']} style={{color: theme === 'light' ? 'white' : 'black'}}>
                             About
                         </Link>
                     </li>
                     <li>
-                        <Link to="" className={navbar_styles['navbar-links']}>
+                        <Link to="" className={navbar_styles['navbar-links']} style={{color: theme === 'light' ? 'white' : 'black'}}>
                             Shop
                         </Link>
                     </li>
                     <li>
-                        <Link to="" className={navbar_styles['navbar-links']}>
+                        <Link to="" className={navbar_styles['navbar-links']} style={{color: theme === 'light' ? 'white' : 'black'}}>
                             Contact
                         </Link>
                     </li>
@@ -54,6 +55,10 @@ const Navbar: React.FC<NavbarProps> = ({ isLogged, onLogout, cart, setCart }) =>
                     <button 
                         className={navbar_styles['sign-in-button']} 
                         onClick={handleSignIn}
+                        style={{
+                            color: theme === 'light' ? 'black' : 'white',
+                            backgroundColor: theme === 'light' ? 'white' : 'black',
+                        }}
                     >
                         SIGN IN
                     </button>

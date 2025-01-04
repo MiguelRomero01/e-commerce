@@ -10,6 +10,7 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { Rating } from "@mui/material";
 
 
 export default function ProductCard({setCart, cart}) {
@@ -86,17 +87,14 @@ export default function ProductCard({setCart, cart}) {
                 {product.Title}
               </Typography>
 
-              {/*Card Description*/}
-              <Typography
-                variant="body2"
-                className={productStyles["product-description"]}
-                sx={{
-                  color: "rgb(70, 70, 70)",
-                  fontWeight: "400",
-                  fontSize: "clamp(0.5rem, 2vw, 0.8rem)",
-                }}
-              >
-                {product.Description}
+              {/*Card product rating*/}
+              <Typography className={productStyles["product-rating"]} style={{alignItems: "center", display: "flex"}}>
+                <Rating 
+                  value={product.Rating} 
+                  readOnly 
+                  precision={0.5} 
+                  sx={{ fontSize: "1.8rem" }} />
+                <p>{product.Rating}</p>
               </Typography>
 
               {/*Card Price*/}

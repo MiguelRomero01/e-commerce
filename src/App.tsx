@@ -6,8 +6,8 @@ import RegisterScreen from './screens/auth/register/Register';
 import { CartDropdownProducts } from './screens/home/components/Navbar/dropDown/cart/cartDropdown';
 import { ProductDetail } from './screens/productDetail';
 const App: React.FC = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-    const [cart, setCart] = useState<CartDropdownProducts[]>([]);
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false); //verify if the user is authenticated
+    const [cart, setCart] = useState<CartDropdownProducts[]>([]); //products in the cart
 
     const handleAuthSuccess = () => {
         setIsAuthenticated(true);
@@ -22,7 +22,12 @@ const App: React.FC = () => {
             <Routes>
                 <Route 
                     path="/" 
-                    element={<Home isLogged={isAuthenticated} onLogout={handleLogout} setCart={setCart} cart={cart} />} 
+                    element={<Home 
+                                isLogged={isAuthenticated} 
+                                onLogout={handleLogout} 
+                                setCart={setCart} 
+                                cart={cart} 
+                            />} 
                 />
                 <Route 
                     path="/login" 
@@ -35,8 +40,15 @@ const App: React.FC = () => {
                 />
 
                 <Route
-                    path='/product/:id/:name'
-                    element={<ProductDetail/>}
+                    path='/product/:id/:title'
+                    element={
+                        <ProductDetail 
+                            isLogged={isAuthenticated} 
+                            onLogout={handleLogout} 
+                            cart={cart} 
+                            setCart={setCart}
+                        />
+                    }
                 />
             </Routes>
         </Router>

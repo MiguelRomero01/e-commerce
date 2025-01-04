@@ -38,11 +38,11 @@ const handleFileChange = async (file:File, title:string, description:string, pri
      return(
           <div>
                <header>
-                    <Navbar isLogged={isLogged} onLogout={onLogout} cart={cart} setCart={setCart} />
+                    <Navbar isLogged={isLogged} onLogout={onLogout} cart={cart} setCart={setCart} theme="light" />
                </header>
 
                <main>
-                    <HeroSection/>
+                    <HeroSection/> {/*hero section*/}
 
                <section className={HomeStyles['top-sellers-section']}>
                     <TitleWithUnderline title={"Best Sellers"} level={2} />
