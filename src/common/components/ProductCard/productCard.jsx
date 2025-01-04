@@ -53,7 +53,7 @@ export default function ProductCard({setCart, cart}) {
           }}
         >
           <Link 
-            to={`/product/${product.id}`} 
+            to={`/product/${product.id}/${product.Title}`} 
             style={{textDecoration: "none"}}
           >
           <CardActionArea disableRipple>

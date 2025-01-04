@@ -1,0 +1,28 @@
+.image-zoom-container {
+     position: relative;
+     display: inline-block;
+     width: 100%;
+     height: 100%;
+   }
+   
+   .image-base {
+     width: 100%; /* Tamaño base de la imagen */
+     height: 100%;
+   }
+   
+   .zoom-view {
+     background-color: white;
+     position: absolute;
+     top: 5vh;
+     left: 90%; /* Ubicar el zoom al lado derecho */
+     width: 35vmax; /* Tamaño del cuadro de zoom */
+     height: 30vmax;
+     border: 1px solid #333;
+     border-radius: 15px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+     background-repeat: no-repeat;
+     background-size: 250%; /* Ajustar el nivel de zoom */
+     pointer-events: none; /* Para evitar interferencias del mouse */
+     z-index: 1000;
+   }
+   

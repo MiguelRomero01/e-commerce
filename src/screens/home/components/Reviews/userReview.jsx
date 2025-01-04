@@ -1,4 +1,5 @@
 import React from "react";
+import userReviewStyles from './userReview.module.css'
 
 //import components material ui
 import { Card, Avatar, Typography, Box, Rating, IconButton } from "@mui/material";
@@ -91,12 +92,15 @@ const NextArrow = (props) => {
   return (
     <IconButton
       onClick={onClick}
+      className={userReviewStyles['next-arrow']}
       style={{
         position: "absolute",
         top: "50%",
         right: -55,
         transform: "translateY(-50%)",
         backgroundColor: "#fff",
+        border: "1px solid #868686",
+        color: "#000",
         zIndex: 1,
       }}
     >
@@ -110,12 +114,15 @@ const PrevArrow = (props) => {
   return (
     <IconButton
       onClick={onClick}
+      clas
       style={{
         position: "absolute",
         top: "50%",
         left: -10,
         transform: "translateY(-50%)",
         backgroundColor: "#fff",
+        border: "1px solid #868686",
+        color: "#000",
         zIndex: 1,
       }}
     >

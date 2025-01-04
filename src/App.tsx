@@ -35,7 +35,7 @@ const App: React.FC = () => {
                 />
 
                 <Route
-                    path='/product/:id'
+                    path='/product/:id/:name'
                     element={<ProductDetail/>}
                 />
             </Routes>

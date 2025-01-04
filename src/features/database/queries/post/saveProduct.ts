@@ -9,7 +9,7 @@ export const saveURL_Image = async (path: string, title:string, description:stri
         if (!url) throw new Error("Failed to get public URL");
 
         const { error } = await supabase
-            .from('ImagesUploaded')
+            .from('Products')
             .insert({ 
                 ImageURL: url.publicUrl,
                 Title: title,
@@ -18,11 +18,11 @@ export const saveURL_Image = async (path: string, title:string, description:stri
             });
 
         if (error) {
-            console.log('Error saving image URL: ', error.message);
+            console.log('Error saving product: ', error.message);
             return null;
         }
     } catch (error) {
-        console.error("Unexpected error during saving image URL:", error);
+        console.error("Unexpected error during saving product:", error);
         return null;
     }
 }

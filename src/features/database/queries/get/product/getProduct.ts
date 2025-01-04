@@ -2,7 +2,7 @@ import { supabase } from "../../../../services/supaBase";
 
 export const getProduct = async (id:number) => {
      const { data, error } = await supabase
-          .from('ImagesUploaded')
+          .from('Products')
           .select('*')
           .eq('id',id)
           .single();
