@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
+import { Facebook, Instagram, X, YouTube } from "@mui/icons-material";
 
 const SocialMedia = () => {
      
@@ -23,13 +23,13 @@ const SocialMedia = () => {
                </a>
 
                <a href="_" >
-                    <Twitter 
+                    <X 
                          sx={{
                               fontSize:35, 
                               color:'white', 
                               transition: "all 0.3s ease",
                               "&:hover":{
-                                   color:'#1DA1F2'
+                                   color:'#d1d1d1'
                               }
                          }}/>
                </a>

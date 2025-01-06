@@ -67,7 +67,7 @@ const ReviewCard = ({ name, photo, rating, review, color }) => (
       />
       <FormatQuoteIcon sx={{
         display: 'block',
-        margin: { xs: '0 auto', sm: '0' },
+        margin: { xs: '0 auto', sm: '0 auto' },
         fontSize: { xs: 40, sm: 50, md: 60 },
         color: '#4A90E7'
       }}/>
@@ -114,7 +114,6 @@ const PrevArrow = (props) => {
   return (
     <IconButton
       onClick={onClick}
-      clas
       style={{
         position: "absolute",
         top: "50%",

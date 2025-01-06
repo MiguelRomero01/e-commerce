@@ -7,8 +7,10 @@ import { handleFileUpload } from "../../features/services/fileUpload";
 import ProductCard from "../../common/components/ProductCard";
 import TitleWithUnderline from "../../common/components/Titles/TitleUnderline";
 import CategorieCard from "./components/Categories/categorie";
-import { CartDropdownProducts } from './components/Navbar/dropDown/cart/cartDropdown';
+import { CartDropdownProducts } from "../../features/services/Cart/CartDropdownProducts";
 import UserReview from "./components/Reviews/userReview";
+import { getTopProducts } from "../../features/database/queries/get/product/getTopProducts";
+import { Footer } from "../../common/components/Footer";
 
 
 interface HomeProps {
@@ -47,7 +49,7 @@ const handleFileChange = async (file:File, title:string, description:string, pri
                <section className={HomeStyles['top-sellers-section']}>
                     <TitleWithUnderline title={"Best Sellers"} level={2} />
                     <div className={HomeStyles['top-sellers-container']}>
-                         <ProductCard setCart={setCart} cart={cart}/>
+                         <ProductCard setCart={setCart} cart={cart} getProduct_Function={getTopProducts()}/>
                     </div>
                </section>
 
@@ -100,6 +102,10 @@ const handleFileChange = async (file:File, title:string, description:string, pri
                          <button onClick={() => file && handleFileChange(file, title, description, price)}>Upload</button>
                     </div>
                </main>
+
+               <footer>
+                    <Footer/>
+               </footer>
           </div>
      )
 }

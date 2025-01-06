@@ -3,7 +3,12 @@ import userDropdown_styles from './userDropdown.module.css';
 import PersonIcon from '@mui/icons-material/Person';
 import { useNavigate } from 'react-router-dom';
 
-const UserDropdown = ({onLogout}:{onLogout:()=>void}) => {
+interface UserDropdownProps {
+     onLogout: () => void;
+     theme: string;
+}
+
+const UserDropdown = ({onLogout, theme}:UserDropdownProps) => {
      const [showDropdownUser, setShowDropdownUser] = useState(false);
      const navigate = useNavigate();
 
@@ -12,7 +17,7 @@ const UserDropdown = ({onLogout}:{onLogout:()=>void}) => {
                <PersonIcon 
                onClick={() => setShowDropdownUser(!showDropdownUser)}
                sx={{
-                    color: 'white',
+                    color: theme === 'light' ? 'white' : 'black',
                     fontSize: '2rem', 
                     marginRight:'5vmin',
                     marginTop:'4px',

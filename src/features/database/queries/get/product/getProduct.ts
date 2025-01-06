@@ -12,5 +12,9 @@ export const getProduct = async (id:number) => {
           return null;
      }
 
+     if(data.length === 0){
+          return {data: [], message: 'No product found'}
+     }
+
      return data;
 }

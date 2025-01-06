@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './screens/auth/login/Login';
 import Home from './screens/home/Home';
 import RegisterScreen from './screens/auth/register/Register';
-import { CartDropdownProducts } from './screens/home/components/Navbar/dropDown/cart/cartDropdown';
+import { CartDropdownProducts } from './features/services/Cart/CartDropdownProducts';
 import { ProductDetail } from './screens/productDetail';
 const App: React.FC = () => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false); //verify if the user is authenticated
