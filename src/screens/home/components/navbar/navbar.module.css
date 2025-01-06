@@ -15,7 +15,7 @@
 }
 
 .navbar * {
-    padding: 0.5vh 0;
+    margin: 0.5vh 0;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -68,8 +68,12 @@
 }
 
 .sign-in-button {
+    margin: 0.7vh 0;
     margin-left: 20px;
-    padding: 1.2vmin 3vmin;
+    padding: 0.5rem 2.4vmin;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
     font-size: 1rem;
     color: black;
     background-color: white;
@@ -78,7 +82,6 @@
     transition: all 0.3s linear;
     cursor: pointer;
     font-weight: 500;
-    margin: 0.5vh 0;
 }
 
 .sign-in-button:hover { 
@@ -103,4 +106,79 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    height: 4rem;
+}
+
+/* Hamburger Menu Styles */
+.menu-button {
+    display: none;  /* Oculto por defecto */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
+
+.menu-button span {
+    width: 100%;
+    height: 3px;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .menu-button {
+        display: flex;  /* Mostrar el botón en móvil */
+        margin-right: 15px;
+    }
+
+    .links-container {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        backdrop-filter: blur(30px);
+    }
+
+    /* Estilos para tema claro */
+    .links-container[data-theme="light"] {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Estilos para tema oscuro */
+    .links-container[data-theme="dark"] {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .links-container.menu-open {
+        display: block;  /* Mostrar los links cuando el menú está abierto */
+    }
+
+    .links-container ul {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .links-container li {
+        margin: 0.8rem 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 769px) {
+    .menu-button {
+        display: none;  /* Asegurar que el botón está oculto en desktop */
+    }
+
+    .links-container {
+        display: flex;  /* Mostrar los links normalmente en desktop */
+    }
 }

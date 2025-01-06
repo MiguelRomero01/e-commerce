@@ -3,58 +3,86 @@
 } */
 
 .categorie-container {
-  position: relative; /* Necesario para que el contenido `absolute` funcione */
-  width: 40vw; /* Ocupa todo el ancho disponible */
-  height: 40vw; /* Ajusta según el tamaño deseado */
-  overflow: hidden; /* Previene desbordamientos internos */
-  box-sizing: border-box;
+  position: relative;
+  width: 25%; /* Ancho inicial */
+  height: 100%;
+  transition: width 0.5s ease, filter 0.5s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Ajuste para superposición */
+.categorie-container:not(:first-child) {
+  margin-left: -50px;
+}
+
+/* Efecto de expansión */
+.categorie-container:hover {
+  width: 40%;
+  filter: brightness(1);
+}
+
+/* Ajuste de los elementos no hover */
+.categorie-container:hover ~ .categorie-container,
+.categorie-container:has(~ .categorie-container:hover) {
+  filter: brightness(0.6);
 }
 
 .categorie-image {
-  display: block; /* Elimina espacios adicionales alrededor */
-  width: 100%; /* Se ajusta al ancho del contenedor */
-  height: 100%; /* Ajusta la altura al contenedor */
-  object-fit: cover; /* Recorta y ajusta la imagen al contenedor */
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .categorie-container article {
-  position: absolute; /* Superpone el contenido sobre la imagen */
-  top: 0;
+  position: absolute;
+  bottom: 0;
   left: 0;
-  width: 100%; /* Asegura que ocupe el ancho completo del contenedor */
-  height: 100%; /* Ocupa toda la altura */
-  background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
-  color: white; /* Color del texto */
-  opacity: 0; /* Esconde inicialmente */
-  display: flex; /* Flexbox para el contenido */
-  flex-direction: column;
-  justify-content: end; /* Alinea el texto en la parte inferior */
-  align-items: center; /* Centra horizontalmente */
-  transition: opacity 0.3s ease-in-out;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .categorie-container:hover article {
-  opacity: 1; /* Muestra el contenido al pasar el mouse */
+  opacity: 1;
 }
 
-.categorie-title, .categorie-info {
-  text-align: center; /* Centra el texto */
+.categorie-title {
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  margin-bottom: 8px;
 }
 
-.categorie-title{
-  font-size: clamp(1.3rem, 5vw, 2.3rem);
-  text-transform: uppercase;
+.categorie-info {
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
 }
 
-.categorie-info{
-  margin-bottom: 4vh;
-  margin-top: -10px;
-  font-size: clamp(0.5rem, 3vw, 1.2rem);
+.categorie-container:hover .categorie-info {
+  opacity: 1;
+  transform: translateY(0);
 }
 
+/* Ajuste responsive */
 @media (max-width: 768px) {
-  .categories-container {
-    grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
-    gap: 12px; /* Espacio reducido entre elementos */
+  .categorie-container {
+    width: 40%;
+  }
+  
+  .categorie-container:hover {
+    width: 60%;
+  }
+  
+  .categorie-container:not(:first-child) {
+    margin-left: -30px;
   }
 }
