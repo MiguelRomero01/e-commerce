@@ -30,13 +30,14 @@ section:hover h2::after{
 }
 
 .categories-container {
-  margin: 5vh auto; /* Espaciado vertical y centrado horizontal */
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Dos columnas por fila */
-  gap: 16px; /* Espacio entre las tarjetas */
-  align-items: start; /* Alinea las tarjetas en la parte superior */
-  width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
-  max-width: 80vw; /* Limita el ancho máximo para evitar expandir demasiado */
-  padding: 0 16px; /* Agrega un poco de espacio lateral */
+  margin: 5vh auto;
+  display: flex;
+  gap: 0;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 90vw;
+  height: 70vh;
+  padding: 0 16px;
 }
 

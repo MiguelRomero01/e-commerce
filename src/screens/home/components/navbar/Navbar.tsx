@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import navbar_styles from "./navbar.module.css";
 
@@ -21,14 +21,28 @@ const Navbar: React.FC<NavbarProps> = ({
   setCart,
   theme,
 }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleSignIn = () => {
     navigate("/login");
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <nav className={navbar_styles["navbar"]}>
+      <button 
+        className={navbar_styles["menu-button"]}
+        onClick={toggleMenu}
+      >
+        <span style={{ backgroundColor: theme === "light" ? "white" : "black" }}></span>
+        <span style={{ backgroundColor: theme === "light" ? "white" : "black" }}></span>
+        <span style={{ backgroundColor: theme === "light" ? "white" : "black" }}></span>
+      </button>
+
       <div className={navbar_styles["logo-container"]}>
         {theme === "light" ? (
           <img src="/Images/Navbar/logo.png" alt="logo" />
@@ -36,7 +50,11 @@ const Navbar: React.FC<NavbarProps> = ({
           <img src="/Images/Navbar/logoDark.png" alt="logo" />
         )}
       </div>
-      <div className={navbar_styles["links-container"]}>
+
+      <div 
+        className={`${navbar_styles["links-container"]} ${isMenuOpen ? navbar_styles["menu-open"] : ""}`}
+        data-theme={theme}
+      >
         <ul>
           <li>
             <Link
@@ -76,6 +94,7 @@ const Navbar: React.FC<NavbarProps> = ({
           </li>
         </ul>
       </div>
+
       <div className={navbar_styles["auth-container"]}>
         <div
           style={{
