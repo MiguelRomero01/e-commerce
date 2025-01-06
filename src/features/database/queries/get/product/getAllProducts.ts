@@ -3,7 +3,7 @@ import { supabase } from "../../../../services/supaBase";
 export const getProducts = async () => {
      const { data, error } = await supabase
           .from('Products')
-          .select('id, ImageURL, Title, Description, Price, ProductDetails');
+          .select('id, Title, Price, ImageURL, Rating, Type');
 
      if (error) {
           console.log('Error getting product: ', error.message);

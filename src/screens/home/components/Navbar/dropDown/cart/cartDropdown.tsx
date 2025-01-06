@@ -3,23 +3,17 @@ import cartDropdown_styles from './cartDropdown.module.css';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Quantity from "./components/quantity";
 import { Delete } from "@mui/icons-material";
-import { RemoveProduct } from "../../../../../../features/services/RemoveProduct";
+import { RemoveProduct } from "../../../../../../features/services/Cart/RemoveProduct";
 import { formatNumber } from "../../../../../../features/services/formatNumber";
-
-export type CartDropdownProducts = {
-     id: number;
-     Title: string;
-     Price: number;
-     ImageURL: string;
-};
+import { CartDropdownProducts } from "../../../../../../features/services/Cart/CartDropdownProducts";
 
 type userProducts = {
      Products: CartDropdownProducts[];
 }
 
-type CartDropdownProps = userProducts & { setCart: React.Dispatch<React.SetStateAction<CartDropdownProducts[]>> }
+type CartDropdownProps = userProducts & { setCart: React.Dispatch<React.SetStateAction<CartDropdownProducts[]>>, theme: string }
 
-const CartDropdown: React.FC<CartDropdownProps> = ({Products, setCart}) => {
+const CartDropdown: React.FC<CartDropdownProps> = ({Products, setCart, theme}) => {
      const [showDropdownCart, setShowDropdownCart] = useState(false);
      const [quantity, setQuantity] = useState(1);
      
@@ -29,7 +23,7 @@ const CartDropdown: React.FC<CartDropdownProps> = ({Products, setCart}) => {
                     <ShoppingCartIcon 
                          onClick={() => setShowDropdownCart(!showDropdownCart)}
                          sx={{
-                              color: 'white',
+                              color: theme === 'light' ? 'white' : 'black',
                               fontSize: '2rem', 
                               marginRight:'20px',
                               transition: 'all 0.3s ease',

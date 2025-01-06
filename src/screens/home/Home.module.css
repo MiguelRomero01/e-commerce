@@ -12,6 +12,12 @@ body {
   margin: 0 8vw;
 }
 
+.top-sellers-container {
+  will-change: transform;
+  contain: content;
+  /* Ayuda al navegador a optimizar las transformaciones */
+}
+
 section h2{
   position: relative;
   left: 50%; /* Mueve el elemento al 50% del ancho del contenedor */
