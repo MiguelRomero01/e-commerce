@@ -1,12 +1,18 @@
 import React from "react";
 import additionalDetailsStyles from "./additionalDetails.module.css";
-import { GitHub } from "@mui/icons-material";
+import { Category, Shield, ThumbUp } from "@mui/icons-material";
 
 interface AdditionalDetailsProps {
   productData: any;
 }
 
 const AdditionalDetails = ({ productData }: AdditionalDetailsProps) => {
+  const iconsList = [
+    { icon: <Category sx={{ color: '#fff', fontSize: 35}}/>},
+    { icon: <ThumbUp sx={{ color: '#fff', fontSize: 35}}/>},
+    { icon: <Shield sx={{ color: '#fff', fontSize: 35}}/>},
+  ]
+
   return (
     <>
       {/*product details*/}
@@ -20,7 +26,7 @@ const AdditionalDetails = ({ productData }: AdditionalDetailsProps) => {
                     <div
                       className={additionalDetailsStyles["product-detail-icon"]}
                     >
-                      <GitHub />
+                      {iconsList[index].icon}
                     </div>
                     {detalle.trim()}
                   </li>

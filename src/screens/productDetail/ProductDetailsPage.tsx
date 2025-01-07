@@ -16,8 +16,8 @@ import { handleAddToCart } from "../../features/services/Cart/addShoppingCart";
 import { Footer } from "../../common/components/Footer";
 import { ShoppingBag } from "@mui/icons-material";
 import RecommendedProducts from "./components/recommendedProducts/recommendedProducts";
-import AdditionalDetails from "./components/product Details/additionalDetails";
-import Return from "../../common/components/ReturnTopage/return";
+import AdditionalDetails from "./components/additional details/additionalDetails";
+import Return from "../../common/components/ReturnTopage/returnBack";
 
 // Añade la interfaz para las props
 interface ProductDetailProps {

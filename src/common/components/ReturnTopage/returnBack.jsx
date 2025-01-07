@@ -14,7 +14,7 @@ const Return = () => {
         top: "10vh",
         left: "10vh",
         fontSize: 20,
-        color: "#6c6c6c",
+        color: "#5c5c5c",
         fontWeight: "600",
       }}
     >

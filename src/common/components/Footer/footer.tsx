@@ -35,7 +35,6 @@ const Footer = () => {
             <h3>Services</h3>
             <ul>
               <li><a href="#">Buy Products</a></li>
-              <li><a href="#">Sell Products</a></li>
               <li><a href="#">Consulting</a></li>
             </ul>
           </div>
