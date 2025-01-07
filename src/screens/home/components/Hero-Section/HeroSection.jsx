@@ -43,7 +43,7 @@ export default function HeroSection () {
               <button className={HeroStyles['main-button']}>Get Started</button>
             </div>
 
-            <div style={{marginBottom:'70vh'}}>
+            <div style={{marginBottom:'65vh'}}>
               <SocialMedia/>
             </div>
 

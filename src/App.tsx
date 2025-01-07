@@ -4,7 +4,7 @@ import Login from './screens/auth/login/Login';
 import Home from './screens/home/Home';
 import RegisterScreen from './screens/auth/register/Register';
 import { CartDropdownProducts } from './features/services/Cart/CartDropdownProducts';
-import { ProductDetail } from './screens/productDetail';
+import ProductDetailsPage from './screens/productDetail/ProductDetailsPage';
 const App: React.FC = () => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false); //verify if the user is authenticated
     const [cart, setCart] = useState<CartDropdownProducts[]>([]); //products in the cart
@@ -42,7 +42,7 @@ const App: React.FC = () => {
                 <Route
                     path='/product/:id/:title'
                     element={
-                        <ProductDetail 
+                        <ProductDetailsPage 
                             isLogged={isAuthenticated} 
                             onLogout={handleLogout} 
                             cart={cart} 

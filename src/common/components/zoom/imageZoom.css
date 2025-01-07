@@ -14,10 +14,10 @@
      background-color: white;
      position: absolute;
      top: 5vh;
-     left: 90%; /* Ubicar el zoom al lado derecho */
+     left: 100%; /* Ubicar el zoom al lado derecho */
      width: 35vmax; /* Tamaño del cuadro de zoom */
      height: 30vmax;
-     border: 1px solid #333;
+     border: none;
      border-radius: 15px;
      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
      background-repeat: no-repeat;

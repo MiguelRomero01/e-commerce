@@ -1,0 +1,8 @@
+.instagram-icon {
+     fill: white;
+   }
+   
+   .instagram-icon:hover {
+     fill: url(#instagram-gradient);
+     transform: scale(1.1);
+   }
