@@ -4,3 +4,7 @@ export type CartDropdownProducts = {
      Price: number;
      ImageURL: string;
 };
+
+export interface CartDropdown_quantity extends CartDropdownProducts {
+     quantity: number;
+}
