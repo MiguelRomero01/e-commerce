@@ -1,6 +1,6 @@
 import React from 'react';
 import './footer.css';
-import { Facebook, Favorite, HeartBrokenSharp, Instagram, X, YouTube } from '@mui/icons-material';
+import { Facebook, Favorite, Instagram, X, YouTube } from '@mui/icons-material';
 
 const Footer = () => {
   return (

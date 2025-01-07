@@ -15,7 +15,6 @@ type CartDropdownProps = userProducts & { setCart: React.Dispatch<React.SetState
 
 const CartDropdown: React.FC<CartDropdownProps> = ({Products, setCart, theme}) => {
      const [showDropdownCart, setShowDropdownCart] = useState(false);
-     const [quantity, setQuantity] = useState(1);
      
      return (
           <div className={cartDropdown_styles.container}>
@@ -54,7 +53,7 @@ const CartDropdown: React.FC<CartDropdownProps> = ({Products, setCart, theme}) =
                                                   <div className={cartDropdown_styles.productInfo}>
                                                        <h3>{productCart.Title}</h3>
                                                        <p className={cartDropdown_styles.price}>${formatNumber(productCart.Price)}</p>
-                                                       <Quantity quantity={quantity} setQuantity={setQuantity}/>
+                                                       <Quantity />
                                                   </div>
 
                                                   <button 
