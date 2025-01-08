@@ -1,26 +1,50 @@
 import React, { useState } from "react";
 import quantityStyles from "./quantity.module.css";
+import { CartDropdown_quantity } from "../../../../../../../features/services/Cart/CartDropdownProducts";
 
-const Quantity: React.FC = () => {
-  const [quantity, setQuantity] = useState(1);
-  return (
-     <div>
-          <button
-               className={quantityStyles["quantity-button-add"]}
-               onClick={() =>
-                    quantity > 1 ? setQuantity(quantity - 1) : setQuantity(1)
-               }
-          >
-          -
-          </button>
-          <span className={quantityStyles["quantity-number"]}>{quantity}</span>
-          <button
-               className={quantityStyles["quantity-button-substract"]}
-               onClick={() => setQuantity(quantity + 1)}
-          >
-          +
-          </button>
-     </div>
+interface QuantityProps {
+     productId: number;
+     quantity: number;
+     setCart: React.Dispatch<React.SetStateAction<CartDropdown_quantity[]>>;
+}
+
+const Quantity: React.FC<QuantityProps> = ({ productId, quantity, setCart }) => {
+     const handleIncrease = () => {
+          setCart(prevCart =>
+               prevCart.map(item =>
+                    item.id === productId
+                         ? { ...item, quantity: item.quantity + 1 }
+                         : item
+               )
+          );
+     };
+
+     const handleDecrease = () => {
+          setCart(prevCart =>
+               prevCart.map(item =>
+                    item.id === productId && item.quantity > 1
+                         ? { ...item, quantity: item.quantity - 1 }
+                         : item
+               )
+          );
+     };
+
+     return (
+          <div>
+               <button
+                    className={quantityStyles["quantity-button-add"]}
+                    onClick={handleDecrease}
+               >
+                    -
+               </button>
+               <span className={quantityStyles["quantity-number"]}>{quantity}</span>
+               <button
+                    className={quantityStyles["quantity-button-substract"]}
+                    onClick={handleIncrease}
+               >
+                    +
+               </button>
+          </div>
      );
 };
 

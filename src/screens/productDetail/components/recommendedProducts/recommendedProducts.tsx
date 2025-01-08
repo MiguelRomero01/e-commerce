@@ -3,11 +3,11 @@ import recommendStyles from "./recommendedProducts.module.css";
 import TitleWithUnderline from "../../../../common/components/Titles/TitleUnderline";
 import ProductCard from "../../../../common/components/ProductCard";
 import { getRelatedProducts } from "../../../../features/database/queries/get/product/getRelatedProducts";
-import { CartDropdownProducts } from "../../../../features/services/Cart/CartDropdownProducts";
+import { CartDropdown_quantity } from "../../../../features/services/Cart/CartDropdownProducts";
 
 interface RecommendedProductsProps {
-     setCart: React.Dispatch<React.SetStateAction<CartDropdownProducts[]>>;
-     cart: CartDropdownProducts[];
+     setCart: React.Dispatch<React.SetStateAction<CartDropdown_quantity[]>>;
+     cart: CartDropdown_quantity[];
      productData: any;
 }
 

@@ -4,13 +4,13 @@ import navbar_styles from "./navbar.module.css";
 
 import UserDropdown from "./dropDown/user/userDropdown";
 import CartDropdown from "./dropDown/cart/cartDropdown";
-import { CartDropdownProducts } from "../../../../features/services/Cart/CartDropdownProducts";
+import { CartDropdown_quantity } from "../../../../features/services/Cart/CartDropdownProducts";
 
 interface NavbarProps {
   isLogged: boolean;
   onLogout: () => void;
-  cart: CartDropdownProducts[];
-  setCart: React.Dispatch<React.SetStateAction<CartDropdownProducts[]>>;
+  cart: CartDropdown_quantity[];
+  setCart: React.Dispatch<React.SetStateAction<CartDropdown_quantity[]>>;
   theme: string;
 }
 
@@ -34,13 +34,16 @@ const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <nav className={navbar_styles["navbar"]}>
-      <button 
-        className={navbar_styles["menu-button"]}
-        onClick={toggleMenu}
-      >
-        <span style={{ backgroundColor: theme === "light" ? "white" : "black" }}></span>
-        <span style={{ backgroundColor: theme === "light" ? "white" : "black" }}></span>
-        <span style={{ backgroundColor: theme === "light" ? "white" : "black" }}></span>
+      <button className={navbar_styles["menu-button"]} onClick={toggleMenu}>
+        <span
+          style={{ backgroundColor: theme === "light" ? "white" : "black" }}
+        ></span>
+        <span
+          style={{ backgroundColor: theme === "light" ? "white" : "black" }}
+        ></span>
+        <span
+          style={{ backgroundColor: theme === "light" ? "white" : "black" }}
+        ></span>
       </button>
 
       <div className={navbar_styles["logo-container"]}>
@@ -51,8 +54,10 @@ const Navbar: React.FC<NavbarProps> = ({
         )}
       </div>
 
-      <div 
-        className={`${navbar_styles["links-container"]} ${isMenuOpen ? navbar_styles["menu-open"] : ""}`}
+      <div
+        className={`${navbar_styles["links-container"]} ${
+          isMenuOpen ? navbar_styles["menu-open"] : ""
+        }`}
         data-theme={theme}
       >
         <ul>
@@ -76,7 +81,7 @@ const Navbar: React.FC<NavbarProps> = ({
           </li>
           <li>
             <Link
-              to=""
+              to="/shop"
               className={navbar_styles["navbar-links"]}
               style={{ color: theme === "light" ? "white" : "black" }}
             >

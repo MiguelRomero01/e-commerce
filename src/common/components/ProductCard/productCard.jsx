@@ -32,7 +32,13 @@ export default function ProductCard({ setCart, cart, getProduct_Function }) {
 
   const handleAddToCart = (product) => {
     if (!isInCart(product.id)) {
-      setCart((prevCart) => [...prevCart, product]);
+      // Aseguramos que el precio sea un número
+      const productToAdd = {
+        ...product,
+        quantity: 1,
+        Price: product.Price
+      };
+      setCart((prevCart) => [...prevCart, productToAdd]);
     }
   };
 

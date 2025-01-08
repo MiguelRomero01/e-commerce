@@ -10,21 +10,21 @@ import { useParams } from "react-router-dom";
 import { getProduct } from "../../features/database/queries/get/product/getProduct";
 import { Rating } from "@mui/material";
 import { formatNumber } from "../../features/services/formatNumber";
-import { CartDropdownProducts } from "../../features/services/Cart/CartDropdownProducts";
+import { CartDropdown_quantity } from "../../features/services/Cart/CartDropdownProducts";
 import { isInCart } from "../../features/services/Cart/isInCart";
 import { handleAddToCart } from "../../features/services/Cart/addShoppingCart";
 import { Footer } from "../../common/components/Footer";
 import { ShoppingBag } from "@mui/icons-material";
-import RecommendedProducts from "./components/recommendedProducts/recommendedProducts";
-import AdditionalDetails from "./components/additional details/additionalDetails";
+import { RecommendedProducts } from "./components/recommendedProducts";
+import { AdditionalDetails } from "./components/additional details";
 import Return from "../../common/components/ReturnTopage/returnBack";
 
 // Añade la interfaz para las props
 interface ProductDetailProps {
   isLogged: boolean;
   onLogout: () => void;
-  cart: CartDropdownProducts[];
-  setCart: React.Dispatch<React.SetStateAction<CartDropdownProducts[]>>;
+  cart: CartDropdown_quantity[];
+  setCart: React.Dispatch<React.SetStateAction<CartDropdown_quantity[]>>;
 }
 
 const ProductDetailsPage: React.FC<ProductDetailProps> = ({
@@ -109,13 +109,19 @@ const ProductDetailsPage: React.FC<ProductDetailProps> = ({
                     ? ProductDetailsPageStyles["in-cart"]
                     : ""
                 }`}
-                onClick={() =>
+                onClick={() => {
+                  const productToAdd = {
+                    ...productData,
+                    quantity: 1,
+                    Price: parseFloat(productData.Price)
+                  };
+                  console.log("Producto a añadir desde DetailPage:", productToAdd);
                   handleAddToCart({
-                    product: productData,
+                    product: productToAdd,
                     setCart: setCart,
                     cart: cart,
-                  })
-                }
+                  });
+                }}
                 disabled={isInCart({ cart, productId: productData.id })}
               >
                 <ShoppingBag

@@ -1,7 +1,7 @@
-import { CartDropdownProducts } from "./CartDropdownProducts";
+import { CartDropdown_quantity } from "./CartDropdownProducts";
 
 interface Cart {
-     cart: CartDropdownProducts[];
+     cart: CartDropdown_quantity[];
      productId: number;
 }
 
