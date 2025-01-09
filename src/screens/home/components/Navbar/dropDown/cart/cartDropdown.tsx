@@ -11,14 +11,14 @@ import Quantity from "./components/quantity";
 //services
 import { RemoveProduct } from "../../../../../../features/services/Cart/RemoveProduct";
 import { formatNumber } from "../../../../../../features/services/formatNumber";
-import { CartDropdown_quantity } from "../../../../../../features/services/Cart/CartDropdownProducts"; 
+import { CartDropdown_ProductsType } from "../../../../../../features/services/Cart/CartDropdownProducts"; 
 
 type userProducts = {
-  Products: CartDropdown_quantity[];
+  Products: CartDropdown_ProductsType[];
 };
 
 type CartDropdownProps = userProducts & {
-  setCart: React.Dispatch<React.SetStateAction<CartDropdown_quantity[]>>;
+  setCart: React.Dispatch<React.SetStateAction<CartDropdown_ProductsType[]>>;
   theme: string;
 };
 

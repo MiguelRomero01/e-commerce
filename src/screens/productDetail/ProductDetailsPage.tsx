@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import { getProduct } from "../../features/database/queries/get/product/getProduct";
 import { Rating } from "@mui/material";
 import { formatNumber } from "../../features/services/formatNumber";
-import { CartDropdown_quantity } from "../../features/services/Cart/CartDropdownProducts";
+import { CartDropdown_ProductsType } from "../../features/services/Cart/CartDropdownProducts";
 import { isInCart } from "../../features/services/Cart/isInCart";
 import { handleAddToCart } from "../../features/services/Cart/addShoppingCart";
 import { Footer } from "../../common/components/Footer";
@@ -23,8 +23,8 @@ import Return from "../../common/components/ReturnTopage/returnBack";
 interface ProductDetailProps {
   isLogged: boolean;
   onLogout: () => void;
-  cart: CartDropdown_quantity[];
-  setCart: React.Dispatch<React.SetStateAction<CartDropdown_quantity[]>>;
+  cart: CartDropdown_ProductsType[];
+  setCart: React.Dispatch<React.SetStateAction<CartDropdown_ProductsType[]>>;
 }
 
 const ProductDetailsPage: React.FC<ProductDetailProps> = ({

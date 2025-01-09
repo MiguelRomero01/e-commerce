@@ -7,6 +7,6 @@ export type CartDropdownProducts = {
 };
 
 //add quantity to the product in the cart
-export interface CartDropdown_quantity extends CartDropdownProducts {
+export interface CartDropdown_ProductsType extends CartDropdownProducts {
      quantity: number;
 }

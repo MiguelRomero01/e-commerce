@@ -4,13 +4,13 @@ import navbar_styles from "./navbar.module.css";
 
 import UserDropdown from "./dropDown/user/userDropdown";
 import CartDropdown from "./dropDown/cart/cartDropdown";
-import { CartDropdown_quantity } from "../../../../features/services/Cart/CartDropdownProducts";
+import { CartDropdown_ProductsType } from "../../../../features/services/Cart/CartDropdownProducts";
 
 interface NavbarProps {
   isLogged: boolean;
   onLogout: () => void;
-  cart: CartDropdown_quantity[];
-  setCart: React.Dispatch<React.SetStateAction<CartDropdown_quantity[]>>;
+  cart: CartDropdown_ProductsType[];
+  setCart: React.Dispatch<React.SetStateAction<CartDropdown_ProductsType[]>>;
   theme: string;
 }
 

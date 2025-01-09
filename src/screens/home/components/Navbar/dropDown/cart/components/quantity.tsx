@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import quantityStyles from "./quantity.module.css";
-import { CartDropdown_quantity } from "../../../../../../../features/services/Cart/CartDropdownProducts";
+import { CartDropdown_ProductsType } from "../../../../../../../features/services/Cart/CartDropdownProducts";
 
 interface QuantityProps {
      productId: number;
      quantity: number;
-     setCart: React.Dispatch<React.SetStateAction<CartDropdown_quantity[]>>;
+     setCart: React.Dispatch<React.SetStateAction<CartDropdown_ProductsType[]>>;
 }
 
 const Quantity: React.FC<QuantityProps> = ({ productId, quantity, setCart }) => {
