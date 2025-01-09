@@ -7,7 +7,7 @@ import { handleFileUpload } from "../../features/services/fileUpload";
 import ProductCard from "../../common/components/ProductCard";
 import TitleWithUnderline from "../../common/components/Titles/TitleUnderline";
 import CategorieCard from "./components/Categories/categorie";
-import { CartDropdownProducts } from "../../features/services/Cart/CartDropdownProducts";
+import { CartDropdown_ProductsType } from "../../features/services/Cart/CartDropdownProducts";
 import UserReview from "./components/Reviews/userReview";
 import { getTopProducts } from "../../features/database/queries/get/product/getTopProducts";
 import { Footer } from "../../common/components/Footer";
@@ -16,8 +16,8 @@ import { Footer } from "../../common/components/Footer";
 interface HomeProps {
      isLogged: boolean;
      onLogout: () => void;
-     cart: CartDropdownProducts[];
-     setCart: React.Dispatch<React.SetStateAction<CartDropdownProducts[]>>;
+     cart: CartDropdown_ProductsType[];
+     setCart: React.Dispatch<React.SetStateAction<CartDropdown_ProductsType[]>>;
 }
 
 const handleFileChange = async (file:File, title:string, description:string, price:number) => {

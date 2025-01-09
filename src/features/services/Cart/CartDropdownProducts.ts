@@ -1,3 +1,4 @@
+//data obtained from the database
 export type CartDropdownProducts = {
      id: number;
      Title: string;
@@ -5,6 +6,7 @@ export type CartDropdownProducts = {
      ImageURL: string;
 };
 
-export interface CartDropdown_quantity extends CartDropdownProducts {
+//add quantity to the product in the cart
+export interface CartDropdown_ProductsType extends CartDropdownProducts {
      quantity: number;
 }
