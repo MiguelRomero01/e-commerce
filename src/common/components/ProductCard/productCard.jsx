@@ -1,9 +1,13 @@
 import React from "react";
 import productStyles from "./productsCard.module.css";
 
+//AOS animations
+import AOS from "aos";
+import "aos/dist/aos.css"; //AOS styles
+
 //functions and queries
 import { Link } from "react-router-dom";
-import { formatNumber } from "../../../features/services/formatNumber"; //format number
+import { formatNumber } from "../../../features/services/formatPrice"; //format number
 
 //card from Material UI
 import Card from "@mui/material/Card";
@@ -12,14 +16,25 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Rating } from "@mui/material";
+import LoadingAnimation from "../animations/loading";
 
 export default function ProductCard({ setCart, cart, getProduct_Function }) {
   const [product, setProduct] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+
+  //AOS animations
+  React.useEffect(() => {
+    AOS.init({
+      duration: 1500,
+      once: true,
+    });
+  }, []);
 
   React.useEffect(() => {
     const fetchProduct = async () => {
       const data = await getProduct_Function;
       setProduct(data);
+      setLoading(false);
     };
 
     fetchProduct();
@@ -36,7 +51,7 @@ export default function ProductCard({ setCart, cart, getProduct_Function }) {
       const productToAdd = {
         ...product,
         quantity: 1,
-        Price: product.Price
+        Price: product.Price,
       };
       setCart((prevCart) => [...prevCart, productToAdd]);
     }
@@ -44,11 +59,16 @@ export default function ProductCard({ setCart, cart, getProduct_Function }) {
 
   return (
     <>
-      {product.length > 0 ? (
+      {loading ? (
+        <div style={{display: "flex", justifyContent: "center", alignItems: "center",width: "80vw"}}>
+          <LoadingAnimation />
+        </div>
+      ) : product.length > 0 ? (
         <div className={productStyles.cardContainer}>
           {/*Product Card*/}
           {product.map((product) => (
             <Card
+              data-aos="flip-up"
               className={productStyles.card}
               key={product.id}
               sx={{

@@ -1,60 +1,75 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { getProducts } from "../../../features/database/queries/get/product/getAllProducts";
+import styles from "./searchbar.module.css";
+import { Search } from "@mui/icons-material";
+import ProductSearch from "./components/product";
 
-interface Item {
-  id: number;
-  name: string;
-}
+const SearchBar: React.FC = () => {
+  const [products, setProducts] = useState<any[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const searchContainerRef = useRef<HTMLDivElement>(null);
 
-const SearchableList: React.FC = () => {
-  const items: Item[] = [
-    { id: 1, name: "Manzana" },
-    { id: 2, name: "Banana" },
-    { id: 3, name: "Naranja" },
-    { id: 4, name: "Uva" },
-    { id: 5, name: "Piña" },
-    { id: 6, name: "Mango" },
-    { id: 7, name: "Fresa" },
-    { id: 8, name: "Melón" },
-    { id: 9, name: "Sandía" },
-    { id: 10, name: "Cereza" },
-  ];
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+        setSearchTerm("");
+      }
+    };
 
-  const [searchTerm, setSearchTerm] = useState("");
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
-  // Manejar cambios en la barra de búsqueda
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
+    setIsOpen(true);
   };
 
-  // Filtra la lista basada en el término de búsqueda y limita a 5 resultados
-  const filteredItems = items
-    .filter((item) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const products = await getProducts();
+      setProducts(products);
+    };
+    fetchProducts();
+  }, []);
+
+  const filteredItems = products
+    .filter((product) =>
+      product.Title.toLowerCase().includes(searchTerm.toLowerCase())
     )
-    .slice(0, 5); // Limita los resultados a 5 elementos
+    .slice(0, 4);
 
   return (
-    <div style={{ margin: "20px" }}>
-      <h1>Buscar Frutas</h1>
+    <div className={styles.searchContainer} ref={searchContainerRef}>
       <input
         type="text"
-        placeholder="Buscar..."
+        placeholder="Buscar productos..."
         value={searchTerm}
         onChange={handleSearchChange}
-        style={{
-          padding: "10px",
-          borderRadius: "8px",
-          border: "1px solid #ccc",
-          width: "200px",
-        }}
+        className={styles.searchInput}
+        onFocus={() => setIsOpen(true)}
       />
-      {/* Renderiza la lista solo si hay texto en la búsqueda */}
-      {searchTerm && (
-        <ul style={{ marginTop: "20px" }}>
+      <Search className={styles.searchIcon} />
+
+      {searchTerm && isOpen && (
+        <ul className={styles.resultsList}>
           {filteredItems.length > 0 ? (
-            filteredItems.map((item) => <li key={item.id}>{item.name}</li>)
+            filteredItems.map((product) => (
+              <li key={product.id} className={styles.resultItem}>
+                <ProductSearch product={product} />
+              </li>
+            ))
           ) : (
-            <li>No se encontraron resultados</li>
+            <li className={styles.noResults}>
+              No se encontraron resultados para "{searchTerm}"
+            </li>
           )}
         </ul>
       )}
@@ -62,4 +77,4 @@ const SearchableList: React.FC = () => {
   );
 };
 
-export default SearchableList;
+export default SearchBar;

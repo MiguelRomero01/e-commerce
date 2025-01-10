@@ -1,6 +1,14 @@
+:root {
+  --footer-bg: #1a1a1a;
+  --footer-text: #b3b3b3;
+  --footer-heading: white;
+  --footer-border: #333;
+  --transition-speed: 0.3s;
+}
+
 .footer {
-  background-color: #1a1a1a;
-  color: #b3b3b3;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
   padding: 48px 0;
 }
 
@@ -17,10 +25,8 @@
 }
 
 .company-info h3 {
-  color: white;
   font-size: 1.25rem;
   font-weight: bold;
-  margin-bottom: 16px;
 }
 
 .company-info p {
@@ -43,7 +49,7 @@
 }
 
 .footer-section h3 {
-  color: white;
+  color: var(--footer-heading);
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 16px;
@@ -60,13 +66,13 @@
 }
 
 .footer-section ul li a {
-  color: #b3b3b3;
+  color: var(--footer-text);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color var(--transition-speed) ease;
 }
 
 .footer-section ul li a:hover {
-  color: white;
+  color: var(--footer-heading);
 }
 
 .footer-bottom {

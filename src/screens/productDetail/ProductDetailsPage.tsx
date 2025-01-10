@@ -9,7 +9,7 @@ import Navbar from "../home/components/Navbar";
 import { useParams } from "react-router-dom";
 import { getProduct } from "../../features/database/queries/get/product/getProduct";
 import { Rating } from "@mui/material";
-import { formatNumber } from "../../features/services/formatNumber";
+import { formatNumber } from "../../features/services/formatPrice";
 import { CartDropdown_ProductsType } from "../../features/services/Cart/CartDropdownProducts";
 import { isInCart } from "../../features/services/Cart/isInCart";
 import { handleAddToCart } from "../../features/services/Cart/addShoppingCart";
