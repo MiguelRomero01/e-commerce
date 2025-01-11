@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import FilterStyles from "./filter.module.css";
 import { Rating } from "@mui/material";
+import RangeSlider from "./components/RangeSlider";
+import ComboBox from "./components/ComboBox";
 
 interface FilterState {
   category: string;
-  priceRange: string;
+  priceRange: number[];
   rating: number;
 }
 
@@ -14,41 +16,30 @@ interface FilterProps {
 }
 
 const Filter: React.FC<FilterProps> = ({ filters, setFilters }) => {
-  const [rating, setRating] = useState<number | null>(null);
-
+  
   return (
     <div className={FilterStyles["filter-container"]}>
       <h3>Filtros</h3>
 
+      {/* Categorías */}
       <div className={FilterStyles["filter-section"]}>
         <h4>Categorías</h4>
-        <select
-          value={filters.category}
-          onChange={(e) => setFilters({ ...filters, category: e.target.value })}
-        >
-          <option value="all">Todas</option>
-          <option value="electronics">Electrónicos</option>
-          <option value="clothing">Ropa</option>
-          <option value="books">Libros</option>
-        </select>
+        <ComboBox 
+          value={filters.category} 
+          setValue={(newValue) => setFilters({ ...filters, category: newValue })} 
+        />
       </div>
 
+      {/* Rango de Precio */}
       <div className={FilterStyles["filter-section"]}>
         <h4>Rango de Precio</h4>
-        <select
-          value={filters.priceRange}
-          onChange={(e) =>
-            setFilters({ ...filters, priceRange: e.target.value })
-          }
-        >
-          <option value="all">Todos</option>
-          <option value="0-50">$0 - $50</option>
-          <option value="51-100">$51 - $100</option>
-          <option value="101-200">$101 - $200</option>
-          <option value="201+">$201+</option>
-        </select>
+        <RangeSlider 
+          value={filters.priceRange} 
+          setValue={(newValue) => setFilters({ ...filters, priceRange: newValue })} 
+        />
       </div>
 
+      {/* Valoración */}
       <div className={FilterStyles["filter-section"]}>
         <h4>Valoración</h4>
         <div className={FilterStyles["rating-filter"]}>
@@ -56,10 +47,16 @@ const Filter: React.FC<FilterProps> = ({ filters, setFilters }) => {
             name="customized-5"
             max={5}
             precision={0.5}
-            onChange={(event, newValue) => setRating(newValue)}
+            value={filters.rating}
+            onChange={(_, newValue) => setFilters({ ...filters, rating: newValue || 0 })}
           />
         </div>
       </div>
+
+      {/* Botón de búsqueda */}
+      <button onClick={() => console.log(filters)}>
+        Search
+      </button>
     </div>
   );
 };

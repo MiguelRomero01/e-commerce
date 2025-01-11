@@ -76,7 +76,6 @@ export default function ProductCard({ setCart, cart, getProduct_Function }) {
                 borderRadius: "15px",
                 "&:hover": {
                   backgroundColor: "#E0E0E0",
-                  transition: "all 0.2s linear",
                   scale: "1.02",
                   boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.2)",
                 },

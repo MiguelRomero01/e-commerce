@@ -22,7 +22,7 @@ interface ShopProps {
 
 interface FilterState {
     category: string;
-    priceRange: string;
+    priceRange: number[];
     rating: number;
 }
 
@@ -30,7 +30,7 @@ const Shop = ({ isLogged, onLogout, cart, setCart }: ShopProps) => {
     
     const [filters, setFilters] = useState<FilterState>({
         category: 'all',
-        priceRange: 'all',
+        priceRange: [0, 100000],
         rating: 0
     });
 
