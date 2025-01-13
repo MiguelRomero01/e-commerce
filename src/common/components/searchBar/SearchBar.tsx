@@ -35,6 +35,7 @@ const SearchBar: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const products = await getProducts();
+      
       setProducts(products);
     };
     fetchProducts();

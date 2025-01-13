@@ -25,10 +25,10 @@ const getRandomColor = () => {
 const ReviewCard = ({ name, photo, rating, review, color }) => (
   <Card style={{ 
     display: "flex", 
-    padding: { xs: 2, sm: 3, md: 5 },
-    backgroundColor: 'transparent', 
-    border: 'none', 
-    boxShadow: 'none',
+    padding: '4% 10% 4% 0',
+    backgroundColor: '#f3f0f0', 
+    borderRadius: '15px', 
+    boxShadow: '0px 0px 15px 5px rgba(0,0,0,0.75)',
     flexDirection: { xs: 'column', sm: 'row' },
     alignItems: { xs: 'center', sm: 'flex-start' }
   }}>
@@ -36,10 +36,11 @@ const ReviewCard = ({ name, photo, rating, review, color }) => (
       src={photo || ""}
       alt={name}
       sx={{
-        marginRight: { xs: 0, sm: 3, md: 4 },
+        marginRight: { xs: 0, sm: 1, md: 2 },
+        marginLeft: '1%',
         marginBottom: { xs: 2, sm: 0 },
-        width: { xs: 60, sm: 50 },
-        height: { xs: 60, sm: 50 },
+        width: { xs: 50, sm: 50 },
+        height: { xs: 50, sm: 50 },
         backgroundColor: color,
       }}
     >
@@ -68,7 +69,7 @@ const ReviewCard = ({ name, photo, rating, review, color }) => (
       <FormatQuoteIcon sx={{
         display: 'block',
         margin: { xs: '0 auto', sm: '0 auto' },
-        fontSize: { xs: 40, sm: 50, md: 60 },
+        fontSize: { xs: 30, sm: 40, md: 50 },
         color: '#4A90E7'
       }}/>
       <Typography 
@@ -96,7 +97,7 @@ const NextArrow = (props) => {
       style={{
         position: "absolute",
         top: "50%",
-        right: -55,
+        right: 0,
         transform: "translateY(-50%)",
         backgroundColor: "#fff",
         border: "1px solid #868686",
@@ -148,6 +149,13 @@ const ReviewCarousel = () => {
       review: "I loved my shopping experience at Fashion. They have an incredible selection of caps that you don’t easily find in other stores, and the prices are quite competitive. I chose a cap with an exclusive design that I absolutely loved, and the quality exceeded my expectations: durable materials and luxurious finishes. However, the only reason I didn’t give them five stars is that it took a little longer than expected to process my order. Despite this, the cap arrived in excellent condition, and I will definitely shop at Fashion again. I hope they improve processing times because their catalog is amazing." 
     },
     { 
+      name: "Laura Martínez", 
+      photo: "", 
+      rating: 4.5, 
+      color: getRandomColor(), 
+      review: "Fashion is my go-to shop for trendy accessories. I recently purchased a pair of sunglasses, and they exceeded my expectations. The frames are super stylish, lightweight, and durable, perfect for daily wear. What stood out to me the most was their customer service; they promptly answered all my questions and even helped me pick the best model for my face shape. The only reason I’m giving 4.5 stars instead of 5 is that the delivery took a bit longer than expected, but it was well worth the wait. I’m already eyeing some of their new arrivals and will absolutely shop here again!"
+    },
+    { 
       name: "Carlos Sánchez", 
       photo: "", 
       rating: 5, 
@@ -157,21 +165,30 @@ const ReviewCarousel = () => {
   ];
 
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: '0',
     autoplay: true,
     autoplaySpeed: 3000,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
       {
-        breakpoint: 600, // mobile devices
+        breakpoint: 1024,
         settings: {
-          arrows: false, // hide arrows on mobile
-          dots: true
+          slidesToShow: 1,
+          centerMode: true,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          centerMode: true,
+          arrows: true,
         }
       }
     ]
@@ -179,9 +196,22 @@ const ReviewCarousel = () => {
 
   return (
     <Box sx={{ 
-      maxWidth: { xs: '100%', sm: 500, md: 600, lg: 700 },
+      maxWidth: '100%',
       margin: "0 auto",
-      padding: { xs: 2, sm: 3 }
+      padding: { xs: 2, sm: 3 },
+      '& .slick-slide': {
+        opacity: 0.5,
+        transform: 'scale(0.8)',
+        transition: 'all 0.3s ease',
+      },
+      '& .slick-center': {
+        opacity: 1,
+        transform: 'scale(1)',
+      },
+      '& .slick-track': {
+        display: 'flex',
+        alignItems: 'center',
+      }
     }}>
       <Slider {...settings}>
         {reviews.map((review, index) => (

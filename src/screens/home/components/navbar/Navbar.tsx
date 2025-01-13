@@ -81,7 +81,7 @@ const Navbar: React.FC<NavbarProps> = ({
           </li>
           <li>
             <Link
-              to="/shop"
+              to="/shop/all"
               className={navbar_styles["navbar-links"]}
               style={{ color: theme === "light" ? "white" : "black" }}
             >

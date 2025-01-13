@@ -1,10 +1,8 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { forEach } from "mathjs";
 
 interface ComboBoxProps {
   value: string;
@@ -16,7 +14,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({ value, setValue }) => {
     setValue(event.target.value as string);
   };
 
-  const categories = ["all", "plana", "deportiva", "malla", "clasica",];
+  const categories = ["all", "plana", "deportiva", "malla", "superheroes",];
 
   return (
     <Box sx={{ minWidth: 120 }}>
@@ -32,7 +30,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({ value, setValue }) => {
             padding: "1px",
           }}
         >
-          {categories.map((category, index) => (
+          {categories.map((category:string, index:number) => (
             <MenuItem value={category} key={index}>{category}</MenuItem>
           ))}
         </Select>

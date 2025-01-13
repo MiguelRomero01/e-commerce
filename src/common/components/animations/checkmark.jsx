@@ -1,4 +1,3 @@
-import React from 'react';
 import Lottie  from 'lottie-react';
 import checkmarkAnimation from './animations/checkmark.json'; // Ajusta la ruta según la ubicación del archivo JSON
 
