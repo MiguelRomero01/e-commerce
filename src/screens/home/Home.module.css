@@ -12,12 +12,6 @@ body {
   margin: 0 8vw;
 }
 
-.top-sellers-container {
-  will-change: transform;
-  contain: content;
-  /* Ayuda al navegador a optimizar las transformaciones */
-}
-
 section h2{
   position: relative;
   left: 50%; /* Mueve el elemento al 50% del ancho del contenedor */
@@ -30,7 +24,7 @@ section:hover h2::after{
 }
 
 .categories-container {
-  margin: 5vh auto;
+  margin: auto;
   display: flex;
   gap: 0;
   align-items: center;

@@ -27,6 +27,7 @@ const SingleProductCard = memo(({ product, isInCart, onAddToCart }) => (
     key={product.id}
     sx={{
       backgroundColor: "#ffffff",
+      height: "100%",
       borderRadius: "15px",
       "&:hover": {
         backgroundColor: "#E0E0E0",
@@ -173,6 +174,7 @@ export default function ProductCard({ setCart, cart, getProduct_Function }) {
     };
   }, [getProduct_Function]);
 
+  //*if loading
   if (loading) {
     return (
       <div
@@ -188,6 +190,7 @@ export default function ProductCard({ setCart, cart, getProduct_Function }) {
     );
   }
 
+  //*if no products found
   if (!product.length) {
     return (
       <div
