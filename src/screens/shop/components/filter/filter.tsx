@@ -1,54 +1,75 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import FilterStyles from "./filter.module.css";
 import { Rating } from "@mui/material";
+import RangeSlider from "./components/RangeSlider";
+import ComboBox from "./components/ComboBox";
+import { useNavigate } from "react-router-dom";
 
 interface FilterState {
   category: string;
-  priceRange: string;
+  priceRange: number[];
   rating: number;
 }
 
 interface FilterProps {
   filters: FilterState;
   setFilters: React.Dispatch<React.SetStateAction<FilterState>>;
+  isFiltering: boolean;
+  setIsFiltering: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Filter: React.FC<FilterProps> = ({ filters, setFilters }) => {
-  const [rating, setRating] = useState<number | null>(null);
+const Filter: React.FC<FilterProps> = ({
+  filters,
+  setFilters,
+  setIsFiltering,
+}) => {
+  const navigate = useNavigate();
+
+  const handleSearch = (Isfiltered: boolean) => {
+    if (Isfiltered) {
+      setIsFiltering(true);
+      navigate(`/shop/${filters.category}`);
+    } else {
+      setIsFiltering(false);
+      setFilters({
+        category: "all",
+        priceRange: [0, 100000],
+        rating: 0,
+      });
+      navigate('/shop/all');
+    }
+  };
+
+  const handleCategoryChange = (newCategory: string) => {
+    setFilters({ ...filters, category: newCategory });
+    navigate(`/shop/${newCategory}`);
+  };
 
   return (
     <div className={FilterStyles["filter-container"]}>
       <h3>Filtros</h3>
 
+      {/* Categorías */}
       <div className={FilterStyles["filter-section"]}>
         <h4>Categorías</h4>
-        <select
+        <ComboBox
           value={filters.category}
-          onChange={(e) => setFilters({ ...filters, category: e.target.value })}
-        >
-          <option value="all">Todas</option>
-          <option value="electronics">Electrónicos</option>
-          <option value="clothing">Ropa</option>
-          <option value="books">Libros</option>
-        </select>
+          setValue={handleCategoryChange}
+        />
       </div>
 
+      {/* Rango de Precio */}
       <div className={FilterStyles["filter-section"]}>
         <h4>Rango de Precio</h4>
-        <select
+        <RangeSlider
           value={filters.priceRange}
-          onChange={(e) =>
-            setFilters({ ...filters, priceRange: e.target.value })
+          setValue={(newValue) =>
+            setFilters({ ...filters, priceRange: newValue })
           }
-        >
-          <option value="all">Todos</option>
-          <option value="0-50">$0 - $50</option>
-          <option value="51-100">$51 - $100</option>
-          <option value="101-200">$101 - $200</option>
-          <option value="201+">$201+</option>
-        </select>
+        />
       </div>
 
+      {/* Valoración */}
       <div className={FilterStyles["filter-section"]}>
         <h4>Valoración</h4>
         <div className={FilterStyles["rating-filter"]}>
@@ -56,10 +77,18 @@ const Filter: React.FC<FilterProps> = ({ filters, setFilters }) => {
             name="customized-5"
             max={5}
             precision={0.5}
-            onChange={(event, newValue) => setRating(newValue)}
+            value={filters.rating}
+            onChange={(_, newValue) =>
+              setFilters({ ...filters, rating: newValue || 0 })
+            }
           />
         </div>
       </div>
+
+      {/* Botón de búsqueda */}
+      <button onClick={() => handleSearch(true)}>Search</button>
+
+      <button onClick={() => handleSearch(false)}>Reset</button>
     </div>
   );
 };

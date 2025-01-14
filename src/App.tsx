@@ -68,6 +68,15 @@ const App: React.FC = () => {
                                 setCart={setCart}
                             />}
                 />
+                <Route
+                    path='/shop/:category'
+                    element={<Shop 
+                                isLogged={isAuthenticated} 
+                                onLogout={handleLogout} 
+                                cart={cart} 
+                                setCart={setCart}
+                            />}
+                />
             </Routes>
         </Router>
     );

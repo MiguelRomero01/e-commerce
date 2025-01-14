@@ -3,6 +3,7 @@
      font-size: clamp(1.5rem, 3vw, 2rem);
      display: inline-block;
      text-align: center;
+     margin-top: 8vh;
  }
  
  .title-underlined::after {

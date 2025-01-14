@@ -1,0 +1,42 @@
+.next-arrow,
+.prev-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  background-color: #fff !important;
+  border: 1px solid #868686 !important;
+  color: #000 !important;
+}
+
+.next-arrow {
+  right: 20px;
+}
+
+.prev-arrow {
+  left: 20px;
+}
+
+/* Estilos para las tarjetas de reseña */
+:global(.slick-slide) {
+  padding: 20px;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+:global(.slick-track) {
+  display: flex !important;
+  align-items: center !important;
+}
+
+:global(.slick-list) {
+  overflow: visible !important;
+  margin: 0 -20px;
+}
+
+
+@media (max-width: 768px) {
+  :global(.slick-list) {
+    overflow: hidden !important;
+  }
+}

@@ -2,7 +2,53 @@ import React from 'react';
 import './footer.css';
 import { Facebook, Favorite, Instagram, X, YouTube } from '@mui/icons-material';
 
+const SOCIAL_LINKS = [
+  { icon: Facebook, url: 'https://www.facebook.com/', size: 20 },
+  { icon: X, url: 'https://x.com/', size: 20 },
+  { icon: Instagram, url: 'https://www.instagram.com/', size: 20 },
+  { icon: YouTube, url: 'https://www.youtube.com/', size: 22 }
+];
+
+const QUICK_LINKS = [
+  { text: 'About Us', url: '/' },
+  { text: 'Services', url: '/' },
+  { text: 'Projects', url: '/' },
+  { text: 'Contact', url: '/' }
+];
+
+const SERVICES_LINKS = [
+  { text: 'Buy Products', url: '/' },
+  { text: 'Consulting', url: '/' }
+];
+
+const CONTACT_INFO = [
+  '123 Business Street',
+  'New York, NY 10001',
+  'Phone: (555) 123-4567',
+  'Email: info@company.com'
+];
+
 const Footer = () => {
+  const renderSocialLinks = () => (
+    <div className="social-links">
+      {SOCIAL_LINKS.map(({ icon: Icon, url, size }) => (
+        <a key={url} href={url}>
+          <Icon sx={{ fontSize: size }} />
+        </a>
+      ))}
+    </div>
+  );
+
+  const renderLinks = (links: typeof QUICK_LINKS) => (
+    <ul>
+      {links.map(({ text, url }) => (
+        <li key={text}>
+          <a href={url}>{text}</a>
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -11,42 +57,28 @@ const Footer = () => {
           <div className="company-info">
             <h3>FASHION</h3>
             <p>Creating amazing digital experiences with passion and innovation.</p>
-            <div className="social-links">
-              <a href="#"><Facebook sx={{ fontSize: 20 }} /></a>
-              <a href="#"><X sx={{ fontSize: 20 }} /></a>
-              <a href="#"><Instagram sx={{ fontSize: 20 }} /></a>
-              <a href="#"><YouTube sx={{ fontSize: 22 }} /></a>
-            </div>
+            {renderSocialLinks()}
           </div>
 
           {/* Quick Links */}
           <div className="footer-section">
             <h3>Quick Links</h3>
-            <ul>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Projects</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
+            {renderLinks(QUICK_LINKS)}
           </div>
 
           {/* Services */}
           <div className="footer-section">
             <h3>Services</h3>
-            <ul>
-              <li><a href="#">Buy Products</a></li>
-              <li><a href="#">Consulting</a></li>
-            </ul>
+            {renderLinks(SERVICES_LINKS)}
           </div>
 
           {/* Contact Info */}
           <div className="footer-section">
             <h3>Contact Us</h3>
             <ul>
-              <li>123 Business Street</li>
-              <li>New York, NY 10001</li>
-              <li>Phone: (555) 123-4567</li>
-              <li>Email: info@company.com</li>
+              {CONTACT_INFO.map((info) => (
+                <li key={info}>{info}</li>
+              ))}
             </ul>
           </div>
         </div>
