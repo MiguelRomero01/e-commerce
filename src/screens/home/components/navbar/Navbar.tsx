@@ -23,6 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  
 
   const handleSignIn = () => {
     navigate("/login");

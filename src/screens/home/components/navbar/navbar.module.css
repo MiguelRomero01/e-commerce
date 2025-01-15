@@ -4,8 +4,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 5vmin;
-    position: absolute;
+    position: fixed;
+    top: 0;
     width: 100%;
+    height: 4.5rem;
     background-color: transparent !important;
     backdrop-filter: blur(30px);
     box-shadow: 0px 0px 30px rgba(89, 89, 89, 0.37);
@@ -53,8 +55,8 @@
 
 .links-container li {
     margin: 0 1.8vw;
-    font-size: 1.1rem;
-    transition: all 0.3s linear;
+    font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+    transition: all 0.3s ease;
 }
 
 .links-container li:hover {
@@ -144,6 +146,7 @@
         left: 0;
         width: 100%;
         backdrop-filter: blur(30px);
+        transition: transform 0.3s ease;
     }
 
     /* Estilos para tema claro */
@@ -157,18 +160,26 @@
     }
 
     .links-container.menu-open {
-        display: block;  /* Mostrar los links cuando el menú está abierto */
+        display: block;
+        transform: translateY(0);
     }
 
     .links-container ul {
         flex-direction: column;
         padding: 1rem;
+        gap: 1rem;
     }
 
     .links-container li {
-        margin: 0.8rem 0;
-        width: 100%;
-        text-align: center;
+        margin: 0;
+        padding: 0.5rem 0;
+        font-size: 1rem;
+    }
+
+    .sign-in-button {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.8rem;
+        height: 2.2rem;
     }
 }
 

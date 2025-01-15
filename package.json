@@ -63,6 +63,7 @@
     ]
   },
   "devDependencies": {
+    "@types/aos": "^3.0.7",
     "@types/bcryptjs": "^2.4.6",
     "@types/express": "^5.0.0",
     "@types/multer": "^1.4.12",

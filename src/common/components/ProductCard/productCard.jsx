@@ -143,7 +143,7 @@ export default function ProductCard({ setCart, cart, getProduct_Function }) {
   // Optimizar useEffect para AOS
   useEffect(() => {
     AOS.init({
-      duration: 1500,
+      duration: 500,
       once: true,
     });
   }, []);

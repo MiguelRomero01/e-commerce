@@ -1,8 +1,15 @@
+import React from "react";
 import { Facebook, Instagram, X, YouTube } from "@mui/icons-material";
+
+//AOS animation
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import './socialMedia.css';
 const SocialMedia = () => {
+
      return(
-          <aside style={{ top:'0', width:'1vw', textAlign:"right" }}>
+          <aside style={{ top:'0', width:'1vw', textAlign:"right" }} data-aos="fade-left" data-aos-duration="2000">
                {/* Instagram Gradient SVG*/}
                <svg style={{ width: 0, height: 0, position: 'absolute' }}>
                     <defs>
@@ -37,7 +44,8 @@ const SocialMedia = () => {
                               color:'white', 
                               transition: "all 0.3s ease",
                               "&:hover":{
-                                   color:'#d1d1d1'
+                                   color:'#d1d1d1',
+                                   transform: 'scale(1.1)'
                               }
                          }}/>
                </a>
@@ -49,7 +57,8 @@ const SocialMedia = () => {
                               color:'white', 
                               transition: "all 0.3s ease",
                               "&:hover":{
-                                   color:'#1877F2'
+                                   color:'#1877F2',
+                                   transform: 'scale(1.1)'
                               }
                          }}/>
                </a>
@@ -61,7 +70,8 @@ const SocialMedia = () => {
                               color:'white', 
                               transition: "all 0.3s ease",
                               "&:hover":{
-                                   color:'#FF0000'
+                                   color:'#FF0000',
+                                   transform: 'scale(1.1)'
                               }
                          }}/>
                </a>

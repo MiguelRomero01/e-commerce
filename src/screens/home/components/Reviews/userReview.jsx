@@ -139,28 +139,28 @@ const ReviewCarousel = () => {
       photo: "", 
       rating: 5, 
       color: getRandomColor(),
-      review: "Fashion is, without a doubt, my new favorite store for buying caps. From the moment I entered the website, I noticed it was designed with the customer in mind. The variety of caps they offer is impressive, ranging from classic styles to modern and unique designs. I bought an urban-style cap, and it arrived in perfect condition, with impeccable packaging. Also, the shipping time was fast, even quicker than I expected. The customer service team is another highlight; they answered all my questions with kindness and efficiency. I will definitely shop here again and recommend Fashion to all my friends." 
+      review: "Fashion is, without a doubt, my new favorite store for buying caps. From the moment I entered the website, I noticed it was designed with the customer in mind. The variety of caps they offer is impressive, ranging from classic styles to modern and unique designs. I bought an urban-style cap, and it arrived in perfect condition, with impeccable packaging. Also, the shipping time was fast, even quicker than I expected. The customer service team is another highlight; they answered all my questions with kindness and efficiency." 
     },
     { 
       name: "Maria López", 
       photo: "", 
       rating: 4, 
       color: getRandomColor(),
-      review: "I loved my shopping experience at Fashion. They have an incredible selection of caps that you don’t easily find in other stores, and the prices are quite competitive. I chose a cap with an exclusive design that I absolutely loved, and the quality exceeded my expectations: durable materials and luxurious finishes. However, the only reason I didn’t give them five stars is that it took a little longer than expected to process my order. Despite this, the cap arrived in excellent condition, and I will definitely shop at Fashion again. I hope they improve processing times because their catalog is amazing." 
+      review: "I loved my shopping experience at Fashion. They have an incredible selection of caps that you don’t easily find in other stores, and the prices are quite competitive. I chose a cap with an exclusive design that I absolutely loved, and the quality exceeded my expectations: durable materials and luxurious finishes. However, the only reason I didn’t give them five stars is that it took a little longer than expected to process my order. Despite this, the cap arrived in excellent condition, and I will definitely shop at Fashion again." 
     },
     { 
       name: "Laura Martínez", 
       photo: "", 
       rating: 4.5, 
       color: getRandomColor(), 
-      review: "Fashion is my go-to shop for trendy accessories. I recently purchased a pair of sunglasses, and they exceeded my expectations. The frames are super stylish, lightweight, and durable, perfect for daily wear. What stood out to me the most was their customer service; they promptly answered all my questions and even helped me pick the best model for my face shape. The only reason I’m giving 4.5 stars instead of 5 is that the delivery took a bit longer than expected, but it was well worth the wait. I’m already eyeing some of their new arrivals and will absolutely shop here again!"
+      review: "Fashion is my go-to shop for trendy accessories. I recently purchased a pair of sunglasses, and they exceeded my expectations. The frames are super stylish, lightweight, and durable, perfect for daily wear. What stood out to me the most was their customer service; they promptly answered all my questions and even helped me pick the best model for my face shape. The only reason I’m giving 4.5 stars instead of 5 is that the delivery took a bit longer than expected, but it was well worth the wait."
     },
     { 
       name: "Carlos Sánchez", 
       photo: "", 
       rating: 5, 
       color: getRandomColor(),
-      review: "Fashion is the perfect place to find the ideal cap. I’m a cap enthusiast and always look for designs that stand out, and here I found exactly what I was looking for. I bought a limited-edition cap, and you can tell the care they put into every detail, from the design to the quality of the materials. I was pleasantly surprised that the store offers free shipping for orders over a certain amount, which is a great bonus. I also loved that they have constant promotions, making it easier to get amazing products without overspending. I’ll definitely keep shopping at Fashion and recommend it to all my friends!" 
+      review: "Fashion is the perfect place to find the ideal cap. I’m a cap enthusiast and always look for designs that stand out, and here I found exactly what I was looking for. I bought a limited-edition cap, and you can tell the care they put into every detail, from the design to the quality of the materials. I was pleasantly surprised that the store offers free shipping for orders over a certain amount, which is a great bonus. I also loved that they have constant promotions, making it easier to get amazing products without overspending." 
     },
   ];
 

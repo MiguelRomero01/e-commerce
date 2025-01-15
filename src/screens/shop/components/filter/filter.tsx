@@ -33,7 +33,7 @@ const Filter: React.FC<FilterProps> = ({
       setIsFiltering(false);
       setFilters({
         category: "all",
-        priceRange: [0, 100000],
+        priceRange: [0, 120000],
         rating: 0,
       });
       navigate('/shop/all');
@@ -84,10 +84,7 @@ const Filter: React.FC<FilterProps> = ({
           />
         </div>
       </div>
-
-      {/* Botón de búsqueda */}
-      <button onClick={() => handleSearch(true)}>Search</button>
-
+      
       <button onClick={() => handleSearch(false)}>Reset</button>
     </div>
   );

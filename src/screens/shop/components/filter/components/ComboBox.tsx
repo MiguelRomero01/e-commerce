@@ -14,7 +14,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({ value, setValue }) => {
     setValue(event.target.value as string);
   };
 
-  const categories = ["all", "plana", "deportiva", "malla", "superheroes", "moderna"];
+  const categories = ["all", "plana", "casual", "malla", "superheroes", "moderna"];
 
   return (
     <Box sx={{ minWidth: 120 }}>
