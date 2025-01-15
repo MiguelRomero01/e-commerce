@@ -24,7 +24,7 @@ const Filter: React.FC<FilterProps> = ({
   setIsFiltering,
 }) => {
   const navigate = useNavigate();
-
+  
   const handleSearch = (Isfiltered: boolean) => {
     if (Isfiltered) {
       setIsFiltering(true);
@@ -36,8 +36,9 @@ const Filter: React.FC<FilterProps> = ({
         priceRange: [0, 120000],
         rating: 0,
       });
-      navigate('/shop/all');
+      navigate("/shop/all");
     }
+    
   };
 
   const handleCategoryChange = (newCategory: string) => {
@@ -52,10 +53,7 @@ const Filter: React.FC<FilterProps> = ({
       {/* Categorías */}
       <div className={FilterStyles["filter-section"]}>
         <h4>Categorías</h4>
-        <ComboBox
-          value={filters.category}
-          setValue={handleCategoryChange}
-        />
+        <ComboBox value={filters.category} setValue={handleCategoryChange} />
       </div>
 
       {/* Rango de Precio */}
@@ -84,7 +82,7 @@ const Filter: React.FC<FilterProps> = ({
           />
         </div>
       </div>
-      
+
       <button onClick={() => handleSearch(false)}>Reset</button>
     </div>
   );

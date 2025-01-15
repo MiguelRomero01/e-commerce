@@ -2,6 +2,9 @@ import React, {useEffect, useState} from "react";
 import HeroStyles from "./HeroSection.module.css";
 import SocialMedia from "../../../../common/components/others/socialMedia";
 
+//aos animation
+import "aos/dist/aos.css";
+
 export default function HeroSection () {
   const [displayText, setDisplayText] = useState({
     line1: '',
@@ -12,7 +15,7 @@ export default function HeroSection () {
 
   useEffect(() => {
     const texts = ["LET'S", "EXPLORE", "UNIQUE", "CLOTHES"];
-    const delays = [0, 500, 1200, 1900]; // Delays for each line
+    const delays = [0, 350, 900, 1400]; // Delays for each line
 
     texts.forEach((text, index) => {
       let currentText = '';
@@ -25,7 +28,7 @@ export default function HeroSection () {
             ...prev,
             [lineKey]: currentText
           }));
-        }, delays[index] + (letterIndex * 100)); // 100ms between each letter
+        }, delays[index] + (letterIndex * 80)); // 100ms between each letter
       });
     });
   }, []);
@@ -39,8 +42,8 @@ export default function HeroSection () {
                 <span className={HeroStyles['unique-word']}>{displayText.line3}</span> <br />
                 <span>{displayText.line4}</span>
               </h1>
-              <p className={HeroStyles.text}>Live for influential and innovative fashion!</p>
-              <button className={HeroStyles['main-button']}>Get Started</button>
+              <p className={HeroStyles.text} data-aos="fade-right" data-aos-delay="1800" data-aos-duration="500">Live for influential and innovative fashion!</p>
+              <button className={HeroStyles['main-button']} data-aos="fade-right" data-aos-delay="1800" data-aos-duration="500">Get Started</button>
             </div>
 
             <div style={{marginBottom:'65vh'}}>

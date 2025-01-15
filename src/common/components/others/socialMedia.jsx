@@ -9,7 +9,7 @@ import './socialMedia.css';
 const SocialMedia = () => {
 
      return(
-          <aside style={{ top:'0', width:'1vw', textAlign:"right" }} data-aos="fade-left" data-aos-duration="2000">
+          <aside style={{ top:'0', width:'1vw', textAlign:"right" }} data-aos="fade-right" data-aos-duration="500" data-aos-delay="1800">
                {/* Instagram Gradient SVG*/}
                <svg style={{ width: 0, height: 0, position: 'absolute' }}>
                     <defs>
@@ -71,7 +71,7 @@ const SocialMedia = () => {
                               transition: "all 0.3s ease",
                               "&:hover":{
                                    color:'#FF0000',
-                                   transform: 'scale(1.1)'
+                                   transform: 'scale(1.1)'  
                               }
                          }}/>
                </a>

@@ -53,7 +53,7 @@ const HomeScreen: React.FC<HomeProps> = ({
 
   return (
     <div>
-      <header data-aos="fade-down" data-aos-duration="2000">
+      <header data-aos="fade-down" data-aos-duration="500" data-aos-delay="1800">
         <Navbar
           isLogged={isLogged}
           onLogout={onLogout}
@@ -64,7 +64,7 @@ const HomeScreen: React.FC<HomeProps> = ({
       </header>
 
       <main>
-        <HeroSection /> {/*hero section*/}
+        <HeroSection /> 
         <section className={HomeStyles["top-sellers-section"]}>
           <TitleWithUnderline title={"Best Sellers"} level={2} />
           <div className={HomeStyles["top-sellers-container"]}>
@@ -96,7 +96,7 @@ const HomeScreen: React.FC<HomeProps> = ({
             <CategorieCard
               image={"/Images/Home/categories/persona1.jpeg"}
               information="For when you just want to be yourself and nothing more."
-              navigation="/shop/"
+              navigation="/shop/casual"
               title="Improve your casual style"
             />
 

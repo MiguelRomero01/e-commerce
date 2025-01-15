@@ -35,7 +35,7 @@ const Shop = ({ isLogged, onLogout, cart, setCart }: ShopProps) => {
 
   const [filters, setFilters] = useState<FilterState>({
     category: "all",
-    priceRange: [0, 100000],
+    priceRange: [0, 120000],
     rating: 0,
   });
 
