@@ -1,6 +1,6 @@
 import React from "react";
 import quantityStyles from "./quantity.module.css";
-import { CartDropdown_ProductsType } from "../../../../../../../features/services/Cart/CartDropdownProducts";
+import { CartDropdown_ProductsType } from "../../../../../../features/services/Cart/CartDropdownProducts";
 
 interface QuantityProps {
      productId: number;

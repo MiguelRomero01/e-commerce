@@ -3,7 +3,7 @@ import ProductDetailsPageStyles from "./ProductDetailsPage.module.css";
 
 //components
 import ImageZoom from "../../common/components/zoom/zoomImage";
-import Navbar from "../home/components/Navbar";
+import { Navbar } from "../../common/components/Navbar";
 
 //services
 import { useParams } from "react-router-dom";

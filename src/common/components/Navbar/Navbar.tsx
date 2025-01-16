@@ -4,7 +4,7 @@ import navbar_styles from "./navbar.module.css";
 
 import UserDropdown from "./dropDown/user/userDropdown";
 import CartDropdown from "./dropDown/cart/cartDropdown";
-import { CartDropdown_ProductsType } from "../../../../features/services/Cart/CartDropdownProducts";
+import { CartDropdown_ProductsType } from "../../../features/services/Cart/CartDropdownProducts";
 
 interface NavbarProps {
   isLogged: boolean;

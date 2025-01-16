@@ -9,9 +9,9 @@ import { Delete } from "@mui/icons-material";
 import Quantity from "./components/quantity";
 
 //services
-import { RemoveProduct } from "../../../../../../features/services/Cart/RemoveProduct";
-import { formatNumber } from "../../../../../../features/services/formatPrice";
-import { CartDropdown_ProductsType } from "../../../../../../features/services/Cart/CartDropdownProducts"; 
+import { RemoveProduct } from "../../../../../features/services/Cart/RemoveProduct";
+import { formatNumber } from "../../../../../features/services/formatPrice";
+import { CartDropdown_ProductsType } from "../../../../../features/services/Cart/CartDropdownProducts";
 
 type userProducts = {
   Products: CartDropdown_ProductsType[];

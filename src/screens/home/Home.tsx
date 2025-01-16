@@ -5,7 +5,7 @@ import HomeStyles from "./Home.module.css";
 import "aos/dist/aos.css";
 
 //components
-import Navbar from "./components/Navbar";
+import { Navbar } from "../../common/components/Navbar";
 import HeroSection from "./components/Hero-Section";
 import ProductCard from "../../common/components/ProductCard";
 import TitleWithUnderline from "../../common/components/Titles/TitleUnderline";
