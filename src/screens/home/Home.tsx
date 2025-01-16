@@ -6,7 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 //components
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import HeroSection from "./components/Hero-Section";
 import ProductCard from "../../common/components/ProductCard";
 import TitleWithUnderline from "../../common/components/Titles/TitleUnderline";
