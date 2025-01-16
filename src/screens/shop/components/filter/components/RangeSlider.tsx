@@ -1,8 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import MoneyOffIcon from '@mui/icons-material/MoneyOff';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 //services
 import { formatNumber } from "../../../../../features/services/formatPrice";
@@ -15,11 +13,11 @@ interface RangeSliderProps {
 const marks = [
   {
     value: 9000,
-    label: <MoneyOffIcon sx={{fontSize:20}}/>,
+    label: `$${formatNumber(9000)}`,
   },
   {
     value: 120000,
-    label: <AttachMoneyIcon sx={{fontSize:20}}/>,
+    label: `$${formatNumber(120000)}`,
   },
 ];
 

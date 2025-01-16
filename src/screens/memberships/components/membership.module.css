@@ -1,3 +1,108 @@
-.membership-container{
-     padding: 10px;
+.membership-container {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(43, 42, 42, 0.445);
+  transition: all 0.13s linear !important;
+  width: min(300px, 90%);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 68vh;
+}
+
+.membership-container:hover {
+  transform: translateY(-2vh) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.504);
+}
+
+#upper-section {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+#upper-section h3 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+}
+
+#upper-section h4 {
+  color: #3498db;
+  font-size: 2.6rem;
+  font-weight: bold;
+  margin-top: -2vmin;
+  margin-bottom: 1px;
+}
+
+#upper-section h4 span {
+  font-size: 1.2rem;
+  color: #7f8c8dc2;
+}
+
+#upper-section hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, #1295ec, #2772a1);
+}
+
+#lower-section {
+  padding: 0 1rem;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+#lower-section span {
+  color: #7f8c8d;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+#includes-List {
+  list-style: none;
+  padding: 0;
+}
+
+#includes-List li {
+  color: #34495e;
+  margin: 0.8rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+#includes-List li::before {
+  content: "✓";
+  color: #2ecc71;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+#buy-member-button {
+  width: 100%;
+  padding: 3% 0;
+  font: 600 1rem "Poppins";
+  border-radius: 10px;
+  border: none;
+  background-color: #3498db;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  margin-top: auto;
+}
+
+#buy-member-button:hover {
+  background-color: #397ca8;
+  transform: translateY(-10%);
+}
+
+.icon-container {
+  color: #1094eb;
+  margin: 0;
+  background-color: rgba(16, 148, 235, 0.1);
+  padding: 10px;
+  border-radius: 10%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
