@@ -2,7 +2,6 @@ import React from "react";
 import { Facebook, Instagram, X, YouTube } from "@mui/icons-material";
 
 //AOS animation
-import AOS from "aos";
 import "aos/dist/aos.css";
 
 import './socialMedia.css';

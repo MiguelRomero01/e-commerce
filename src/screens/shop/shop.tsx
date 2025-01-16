@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ShopStyles from "./shop.module.css";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 
 // Components
 import Navbar from "../home/components/Navbar";
@@ -28,7 +28,6 @@ interface FilterState {
 }
 
 const Shop = ({ isLogged, onLogout, cart, setCart }: ShopProps) => {
-  const navigate = useNavigate();
   const { category } = useParams();
 
   const [isFiltering, setIsFiltering] = useState<boolean>(false);

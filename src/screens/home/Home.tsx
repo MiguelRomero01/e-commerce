@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import HomeStyles from "./Home.module.css";
 
 //AOS animation
-import AOS from "aos";
 import "aos/dist/aos.css";
 
 //components
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/Navbar";
 import HeroSection from "./components/Hero-Section";
 import ProductCard from "../../common/components/ProductCard";
 import TitleWithUnderline from "../../common/components/Titles/TitleUnderline";
