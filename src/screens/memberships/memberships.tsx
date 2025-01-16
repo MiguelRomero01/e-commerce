@@ -3,7 +3,7 @@ import membershipStyles from "./memberships.module.css";
 import Membership from "./components/membership";
 
 import { CartDropdown_ProductsType } from "../../features/services/Cart/CartDropdownProducts";
-import Navbar from "../home/components/Navbar";
+import Navbar from "../home/components/Navbar/Navbar";
 
 interface membershipsProps {
   isLogged: boolean;

@@ -3,7 +3,7 @@ import ShopStyles from "./shop.module.css";
 import {  useParams } from "react-router-dom";
 
 // Components
-import Navbar from "../home/components/Navbar";
+import Navbar from "../home/components/Navbar/Navbar";
 import Filter from "./components/filter/filter";
 import ProductCard from "../../common/components/ProductCard";
 import { SearchBar } from "../../common/components/searchBar";
