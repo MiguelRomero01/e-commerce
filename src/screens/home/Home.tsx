@@ -23,6 +23,7 @@ interface HomeProps {
   onLogout: () => void;
   cart: CartDropdown_ProductsType[];
   setCart: React.Dispatch<React.SetStateAction<CartDropdown_ProductsType[]>>;
+  membership:string | null;
 }
 
 const handleFileChange = async (
@@ -43,6 +44,7 @@ const HomeScreen: React.FC<HomeProps> = ({
   onLogout,
   setCart,
   cart,
+  membership
 }) => {
   // La seccion de añadir archivos para ser mandados a la db y demas se cambiará de aca a una cuenta de admin
   const [file, setFile] = useState<File | null>(null);
@@ -59,6 +61,7 @@ const HomeScreen: React.FC<HomeProps> = ({
           cart={cart}
           setCart={setCart}
           theme="light"
+          membership={membership}
         />
       </header>
 

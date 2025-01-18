@@ -46,7 +46,7 @@ export default function HeroSection () {
               <button className={HeroStyles['main-button']} data-aos="fade-right" data-aos-delay="1800" data-aos-duration="500">Get Started</button>
             </div>
 
-            <div style={{marginBottom:'65vh'}}>
+            <div style={{marginBottom:'65vh', marginRight:"-4vmin"}}>
               <SocialMedia/>
             </div>
 

@@ -19,8 +19,8 @@ const UserDropdown = ({onLogout, theme}:UserDropdownProps) => {
                sx={{
                     color: theme === 'light' ? 'white' : 'black',
                     fontSize: '2rem', 
-                    marginRight:'5vmin',
-                    marginTop:'4px',
+                    marginRight:'4vmin',
+                    marginTop:'8px',
                     transition: 'all 0.3s ease',
                     '&:hover':{
                          scale: '1.1',

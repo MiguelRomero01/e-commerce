@@ -12,6 +12,7 @@ interface membershipsProps {
   onLogout: () => void;
   cart: CartDropdown_ProductsType[];
   setCart: React.Dispatch<React.SetStateAction<CartDropdown_ProductsType[]>>;
+  membership:string | null;
 }
 
 const membershipScreen: React.FC<membershipsProps> = ({
@@ -19,6 +20,7 @@ const membershipScreen: React.FC<membershipsProps> = ({
   onLogout,
   cart,
   setCart,
+  membership
 }) => {
   return (
     <>
@@ -29,6 +31,7 @@ const membershipScreen: React.FC<membershipsProps> = ({
           cart={cart}
           setCart={setCart}
           theme="dark"
+          membership={membership}
         />
       </header>
 

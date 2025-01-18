@@ -7,9 +7,10 @@ import { useNavigate, Link } from 'react-router-dom';
 
 interface LoginProps {
     onAuthSuccess: () => void;
+    onUsernameSuccess: (username:string) => void;
 }
 
-const Login: React.FC<LoginProps> = ({ onAuthSuccess }) => {
+const Login: React.FC<LoginProps> = ({ onAuthSuccess, onUsernameSuccess }) => {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -23,6 +24,7 @@ const Login: React.FC<LoginProps> = ({ onAuthSuccess }) => {
             
             if (isAuthenticated) {
                 onAuthSuccess();
+                onUsernameSuccess(username)
                 navigate('/');
             } else {
                 setError('Invalid username or password. Please try again.');
