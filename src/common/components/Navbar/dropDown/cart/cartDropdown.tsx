@@ -20,20 +20,31 @@ type userProducts = {
 type CartDropdownProps = userProducts & {
   setCart: React.Dispatch<React.SetStateAction<CartDropdown_ProductsType[]>>;
   theme: string;
+  membership: string | null;
 };
 
 const CartDropdown: React.FC<CartDropdownProps> = ({
   Products,
   setCart,
   theme,
+  membership,
 }) => {
   const [showDropdownCart, setShowDropdownCart] = useState(false);
 
-  // Calcular el total basado en productos y sus cantidades
-  const total = Products.reduce(
+  // Calcular el subtotal basado en productos y sus cantidades
+  const subtotal = Products.reduce(
     (sum, product) => sum + product.Price * product.quantity,
     0
   );
+
+  //calcular el total
+  let total = 0;
+  if (membership) {
+    const membershipFloat = parseFloat(membership);
+    total = subtotal - subtotal * (membershipFloat / 100);
+  } else {
+    total = subtotal;
+  }
 
   return (
     <div className={cartDropdown_styles.container}>
@@ -74,9 +85,10 @@ const CartDropdown: React.FC<CartDropdownProps> = ({
                     <div className={cartDropdown_styles.productInfo}>
                       <h3>{productCart.Title}</h3>
                       <p className={cartDropdown_styles.price}>
-                        ${formatNumber(productCart.Price * productCart.quantity)}
+                        $
+                        {formatNumber(productCart.Price * productCart.quantity)}
                       </p>
-                      <Quantity 
+                      <Quantity
                         productId={productCart.id}
                         quantity={productCart.quantity}
                         setCart={setCart}
@@ -84,7 +96,7 @@ const CartDropdown: React.FC<CartDropdownProps> = ({
                     </div>
 
                     <button
-                      onClick={() => RemoveProduct(productCart.id, setCart )}
+                      onClick={() => RemoveProduct(productCart.id, setCart)}
                       className={cartDropdown_styles["remove-product"]}
                     >
                       <Delete
@@ -102,7 +114,11 @@ const CartDropdown: React.FC<CartDropdownProps> = ({
                 ))}
               </ul>
               <div className={cartDropdown_styles.cartTotal}>
-                <p>Total: ${formatNumber(total)}</p>
+                <p>SubTotal: ${formatNumber(subtotal)}</p>
+                <p>Descount membership: {membership}%</p>
+                <p id={cartDropdown_styles["cart-total"]}>
+                  Total: ${formatNumber(total)}
+                </p>
               </div>
               <div className={cartDropdown_styles.cartFooter}>
                 <button className={cartDropdown_styles.checkoutButton}>

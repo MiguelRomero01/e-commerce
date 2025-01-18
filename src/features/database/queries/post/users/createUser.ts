@@ -1,7 +1,7 @@
 import { supabase } from "../../../../services/supaBase";
 import { CryptPassword } from "../../../../services/HashPassword";
 
-export const addUser = async (username: string, password: string) => {
+export const addUser = async (username: string, password: string, membership: null) => {
      try{
           const hashedPassoword = await CryptPassword(password);
           
@@ -10,7 +10,8 @@ export const addUser = async (username: string, password: string) => {
                .insert([
                     {
                          username: username,
-                         password: hashedPassoword
+                         password: hashedPassoword,
+                         membership: membership
                     },
                ]);
 

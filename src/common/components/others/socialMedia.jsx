@@ -55,6 +55,7 @@ const SocialMedia = () => {
                               fontSize:35, 
                               color:'white', 
                               transition: "all 0.3s ease",
+                              zIndex:-1,
                               "&:hover":{
                                    color:'#1877F2',
                                    transform: 'scale(1.1)'

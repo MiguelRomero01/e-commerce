@@ -12,6 +12,7 @@ import errorRegister from "./components/errorRegister";
 type State = {
      username: string;
      password: string;
+     membership: null;
      repeat_password: string;
      message: string;
      error: string ;
@@ -27,6 +28,7 @@ type action =
 const initialState: State = {
      username: '',
      password: '',
+     membership: null,
      repeat_password: '',
      message: '',
      error: ''
@@ -43,34 +45,57 @@ const reducer = (state: State, action: action): State => {
      }
 }
 
+// Agregar interface para validación
+interface ValidationResult {
+  isValid: boolean;
+  error?: string;
+}
+
+// Separar la lógica de validación
+const validateForm = (username: string, password: string, repeatPassword: string): ValidationResult => {
+  if (!username.trim()) {
+    return { isValid: false, error: 'Username is required' };
+  }
+  if (password.length < 6) {
+    return { isValid: false, error: 'Password must be at least 6 characters' };
+  }
+  if (password !== repeatPassword) {
+    return { isValid: false, error: "Passwords don't match" };
+  }
+  return { isValid: true };
+};
+
 const RegisterScreen: React.FC = () => {
      const [state, dispatch] = useReducer(reducer, initialState)
 
      const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
-
-          if (state.password !== state.repeat_password){
-               dispatch({ type: 'SET_MESSAGE', payload: '' })
-               dispatch({ type: 'SET_ERROR', payload: "The password doesn't match" })
-               return errorRegister({ text: state.error, icon: "error" });
+          
+          // Validar antes de hacer la llamada al servidor
+          const validation = validateForm(state.username, state.password, state.repeat_password);
+          
+          if (!validation.isValid) {
+               dispatch({ type: 'SET_ERROR', payload: validation.error || '' });
+               return;
           }
 
-          const isRegistered = await addUser(state.username, state.password)
-
-          if(isRegistered){
-               dispatch({ type: 'SET_ERROR', payload: '' })
-               dispatch({ type: 'SET_MESSAGE', payload: 'User was added successfully' })
-               return <SuccessRegister />;
-          } 
-          else{
-               dispatch({ type: 'SET_MESSAGE', payload: '' })
-               dispatch({ type: 'SET_ERROR', payload: 'Your user already exists' })
-               return errorRegister({ text: state.error, icon: "error" });
+          try {
+               const isRegistered = await addUser(state.username, state.password, state.membership);
+               
+               if (isRegistered) {
+                    dispatch({ type: 'SET_ERROR', payload: '' });
+                    dispatch({ type: 'SET_MESSAGE', payload: 'User was added successfully' });
+               } else {
+                    dispatch({ type: 'SET_ERROR', payload: 'User already exists' });
+               }
+          } catch (error) {
+               dispatch({ type: 'SET_ERROR', payload: 'An error occurred during registration' });
           }
      }
 
+     // Mover el error register al efecto para evitar renders innecesarios
      useEffect(() => {
-          if(state.error !== ''){
+          if (state.error) {
                errorRegister({ text: state.error, icon: "error" });
           }
      }, [state.error])
@@ -93,6 +118,7 @@ const RegisterScreen: React.FC = () => {
                          sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
                          autoComplete="off"
                          onSubmit={handleRegister}
+                         noValidate // Agregar noValidate para manejar validación custom
                     >
                          <AuthInput
                               type="text"
@@ -115,7 +141,9 @@ const RegisterScreen: React.FC = () => {
                               onChange={(e) => dispatch({ type: 'SET_REPEAT_PASSWORD', payload: e.target.value })}
                          />
                          
-                         {state.message  && <SuccessRegister/>}
+                         {state.message && <SuccessRegister />}
+                         {state.error && <div className={registerStyles['error-message']}>{state.error}</div>}
+                         
                          <button type="submit" className={registerStyles['register-button']}>Sign up</button>
                          <p className={registerStyles['account-question']}>have an account? <Link  to="/login" className={registerStyles['link-signUp']}>Sign In</Link></p>
                     </Box>

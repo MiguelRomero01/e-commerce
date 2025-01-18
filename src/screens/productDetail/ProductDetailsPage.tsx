@@ -25,6 +25,7 @@ interface ProductDetailProps {
   onLogout: () => void;
   cart: CartDropdown_ProductsType[];
   setCart: React.Dispatch<React.SetStateAction<CartDropdown_ProductsType[]>>;
+  membership:string | null;
 }
 
 const ProductDetailsPage: React.FC<ProductDetailProps> = ({
@@ -32,6 +33,7 @@ const ProductDetailsPage: React.FC<ProductDetailProps> = ({
   onLogout,
   cart,
   setCart,
+  membership
 }) => {
   const { id } = useParams();
   const [productData, setProductData] = useState<any>(null);
@@ -58,6 +60,7 @@ const ProductDetailsPage: React.FC<ProductDetailProps> = ({
           cart={cart}
           setCart={setCart}
           theme="dark"
+          membership={membership}
         />
       </header>
 
@@ -115,7 +118,6 @@ const ProductDetailsPage: React.FC<ProductDetailProps> = ({
                     quantity: 1,
                     Price: parseFloat(productData.Price)
                   };
-                  console.log("Producto a añadir desde DetailPage:", productToAdd);
                   handleAddToCart({
                     product: productToAdd,
                     setCart: setCart,

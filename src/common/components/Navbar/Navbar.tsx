@@ -11,6 +11,7 @@ interface NavbarProps {
   onLogout: () => void;
   cart: CartDropdown_ProductsType[];
   setCart: React.Dispatch<React.SetStateAction<CartDropdown_ProductsType[]>>;
+  membership:string | null;
   theme: string;
 }
 
@@ -19,6 +20,7 @@ const Navbar: React.FC<NavbarProps> = ({
   onLogout,
   cart,
   setCart,
+  membership,
   theme,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -115,6 +117,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 Products={cart || []}
                 setCart={setCart}
                 theme={theme}
+                membership={membership}
               />
               <button
                 className={navbar_styles["sign-in-button"]}
@@ -134,6 +137,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 Products={cart || []}
                 setCart={setCart}
                 theme={theme}
+                membership={membership}
               />
             </>
           )}

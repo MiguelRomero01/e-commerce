@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ShopStyles from "./shop.module.css";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // Components
 import { Navbar } from "../../common/components/Navbar";
@@ -19,6 +19,7 @@ interface ShopProps {
   onLogout: () => void;
   cart: CartDropdown_ProductsType[];
   setCart: React.Dispatch<React.SetStateAction<CartDropdown_ProductsType[]>>;
+  membership: string | null;
 }
 
 interface FilterState {
@@ -27,7 +28,7 @@ interface FilterState {
   rating: number;
 }
 
-const Shop = ({ isLogged, onLogout, cart, setCart }: ShopProps) => {
+const Shop = ({ isLogged, onLogout, cart, setCart, membership }: ShopProps) => {
   const { category } = useParams();
 
   const [isFiltering, setIsFiltering] = useState<boolean>(false);
@@ -40,9 +41,9 @@ const Shop = ({ isLogged, onLogout, cart, setCart }: ShopProps) => {
 
   React.useEffect(() => {
     if (category) {
-      setFilters(prev => ({
+      setFilters((prev) => ({
         ...prev,
-        category: category
+        category: category,
       }));
       setIsFiltering(true);
     }
@@ -64,6 +65,7 @@ const Shop = ({ isLogged, onLogout, cart, setCart }: ShopProps) => {
           cart={cart}
           setCart={setCart}
           theme="dark"
+          membership={membership}
         />
       </header>
 

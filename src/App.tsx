@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 //routes
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -13,9 +13,12 @@ import ProductDetailsPage from "./screens/productDetail/ProductDetailsPage";
 import { CartDropdown_ProductsType } from "./features/services/Cart/CartDropdownProducts";
 import Shop from "./screens/shop/shop";
 import { MemberShips } from "./screens/memberships";
+import { getmembershipValue } from "./features/services/membershipValue";
 
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false); //verify if the user is authenticated
+  const [username, setUsername] = useState<string | null>(null);
+  const [userMembership, setUserMembership] = useState<any>(null);
   const [cart, setCart] = useState<CartDropdown_ProductsType[]>([]); //products in the cart
 
   const handleAuthSuccess = () => {
@@ -24,7 +27,21 @@ const App: React.FC = () => {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
+    setUsername(null)
+    setUserMembership(null)
   };
+
+  const handleUser = (username: string) => {
+    setUsername(username);
+  };
+
+  useEffect(() => {
+    const fetchUser = async() => {
+      const membership = await getmembershipValue(username);
+      setUserMembership(membership)
+    }
+    fetchUser()
+  }, [username])
 
   return (
     <Router>
@@ -37,12 +54,18 @@ const App: React.FC = () => {
               onLogout={handleLogout}
               setCart={setCart}
               cart={cart}
+              membership={userMembership}
             />
           }
         />
         <Route
           path="/login"
-          element={<Login onAuthSuccess={handleAuthSuccess} />}
+          element={
+            <Login
+              onAuthSuccess={handleAuthSuccess}
+              onUsernameSuccess={handleUser}
+            />
+          }
         />
 
         <Route path="/register" element={<RegisterScreen />} />
@@ -55,20 +78,22 @@ const App: React.FC = () => {
               onLogout={handleLogout}
               cart={cart}
               setCart={setCart}
+              membership={userMembership}
             />
           }
         />
 
-        <Route 
-         path="/memberships"
-         element={
+        <Route
+          path="/memberships"
+          element={
             <MemberShips
-                isLogged={isAuthenticated}
+              isLogged={isAuthenticated}
               onLogout={handleLogout}
               cart={cart}
               setCart={setCart}
+              membership={userMembership}
             />
-         }
+          }
         />
 
         <Route
@@ -79,6 +104,7 @@ const App: React.FC = () => {
               onLogout={handleLogout}
               cart={cart}
               setCart={setCart}
+              membership={userMembership}
             />
           }
         />
@@ -90,6 +116,7 @@ const App: React.FC = () => {
               onLogout={handleLogout}
               cart={cart}
               setCart={setCart}
+              membership={userMembership}
             />
           }
         />
