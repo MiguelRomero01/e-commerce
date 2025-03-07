@@ -52,51 +52,28 @@ Se implementa **Supabase** como motor de base de datos, aprovechando su integrac
 
 
 
-Views
-auth 
--> components -> authinput: Input para manejar la autenticacion del usuario y evitar replicaciones
--> login -> LoginView.tsx: pagina principal con Interfaz del login con imagen, autenticacion, campos, botones, etc
--> register -> registerView.tsx: pagina principal del register que trae componentes y funciones
-components -> errorRegister.tsx: si el usuario falla en la autenticacion se muestra un mensaje y campo que lo indica
-              successRegister.tsx: si el usuario se autentica exitosamente, se muestra un campo y permite redirigir al login
+## 📌 Views  
 
-common: componentes y animacion comunes usadas en varios componentes
-->animations: animaciones en formason JSON para usar en distintos componentes con la libreria necesaria
-->components -> animations: componentes con las animaciones integradas
--> footer: footer principal para el uso en diferentes secciones de la pagina
--> navbar -> DropDown: funciones del carrito para ser desplegado y usado y funcioens del usuario
-navbar: navbar con el uso de componentes y funciones para su distribucion
-others-> socialMedia.jsx: redes sociales de la pagina para ser usada en el heroSection
-productCard -> productCard.jsx: Product card de la gorra con la informacion necesaria 
-ReturnToPage->returnBack.jsx: componente para retornar siempre a la pagina anterior a la que se está
-searchaBar -> searchbar.tsx:componente del serachBar utilizado en la shop para buscar productos
-Titles -> titleUnderline.tsx: titulo con animacion y decoracion para ser utilizado como titulo principal
-zoom -> zoomImage.jsx: Zoom para la imagen en el productdetails para mas detalles 
-
-home
+| **Categoría**       | **Archivo**                         | **Descripción**  |
+|--------------------|---------------------------------|------------------------------------------------|
+| **🔑 Auth**        | `authinput.tsx`                 | Input para manejar la autenticación del usuario y evitar replicaciones. |
+|                    | **Login** → `LoginView.tsx`     | Página principal del login con imagen, autenticación, campos y botones. |
+|                    | **Register** → `registerView.tsx` | Página principal del registro que trae componentes y funciones. |
+| **⚠️ Mensajes**    | `errorRegister.tsx`             | Muestra un mensaje si el usuario falla en la autenticación. |
+|                    | `successRegister.tsx`           | Indica autenticación exitosa y permite redirigir al login. |
+| **🌍 Common**      | **Animations**                  | Animaciones en formato JSON para distintos componentes. |
+|                    | **Components → Animations**     | Componentes con animaciones integradas. |
+|                    | **Footer**                      | Footer principal reutilizable en varias secciones. |
+|                    | **Navbar → DropDown**           | Funciones del carrito desplegable y gestión de usuario. |
+| **📌 Navbar**      | `navbar.tsx`                    | Contiene la estructura y funciones del navbar. |
+| **📲 Others**      | `socialMedia.jsx`               | Redes sociales utilizadas en `heroSection`. |
+| **🛍️ Product Card** | `productCard.jsx`              | Tarjeta de producto con información detallada. |
+| **🔙 Return**      | `returnBack.jsx`                | Componente para retornar a la página anterior. |
+| **🔎 Search Bar**  | `searchbar.tsx`                 | Barra de búsqueda utilizada en la tienda (`shop`). |
+| **📝 Titles**      | `titleUnderline.tsx`            | Título con animación y decoración como encabezado principal. |
+| **🔍 Zoom**        | `zoomImage.jsx`                 | Función de zoom en imágenes para `productDetails`. |
 
 
-
-
-
-
-
-| Archivo           | Descripción                                               |
-|-------------------|-----------------------------------------------------------|
-| `Button.tsx`      | _Componente reutilizable para botones (estilos y props)._   |
-| `Header.tsx`      | _Encabezado común que se usa en varias pantallas._          |
-
----
-
-### 2. **layouts** _(dentro de `common`)_
-- **Función**: Define las **estructuras generales de página**, como distribuciones de contenido.
-
-| Archivo            | Descripción                                                      |
-|--------------------|------------------------------------------------------------------|
-| `MainLayout.tsx`   | _Layout principal con header, footer y sección de contenido._      |
-| `AuthLayout.tsx`   | _Layout específico para páginas de autenticación._                 |
-
----
 
 ### 4. **database** _(dentro de `features/auth`)_
 - **Función**: Archivos relacionados con **consultas y conexión a la base de datos**.
@@ -116,49 +93,7 @@ home
 | `fetchUserData.ts`     | _Consulta los datos del usuario autenticado._                   |
 | `updateUserProfile.ts` | _Actualiza la información del perfil del usuario._              |
 
----
 
-### 6. **hooks** _(dentro de `features/auth`)_
-- **Función**: Contiene **custom hooks reutilizables** relacionados con la autenticación.
-
-| Archivo             | Descripción                                                   |
-|----------------------|-------------------------------------------------------------|
-| `useLogin.ts`        | _Maneja la lógica del proceso de inicio de sesión._           |
-| `useAuthStatus.ts`   | _Verifica y devuelve el estado de autenticación del usuario._ |
-
----
-
-### 7. **services**
-- **Función**: Contiene la **lógica de negocio** o servicios generales como llamadas a APIs.
-
-| Archivo                 | Descripción                                                       |
-|--------------------------|-----------------------------------------------------------------|
-| `apiService.ts`          | _Configuración de llamadas genéricas a una API (GET, POST, etc)._ |
-| `notificationService.ts` | _Servicio para mostrar notificaciones (errores, éxitos)._         |
-
----
-
-### 8. **screens**
-- **Función**: Contiene las **pantallas principales** de la aplicación, organizadas por módulos.
-
-**Ejemplo (módulo `auth`):**
-
-| Archivo               | Descripción                                                   |
-|------------------------|-------------------------------------------------------------|
-| `LoginScreen.tsx`      | _Pantalla principal de inicio de sesión con hooks y componentes._ |
-| `RegisterScreen.tsx`   | _Pantalla para registro de nuevos usuarios._               |
-
----
-
-### 9. **components** _(dentro de `screens/auth`)_
-- **Función**: Contiene **componentes específicos** de la pantalla de autenticación.
-
-| Archivo                | Descripción                                                   |
-|-------------------------|-------------------------------------------------------------|
-| `LoginForm.tsx`         | _Componente del formulario de login (inputs y botones)._      |
-| `PasswordInput.tsx`     | _Input reutilizable con funcionalidad de mostrar/ocultar contraseña._ |
-
----
 
 ## 📚 **10. Librerías**
 
@@ -169,13 +104,3 @@ home
 |`bcryptjs`             | Encriptacion de datos para ser mandados a la DB                   | _yarn add bcryptjs_                                      |
 |`lottie-react`         | Uso de animaciones                                                | _yarn add lottie-react_                                  |
 |`sweetalert2`          | uso de alertas mejoradas                                          | _yarn add sweetalert2 react-sweetalert2_
-
-## **Resumen Final 📝**
-- 📁 `common` → Elementos globales reutilizables.  
-- 📁 `features` → Funcionalidades agrupadas (auth, cart, etc.).  
-- 📁 `database` y `queries` → Conexión y consultas a la base de datos.  
-- 📁 `hooks` → Lógica encapsulada y reutilizable.  
-- 📁 `services` → Lógica de negocio y comunicación con APIs.  
-- 📁 `screens` → Pantallas organizadas con componentes específicos.  
-
----
