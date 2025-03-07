@@ -29,8 +29,57 @@ Se implementa **Supabase** como motor de base de datos, aprovechando su integrac
 
 ## **Organización y Estructura del Proyecto 📂**
 
-### 1. **common**
-- **Función**: Contiene elementos **reutilizables globalmente** en toda la aplicación, como componentes compartidos, estilos o layouts.
+## 📌 Models  
+
+| **Categoría**    | **Archivo**                      | **Descripción**  |
+|-----------------|--------------------------------|------------------------------------------------|
+| **🔑 Auth**       | `auth.ts`                     | Contiene los datos de entrada necesarios para la autenticación. |
+|                 | `actionModel.ts`               | Contiene la entrada para el registro. |
+|                 | `stateModel.ts`                | Contiene la entrada de datos del usuario para el registro. |
+| **🏠 Home**      | `HomePropsMode.ts`            | Props principales del navbar para pasarlos a los componentes hijos. |
+|                 | `categoriePropsMode.ts`        | Props necesarios para `productCard.tsx`, permitiendo mostrar productos dinámicamente. |
+| **🎟️ Memberships** | `memberShipModel.ts`         | Maneja los datos para replicar las membresías en los componentes. |
+|                 | `memberShipsPropsModel.ts`     | Pasa los datos del navbar a las membresías. |
+| **📌 Navbar**    | `NavbarPropsModel.ts`         | Maneja el `navbarProps` principal utilizado en `navbar.tsx`. |
+|                 | `QuantityProps.ts`             | Props necesarios para sincronizar la cantidad de productos en el carrito. |
+| **🛒 Product Detail** | `RecommendProdModel.ts`    | Props para recomendar productos y gestionar el carrito actual. |
+|                 | `procuctDetailPropsModel.ts`   | Pasa los datos del navbar a los detalles del producto. |
+| **🛍️ Shop**      | `CartDropdownModel.ts`        | Props principales del carrito, incluyendo imagen, ID, título, precio y cantidad. |
+|                 | `FilterPropsModel.ts`          | Props utilizados en el filtro principal. |
+|                 | `ShopModel.ts`                 | Pasa los datos del navbar a los detalles del producto. |
+|                 | `filterStateModel.ts`          | Gestiona los filtros principales en `filterPropsModel.ts`. |
+|                 | `ProductModel.ts`              | Pasa los datos del navbar a los detalles del producto. |
+
+
+
+Views
+auth 
+-> components -> authinput: Input para manejar la autenticacion del usuario y evitar replicaciones
+-> login -> LoginView.tsx: pagina principal con Interfaz del login con imagen, autenticacion, campos, botones, etc
+-> register -> registerView.tsx: pagina principal del register que trae componentes y funciones
+components -> errorRegister.tsx: si el usuario falla en la autenticacion se muestra un mensaje y campo que lo indica
+              successRegister.tsx: si el usuario se autentica exitosamente, se muestra un campo y permite redirigir al login
+
+common: componentes y animacion comunes usadas en varios componentes
+->animations: animaciones en formason JSON para usar en distintos componentes con la libreria necesaria
+->components -> animations: componentes con las animaciones integradas
+-> footer: footer principal para el uso en diferentes secciones de la pagina
+-> navbar -> DropDown: funciones del carrito para ser desplegado y usado y funcioens del usuario
+navbar: navbar con el uso de componentes y funciones para su distribucion
+others-> socialMedia.jsx: redes sociales de la pagina para ser usada en el heroSection
+productCard -> productCard.jsx: Product card de la gorra con la informacion necesaria 
+ReturnToPage->returnBack.jsx: componente para retornar siempre a la pagina anterior a la que se está
+searchaBar -> searchbar.tsx:componente del serachBar utilizado en la shop para buscar productos
+Titles -> titleUnderline.tsx: titulo con animacion y decoracion para ser utilizado como titulo principal
+zoom -> zoomImage.jsx: Zoom para la imagen en el productdetails para mas detalles 
+
+home
+
+
+
+
+
+
 
 | Archivo           | Descripción                                               |
 |-------------------|-----------------------------------------------------------|
