@@ -29,7 +29,8 @@ Se implementa **Supabase** como motor de base de datos, aprovechando su integrac
 
 ## **Organización y Estructura del Proyecto 📂**
 
-## 📌 Models  
+## 📌 Models:
+`contiene los datos de entrada y salida necesarios para compartir entre componentes y funciones`
 
 ### 🔑 **Auth**
 | **Archivo**             | **Descripción**  |
@@ -84,7 +85,8 @@ Se implementa **Supabase** como motor de base de datos, aprovechando su integrac
 ---
 
 
-## 📌 Views  
+## 📌 Views:
+`Contiene el frontEnd de la acplicacion. Es decir, la vista del usuario`
 
 ### 🔑 **Auth**
 | **Archivo**             | **Descripción**  |
@@ -161,7 +163,8 @@ Se implementa **Supabase** como motor de base de datos, aprovechando su integrac
 | `rangeSlider.tsx`    | Slider para filtrar por precios u otros rangos. |
 
 ---
-## 📌 Controllers  
+## 📌 Controllers:
+`Son las funciones de los componentes`
 
 ### 🔑 **Auth**
 | **Archivo**                  | **Descripción**  |
