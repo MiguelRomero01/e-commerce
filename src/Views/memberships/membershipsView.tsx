@@ -44,7 +44,9 @@ const membershipScreen: React.FC<membershipsProps> = ({
             title="Amateur"
             includesText="Include"
             price={10000}
-            listOfIncludes={["asdas", "dasdas", "sfas"]}
+            listOfIncludes={[ "Acceso básico a las funcionalidades",
+              "10% de descuento en todos los productos",
+              "Soporte al cliente gratuito"]}
             icon={<Zap size={30} />}
           />
 
@@ -52,7 +54,10 @@ const membershipScreen: React.FC<membershipsProps> = ({
             title="Pro"
             includesText="Include Amateur, plus"
             price={20000}
-            listOfIncludes={["asdas", "dasdas", "sfas", "sdasd", "fasd"]}
+            listOfIncludes={["Todos los beneficios del plan Amateur",
+  "Soporte prioritario",
+  "15% de descuento en todos los productos",
+  "Webinars exclusivos para miembros"]}
             icon={<Rocket size={30} />}
           />
 
@@ -60,7 +65,13 @@ const membershipScreen: React.FC<membershipsProps> = ({
             title="Business"
             includesText="Include Pro, plus"
             price={30000}
-            listOfIncludes={["asdas", "dasdas", "sfas", "gas"]}
+            listOfIncludes={[
+              "Todos los beneficios del plan Pro",
+              "Gestor de cuenta dedicado",
+              "20% de descuento en todos los productos",
+              "Soluciones personalizables para tu negocio"
+            ]}
+            
             icon={<Crown size={30} />}
           />
         </section>
