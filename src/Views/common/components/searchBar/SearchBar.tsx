@@ -35,7 +35,7 @@ const SearchBar: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const products = await getProducts();
-      
+
       setProducts(products);
     };
     fetchProducts();
@@ -51,7 +51,7 @@ const SearchBar: React.FC = () => {
     <div className={styles.searchContainer} ref={searchContainerRef}>
       <input
         type="text"
-        placeholder="Buscar productos..."
+        placeholder="Search Products..."
         value={searchTerm}
         onChange={handleSearchChange}
         className={styles.searchInput}
@@ -69,7 +69,7 @@ const SearchBar: React.FC = () => {
             ))
           ) : (
             <li className={styles.noResults}>
-              No se encontraron resultados para "{searchTerm}"
+              Products not found "{searchTerm}"
             </li>
           )}
         </ul>

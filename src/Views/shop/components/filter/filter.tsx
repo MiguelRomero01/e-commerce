@@ -8,14 +8,13 @@ import { useNavigate } from "react-router-dom";
 //models
 import { FilterProps } from "../../../../models/shop/FilterPropsModel";
 
-
 const Filter: React.FC<FilterProps> = ({
   filters,
   setFilters,
   setIsFiltering,
 }) => {
   const navigate = useNavigate();
-  
+
   const handleSearch = (Isfiltered: boolean) => {
     if (Isfiltered) {
       setIsFiltering(true);
@@ -29,7 +28,6 @@ const Filter: React.FC<FilterProps> = ({
       });
       navigate("/shop/all");
     }
-    
   };
 
   const handleCategoryChange = (newCategory: string) => {
@@ -39,17 +37,17 @@ const Filter: React.FC<FilterProps> = ({
 
   return (
     <div className={FilterStyles["filter-container"]}>
-      <h3>Filtros</h3>
+      <h3>Filters</h3>
 
       {/* Categorías */}
       <div className={FilterStyles["filter-section"]}>
-        <h4>Categorías</h4>
+        <h4>Categories</h4>
         <ComboBox value={filters.category} setValue={handleCategoryChange} />
       </div>
 
       {/* Rango de Precio */}
       <div className={FilterStyles["filter-section"]}>
-        <h4>Rango de Precio</h4>
+        <h4>Price</h4>
         <RangeSlider
           value={filters.priceRange}
           setValue={(newValue) =>
@@ -60,7 +58,7 @@ const Filter: React.FC<FilterProps> = ({
 
       {/* Valoración */}
       <div className={FilterStyles["filter-section"]}>
-        <h4>Valoración</h4>
+        <h4>Rating</h4>
         <div className={FilterStyles["rating-filter"]}>
           <Rating
             name="customized-5"
@@ -74,7 +72,12 @@ const Filter: React.FC<FilterProps> = ({
         </div>
       </div>
 
-      <button onClick={() => handleSearch(false)}>Reset</button>
+      <button
+        className={FilterStyles["Reset-Button"]}
+        onClick={() => handleSearch(false)}
+      >
+        Reset
+      </button>
     </div>
   );
 };

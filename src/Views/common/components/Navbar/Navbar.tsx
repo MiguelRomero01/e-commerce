@@ -17,7 +17,6 @@ const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-  
 
   const handleSignIn = () => {
     navigate("/login");
@@ -81,15 +80,6 @@ const Navbar: React.FC<NavbarProps> = ({
               style={{ color: theme === "light" ? "white" : "black" }}
             >
               Shop
-            </Link>
-          </li>
-          <li>
-            <Link
-              to=""
-              className={navbar_styles["navbar-links"]}
-              style={{ color: theme === "light" ? "white" : "black" }}
-            >
-              Contact
             </Link>
           </li>
         </ul>

@@ -14,6 +14,7 @@ import { CartDropdown_ProductsType } from "../models/shop/CartDropdownModel";
 import { Shop } from "./shop";
 import { MemberShips } from "./memberships";
 import { getmembershipValue } from "../controllers/services/helpers/membershipValueController";
+import { PayView } from "./paySection";
 
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false); //verify if the user is authenticated
@@ -28,8 +29,8 @@ const App: React.FC = () => {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    setUsername(null)
-    setUserMembership(null)
+    setUsername(null);
+    setUserMembership(null);
   };
 
   const handleUser = (username: string) => {
@@ -37,12 +38,12 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    const fetchUser = async() => {
+    const fetchUser = async () => {
       const membership = await getmembershipValue(username);
-      setUserMembership(membership)
-    }
-    fetchUser()
-  }, [username])
+      setUserMembership(membership);
+    };
+    fetchUser();
+  }, [username]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -51,12 +52,12 @@ const App: React.FC = () => {
   }, []);
 
   const commonProps = {
-    isLogged:isAuthenticated,
-    onLogout:handleLogout,
-    setCart:setCart,
-    cart:cart,
-    membership:userMembership,
-  }
+    isLogged: isAuthenticated,
+    onLogout: handleLogout,
+    setCart: setCart,
+    cart: cart,
+    membership: userMembership,
+  };
 
   return (
     <Router>
@@ -64,10 +65,7 @@ const App: React.FC = () => {
         <Route
           path="/"
           element={
-            <Home
-              {...commonProps}
-              animationOcurred={animationOcurred}
-            />
+            <Home {...commonProps} animationOcurred={animationOcurred} />
           }
         />
         <Route
@@ -84,38 +82,14 @@ const App: React.FC = () => {
 
         <Route
           path="/product/:id/:title"
-          element={
-            <ProductDetailsPage
-              {...commonProps}
-            />
-          }
+          element={<ProductDetailsPage {...commonProps} />}
         />
 
-        <Route
-          path="/memberships"
-          element={
-            <MemberShips
-              {...commonProps}
-            />
-          }
-        />
+        <Route path="/memberships" element={<MemberShips {...commonProps} />} />
 
-        <Route
-          path="/shop"
-          element={
-            <Shop
-              {...commonProps}
-            />
-          }
-        />
-        <Route
-          path="/shop/:category"
-          element={
-            <Shop
-              {...commonProps}
-            />
-          }
-        />
+        <Route path="/shop" element={<Shop {...commonProps} />} />
+        <Route path="/shop/:category" element={<Shop {...commonProps} />} />
+        <Route path="/paySection" element={<PayView {...commonProps} />} />
       </Routes>
     </Router>
   );

@@ -39,15 +39,13 @@ const HomeScreen: React.FC<HomeProps> = ({
   setCart,
   cart,
   membership,
-  animationOcurred
+  animationOcurred,
 }) => {
-  // La seccion de añadir archivos para ser mandados a la db y demas se cambiará de aca a una cuenta de admin
-  const [file, setFile] = useState<File | null>(null);
-  const [title, setTitle] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-  const [price, setPrice] = useState<number>(0);
-
-
+  // // La seccion de añadir archivos para ser mandados a la db y demas se cambiará de aca a una cuenta de admin
+  // const [file, setFile] = useState<File | null>(null);
+  // const [title, setTitle] = useState<string>("");
+  // const [description, setDescription] = useState<string>("");
+  // const [price, setPrice] = useState<number>(0);
 
   return (
     <div>
@@ -67,7 +65,7 @@ const HomeScreen: React.FC<HomeProps> = ({
       </header>
 
       <main>
-        <HeroSection animationOcurred={animationOcurred}/>
+        <HeroSection animationOcurred={animationOcurred} />
         <section className={HomeStyles["top-sellers-section"]}>
           <TitleWithUnderline title={"Best Sellers"} level={2} />
           <div className={HomeStyles["top-sellers-container"]}>
@@ -117,7 +115,7 @@ const HomeScreen: React.FC<HomeProps> = ({
             <UserReview />
           </div>
         </section>
-        <div>
+        {/* <div>
           <input
             type="file"
             onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)}
@@ -144,7 +142,7 @@ const HomeScreen: React.FC<HomeProps> = ({
           >
             Upload
           </button>
-        </div>
+        </div> */}
       </main>
 
       <footer>

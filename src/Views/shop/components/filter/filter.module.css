@@ -1,44 +1,64 @@
 .filter-container {
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    margin-right: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  margin-right: 20px;
 }
 
 .filter-section {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .filter-section h4 {
-    margin-bottom: 10px;
-    color: #333;
+  margin-bottom: 10px;
+  color: #333;
 }
 
 .filter-section select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: white;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
 }
 
 .rating-filter {
-    display: flex;
-    gap: 5px;
+  display: flex;
+  gap: 5px;
 }
 
 .star-button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: #ccc;
-    cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #ccc;
+  cursor: pointer;
 }
 
 .star-button.active {
-    color: #ffd700;
+  color: #ffd700;
 }
 
 .star-button:hover {
-    color: #ffd700;
+  color: #ffd700;
+}
+
+.Reset-Button {
+  background-color: #ff4d4d; /* Rojo suave, puede cambiarse según tu diseño */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.Reset-Button:hover {
+  background-color: #cc0000; /* Color más oscuro al pasar el mouse */
+}
+
+.Reset-Button:active {
+  transform: scale(0.95);
 }
