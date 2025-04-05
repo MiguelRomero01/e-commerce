@@ -14,7 +14,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({ value, setValue }) => {
     setValue(event.target.value as string);
   };
 
-  const categories = ["all", "plana", "casual", "malla", "superheroes", "moderna"];
+  const categories = ["all", "Flat", "Casual", "Modern", "Mesh", "moderna"];
 
   return (
     <Box sx={{ minWidth: 120 }}>
@@ -30,8 +30,10 @@ const ComboBox: React.FC<ComboBoxProps> = ({ value, setValue }) => {
             padding: "1px",
           }}
         >
-          {categories.map((category:string, index:number) => (
-            <MenuItem value={category} key={index}>{category}</MenuItem>
+          {categories.map((category: string, index: number) => (
+            <MenuItem value={category} key={index}>
+              {category}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>

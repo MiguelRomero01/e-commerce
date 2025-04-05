@@ -8,13 +8,13 @@ const SuccessRegister = () => {
   useEffect(() => {
     Swal.fire({
       title: "Your account has been created",
-      text: "Now you can buy our products!",
+      text: "Now you can use all our functions!",
       icon: "success",
       showCancelButton: true,
       confirmButtonText: "Go to login",
     }).then((result) => {
       if (result.isConfirmed) {
-        navigate("/login"); // Usa useNavigate correctamente dentro del hook
+        navigate("/login");
       }
     });
   }, [navigate]);

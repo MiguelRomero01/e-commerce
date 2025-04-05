@@ -7,6 +7,8 @@ import { PayProps } from "../../models/pay/payView";
 //controllers
 import { formatNumber } from "../../controllers/services/helpers/formatPriceController";
 import { Navbar } from "../common/components/Navbar";
+import { Link } from "react-router-dom";
+import SuccessPayment from "./components/successPayment";
 
 const PayView: React.FC<PayProps> = ({
   cart,
@@ -16,6 +18,7 @@ const PayView: React.FC<PayProps> = ({
   setCart,
 }) => {
   const [isProcessing, setIsProcessing] = useState(false);
+  const [paymentState, setPaymentState] = useState<boolean>(false);
 
   // Calculate totals
   const subtotal = cart.reduce(
@@ -31,7 +34,7 @@ const PayView: React.FC<PayProps> = ({
     // Simulate payment process
     setTimeout(() => {
       setIsProcessing(false);
-      alert("¡Pago realizado con éxito!");
+      setPaymentState(true);
       setCart([]);
     }, 1500);
   };
@@ -52,6 +55,10 @@ const PayView: React.FC<PayProps> = ({
         <div className={payStyles.paymentCard}>
           <h2 className={payStyles.paymentTitle}>Purchase summary</h2>
 
+          {/*se ejecuta cuando el pago es exitoso*/}
+          {paymentState && <SuccessPayment />}
+
+          {/*cambia los objetos a mostrar dependiendo de si el carrito esta vacio o tiene productos*/}
           {cart.length === 0 ? (
             <div className={payStyles.emptyCart}>
               <p>Your car is empty</p>
@@ -129,13 +136,18 @@ const PayView: React.FC<PayProps> = ({
                       </div>
                     </div>
 
-                    <button
-                      className={payStyles.payButton}
-                      onClick={handlePayment}
-                      disabled={isProcessing}
-                    >
-                      {isProcessing ? "Processing..." : "Pay Now"}
-                    </button>
+                    {paymentState && <SuccessPayment />}
+
+                    {/* Botón de pago */}
+                    {!paymentState && (
+                      <button
+                        className={payStyles.payButton}
+                        onClick={handlePayment}
+                        disabled={isProcessing}
+                      >
+                        {isProcessing ? "Processing..." : "Pay Now"}
+                      </button>
+                    )}
 
                     <p className={payStyles.securePayment}>
                       🔒 secure and encrypted payment
@@ -149,9 +161,11 @@ const PayView: React.FC<PayProps> = ({
 
         {isLogged && (
           <div className={payStyles.userActions}>
-            <button className={payStyles.continueShoppingButton}>
-              Continue shopping
-            </button>
+            <Link to="/shop">
+              <button className={payStyles.continueShoppingButton}>
+                Continue shopping
+              </button>
+            </Link>
             <button className={payStyles.logoutButton} onClick={onLogout}>
               Sign Out
             </button>
