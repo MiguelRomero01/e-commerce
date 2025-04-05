@@ -15,7 +15,7 @@ const membershipScreen: React.FC<membershipsProps> = ({
   onLogout,
   cart,
   setCart,
-  membership
+  membership,
 }) => {
   return (
     <>
@@ -35,7 +35,8 @@ const membershipScreen: React.FC<membershipsProps> = ({
           <h2>Choose the perfect plan for you</h2>
           <p>
             We offer different levels of licenses to suit your needs. From
-            entrepreneurs to large companies, we have the ideal solution for you.
+            entrepreneurs to large companies, we have the ideal solution for
+            you.
           </p>
         </section>
 
@@ -44,9 +45,11 @@ const membershipScreen: React.FC<membershipsProps> = ({
             title="Amateur"
             includesText="Include"
             price={10000}
-            listOfIncludes={[ "Acceso básico a las funcionalidades",
+            listOfIncludes={[
+              "Acceso básico a las funcionalidades",
               "10% de descuento en todos los productos",
-              "Soporte al cliente gratuito"]}
+              "Soporte al cliente gratuito",
+            ]}
             icon={<Zap size={30} />}
           />
 
@@ -54,10 +57,11 @@ const membershipScreen: React.FC<membershipsProps> = ({
             title="Pro"
             includesText="Include Amateur, plus"
             price={20000}
-            listOfIncludes={["Todos los beneficios del plan Amateur",
-  "Soporte prioritario",
-  "15% de descuento en todos los productos",
-  "Webinars exclusivos para miembros"]}
+            listOfIncludes={[
+              "Todos los beneficios del plan Amateur",
+              "15% de descuento en todos los productos",
+              "Webinars exclusivos para miembros",
+            ]}
             icon={<Rocket size={30} />}
           />
 
@@ -67,11 +71,9 @@ const membershipScreen: React.FC<membershipsProps> = ({
             price={30000}
             listOfIncludes={[
               "Todos los beneficios del plan Pro",
-              "Gestor de cuenta dedicado",
               "20% de descuento en todos los productos",
-              "Soluciones personalizables para tu negocio"
+              "Soluciones personalizables para tu negocio",
             ]}
-            
             icon={<Crown size={30} />}
           />
         </section>

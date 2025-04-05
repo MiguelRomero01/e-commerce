@@ -1,31 +1,31 @@
-import React from 'react';
-import './footer.css';
-import { Facebook, Favorite, Instagram, X, YouTube } from '@mui/icons-material';
+import React from "react";
+import "./footer.css";
+import { Facebook, Favorite, Instagram, X, YouTube } from "@mui/icons-material";
 
 const SOCIAL_LINKS = [
-  { icon: Facebook, url: 'https://www.facebook.com/', size: 20 },
-  { icon: X, url: 'https://x.com/', size: 20 },
-  { icon: Instagram, url: 'https://www.instagram.com/', size: 20 },
-  { icon: YouTube, url: 'https://www.youtube.com/', size: 22 }
+  { icon: Facebook, url: "", size: 20 },
+  { icon: X, url: "", size: 20 },
+  { icon: Instagram, url: "", size: 20 },
+  { icon: YouTube, url: "", size: 22 },
 ];
 
 const QUICK_LINKS = [
-  { text: 'About Us', url: '/' },
-  { text: 'Services', url: '/' },
-  { text: 'Projects', url: '/' },
-  { text: 'Contact', url: '/' }
+  { text: "About Us", url: "" },
+  { text: "Services", url: "" },
+  { text: "Projects", url: "" },
+  { text: "Contact", url: "" },
 ];
 
 const SERVICES_LINKS = [
-  { text: 'Buy Products', url: '/' },
-  { text: 'Consulting', url: '/' }
+  { text: "Buy Products", url: "" },
+  { text: "Consulting", url: "" },
 ];
 
 const CONTACT_INFO = [
-  '123 Business Street',
-  'New York, NY 10001',
-  'Phone: (555) 123-4567',
-  'Email: info@company.com'
+  "123 Business Street",
+  "New York, NY 10001",
+  "Phone: (555) 123-4567",
+  "Email: info@company.com",
 ];
 
 const Footer = () => {
@@ -56,7 +56,9 @@ const Footer = () => {
           {/* Company Info */}
           <div className="company-info">
             <h3>FASHION</h3>
-            <p>Creating amazing digital experiences with passion and innovation.</p>
+            <p>
+              Creating amazing digital experiences with passion and innovation.
+            </p>
             {renderSocialLinks()}
           </div>
 
@@ -88,7 +90,7 @@ const Footer = () => {
           <p>&copy; 2025 FASHION. All rights reserved.</p>
           <div className="made-with">
             <span>Made with</span>
-            <Favorite sx={{ color: 'red' }} />
+            <Favorite sx={{ color: "red" }} />
             <span>by Our Team</span>
           </div>
         </div>
