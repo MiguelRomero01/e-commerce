@@ -63,28 +63,28 @@ const HomeScreen: React.FC<HomeProps> = ({
             <CategorieCard
               image={"/Images/Home/categories/persona3.jpg"}
               information="We all need a change, so why not start right now?"
-              navigation="/shop/plana"
+              navigation="/shop/Flat"
               title="Discover your new style"
             />
 
             <CategorieCard
               image={"/Images/Home/categories/persona4.jpg"}
               information="Unleash your inner self and explore what the world has to offer you."
-              navigation="/shop/malla"
+              navigation="/shop/Mesh"
               title="Do you wish to explore the world?"
             />
 
             <CategorieCard
               image={"/Images/Home/categories/persona1.jpeg"}
               information="For when you just want to be yourself and nothing more."
-              navigation="/shop/casual"
+              navigation="/shop/Casual"
               title="Improve your casual style"
             />
 
             <CategorieCard
               image={"/Images/Home/categories/persona2.jpeg"}
               information="Improve your style with the latest trends."
-              navigation="/shop/moderna"
+              navigation="/shop/Modern"
               title="Do you want to update your style?"
             />
           </div>
