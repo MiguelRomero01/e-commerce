@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import userDropdown_styles from "./userDropdown.module.css";
 import PersonIcon from "@mui/icons-material/Person";
-import { useNavigate } from "react-router-dom";
 
 interface UserDropdownProps {
   onLogout: () => void;
@@ -10,7 +9,6 @@ interface UserDropdownProps {
 
 const UserDropdown = ({ onLogout, theme }: UserDropdownProps) => {
   const [showDropdownUser, setShowDropdownUser] = useState(false);
-  const navigate = useNavigate();
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import HomeStyles from "./Home.module.css";
 
 //AOS animation
@@ -14,24 +14,10 @@ import UserReview from "./components/Reviews/userReview";
 import { Footer } from "../common/components/Footer";
 
 //services
-import { handleFileUpload } from "../../controllers/services/fileUpload/fileUploadController";
 import { getTopProducts } from "../../controllers/database/queries/get/product/getTopProductsController";
 
 //models
 import { HomeProps } from "../../models/home/HomePropsModel";
-
-const handleFileChange = async (
-  file: File,
-  title: string,
-  description: string,
-  price: number
-) => {
-  if (file && title && description && price) {
-    await handleFileUpload(file, title, description, price);
-  } else {
-    alert("Please fill all the fields!");
-  }
-};
 
 const HomeScreen: React.FC<HomeProps> = ({
   isLogged,
@@ -41,12 +27,6 @@ const HomeScreen: React.FC<HomeProps> = ({
   membership,
   animationOcurred,
 }) => {
-  // // La seccion de añadir archivos para ser mandados a la db y demas se cambiará de aca a una cuenta de admin
-  // const [file, setFile] = useState<File | null>(null);
-  // const [title, setTitle] = useState<string>("");
-  // const [description, setDescription] = useState<string>("");
-  // const [price, setPrice] = useState<number>(0);
-
   return (
     <div>
       <header
@@ -115,34 +95,6 @@ const HomeScreen: React.FC<HomeProps> = ({
             <UserReview />
           </div>
         </section>
-        {/* <div>
-          <input
-            type="file"
-            onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)}
-          />
-          <input
-            type="text"
-            placeholder="Title"
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Description"
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <input
-            type="number"
-            placeholder="Price"
-            onChange={(e) => setPrice(parseFloat(e.target.value))}
-          />
-          <button
-            onClick={() =>
-              file && handleFileChange(file, title, description, price)
-            }
-          >
-            Upload
-          </button>
-        </div> */}
       </main>
 
       <footer>

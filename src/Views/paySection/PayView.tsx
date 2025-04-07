@@ -20,18 +20,16 @@ const PayView: React.FC<PayProps> = ({
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentState, setPaymentState] = useState<boolean>(false);
 
-  // Calculate totals
   const subtotal = cart.reduce(
     (sum, item) => sum + item.Price * item.quantity,
     0
   );
-  const tax = subtotal * 0.16; // 16% tax
+  const tax = subtotal * 0.16;
   const total = subtotal + tax;
 
   const handlePayment = () => {
     setIsProcessing(true);
 
-    // Simulate payment process
     setTimeout(() => {
       setIsProcessing(false);
       setPaymentState(true);
@@ -97,10 +95,7 @@ const PayView: React.FC<PayProps> = ({
                 >
                   <span>Total:</span>
                   <span className={payStyles.totalAmount}>
-                    $
-                    {membership
-                      ? formatNumber(total * 0.9)
-                      : formatNumber(total)}
+                    $ {formatNumber(total)}
                   </span>
                 </div>
               </div>
@@ -109,7 +104,9 @@ const PayView: React.FC<PayProps> = ({
                 {!isLogged ? (
                   <div className={payStyles.loginPrompt}>
                     <p>Sign in to continue with your purchase</p>
-                    <button className={payStyles.loginButton}>Sign In</button>
+                    <Link to="/login">
+                      <button className={payStyles.loginButton}>Sign In</button>
+                    </Link>
                   </div>
                 ) : (
                   <div className={payStyles.paymentOptions}>

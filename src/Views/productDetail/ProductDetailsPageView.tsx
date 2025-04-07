@@ -26,7 +26,7 @@ const ProductDetailsPage: React.FC<ProductDetailProps> = ({
   onLogout,
   cart,
   setCart,
-  membership
+  membership,
 }) => {
   const { id } = useParams();
   const [productData, setProductData] = useState<any>(null);
@@ -41,7 +41,7 @@ const ProductDetailsPage: React.FC<ProductDetailProps> = ({
   }, [id]); // Incluye `id` como dependencia para evitar advertencias
 
   if (!productData) {
-    return <div>Loading...</div>; // Muestra un mensaje mientras se carga
+    return <div>Loading...</div>;
   }
 
   return (
@@ -109,7 +109,7 @@ const ProductDetailsPage: React.FC<ProductDetailProps> = ({
                   const productToAdd = {
                     ...productData,
                     quantity: 1,
-                    Price: parseFloat(productData.Price)
+                    Price: parseFloat(productData.Price),
                   };
                   handleAddToCart({
                     product: productToAdd,

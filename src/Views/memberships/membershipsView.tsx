@@ -18,7 +18,7 @@ const membershipScreen: React.FC<membershipsProps> = ({
   membership,
 }) => {
   return (
-    <>
+    <div>
       <header>
         <Navbar
           isLogged={isLogged}
@@ -82,7 +82,7 @@ const membershipScreen: React.FC<membershipsProps> = ({
       <footer>
         <Footer />
       </footer>
-    </>
+    </div>
   );
 };
 

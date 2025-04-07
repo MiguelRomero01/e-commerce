@@ -17,8 +17,13 @@ import { ShopProps } from "../../models/shop/shopModel";
 import { getFilterProducts } from "../../controllers/database/queries/get/product/getFilterProductsController";
 import { FilterState } from "../../models/shop/filterStateModel";
 
-
-const Shop = ({ isLogged, onLogout, cart, setCart, membership }: ShopProps) => {
+const Shop: React.FC<ShopProps> = ({
+  isLogged,
+  onLogout,
+  cart,
+  setCart,
+  membership,
+}) => {
   const { category } = useParams();
 
   const [isFiltering, setIsFiltering] = useState<boolean>(false);

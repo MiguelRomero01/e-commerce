@@ -4,7 +4,6 @@ import SocialMedia from "../../../common/components/others/socialMedia";
 
 //aos animation
 import "aos/dist/aos.css";
-import { Link } from "react-router-dom";
 
 export default function HeroSection({ animationOcurred }) {
   const [displayText, setDisplayText] = useState({
